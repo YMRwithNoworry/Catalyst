@@ -3,6 +3,7 @@ package org.alku.catalyst.client.gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import org.alku.catalyst.client.feature.GammaOverride;
 import org.alku.catalyst.config.CatalystConfig;
 
 import java.util.ArrayList;
@@ -74,8 +75,6 @@ public class CatalystConfigScreen extends Screen {
     
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(graphics);
-        
         float scale = getScale();
         graphics.pose().pushPose();
         graphics.pose().scale(scale, scale, 1.0f);
@@ -171,6 +170,9 @@ public class CatalystConfigScreen extends Screen {
         newValue = Math.max(0.0, Math.min(100.0, newValue));
         CatalystConfig.getInstance().gammaValue = newValue;
         CatalystConfig.getInstance().save();
+        if (CatalystConfig.getInstance().gammaOverrideEnabled) {
+            GammaOverride.setGamma(minecraft, newValue);
+        }
     }
     
     public void startSliderDrag(int buttonIndex) {
@@ -345,15 +347,15 @@ public class CatalystConfigScreen extends Screen {
             CatalystConfig config = CatalystConfig.getInstance();
             boolean isEnabled = getEnabledState(config);
             
-            int bgColor = isEnabled ? 0xE02B4B2B : 0xE04B2B2B;
-            int hoverColor = isEnabled ? 0xE03D6B3D : 0xE06B3D3D;
+            int bgColor = isEnabled ? 0xE02B4B2B : 0xE01A1A1A;
+            int hoverColor = isEnabled ? 0xE03D6B3D : 0xE02A2A2A;
             
             boolean isHovered = mouseX >= x && mouseX <= x + PANEL_WIDTH && mouseY >= y && mouseY <= y + BUTTON_HEIGHT;
             int drawColor = isHovered ? hoverColor : bgColor;
             
             drawModernButton(graphics, x, y, x + PANEL_WIDTH, y + BUTTON_HEIGHT, CORNER_RADIUS, drawColor, isLast && !isExpanded);
             
-            int statusColor = isEnabled ? 0xFF55FF55 : 0xFFFF5555;
+            int statusColor = isEnabled ? 0xFF55FF55 : 0xFF555555;
             graphics.fill(x + 4, y + 6, x + 8, y + BUTTON_HEIGHT - 6, statusColor);
             
             Component featureName = Component.translatable("catalyst.feature." + featureKey);
@@ -431,6 +433,9 @@ public class CatalystConfigScreen extends Screen {
                         newValue = Math.max(0.0, Math.min(100.0, newValue));
                         CatalystConfig.getInstance().gammaValue = newValue;
                         CatalystConfig.getInstance().save();
+                        if (CatalystConfig.getInstance().gammaOverrideEnabled) {
+                            GammaOverride.setGamma(panel.getParentScreen().minecraft, newValue);
+                        }
                         
                         int myIndex = -1;
                         for (int i = 0; i < panel.buttons.size(); i++) {
@@ -445,9 +450,6 @@ public class CatalystConfigScreen extends Screen {
                     
                     if (mouseY >= configY + 34 && mouseY <= configY + 46) {
                         CatalystConfig.getInstance().nightVisionMode = !CatalystConfig.getInstance().nightVisionMode;
-                        if (CatalystConfig.getInstance().nightVisionMode) {
-                            CatalystConfig.getInstance().gammaValue = 100.0;
-                        }
                         CatalystConfig.getInstance().save();
                         return true;
                     }

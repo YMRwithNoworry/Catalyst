@@ -1,30 +1,30 @@
 {
   "autoSprintEnabled": true,
-  "autoSwimEnabled": false,
+  "autoSwimEnabled": true,
   "gammaOverrideEnabled": true,
-  "gammaValue": 15.612903225806452,
+  "gammaValue": 100.0,
   "nightVisionMode": true,
   "autoToolEnabled": true,
   "autoWeaponEnabled": true,
   "autoDoorEnabled": true,
   "autoWaterBucketEnabled": true,
-  "guiScale": 0.5,
+  "guiScale": 0.9000001,
   "panelPositions": {
     "Movement": {
-      "x": 294,
-      "y": 192
+      "x": 51,
+      "y": 95
     },
     "Player": {
-      "x": 461,
-      "y": 123
+      "x": 236,
+      "y": 91
     },
     "Tools": {
-      "x": 228,
-      "y": 72
+      "x": 8,
+      "y": 19
     },
     "Combat": {
-      "x": 701,
-      "y": 97
+      "x": 235,
+      "y": 15
     }
   }
 }

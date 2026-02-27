@@ -1,26 +1,28 @@
 [Architectury Transformer DEBUG] 
 [Architectury Transformer DEBUG] ============================
-[Architectury Transformer DEBUG] Transforming from E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionFabric.jar
+[Architectury Transformer DEBUG] Transforming from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionFabric.jar
 [Architectury Transformer DEBUG] ============================
 [Architectury Transformer DEBUG] 
-[Architectury Transformer DEBUG] Transforming 5 transformer(s) from E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionFabric.jar: 
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapMixinVariables@16a066d5
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@74454e3b
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@29a6b1fb
+[Architectury Transformer DEBUG] Transforming 5 transformer(s) from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionFabric.jar: 
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapMixinVariables@7ad62010
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@67c4696a
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@46ebc0b6
 [Architectury Transformer DEBUG]  - AddRefmapName(enabled=() -> kotlin.Boolean)
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@2829780
-[Architectury Transformer DEBUG] Transforming from E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionFabric.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@72bd2a38
+[Architectury Transformer DEBUG] Transforming from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionFabric.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/config/CatalystConfig with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindManager with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindConfigScreen with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/GammaOverride with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWeapon with maxs=true frames=true
 [Architectury Transformer DEBUG] Provided 57 classpath jar(s):
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\dev.architectury\architectury-injectables\1.0.10\62db2a366d662606d1b23ad02ccc3212ed37ec3\architectury-injectables-1.0.10.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\net.fabricmc\fabric-loader\0.18.4\dc4682125d5db647d6ce80a98b98945835adcd4b\fabric-loader-0.18.4.jar
-[Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\26.0.2\c7ce3cdeda3d18909368dfe5977332dfad326c6d\annotations-26.0.2.jar
+[Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\25.0.0\c1e6b966db352094ac3bf7f88f3bdef332fe43f0\annotations-25.0.0.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.9\c29635c8a7afa03d74b33c1884df8abb2b3f3dcc\asm-9.9.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.9\bf4fa6e66638851c1cd22c2caea0c3ee5d5f437\asm-analysis-9.9.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.9\db9165a3bf908ded6b08612d583a15d1d0c7bda0\asm-commons-9.9.jar
@@ -71,11 +73,11 @@
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\ff1914111ef2e3e0110ef2dabc8d8cdaad82347\lwjgl-tinyfd-3.3.1.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\ae58664f88e18a9bb2c77b063833ca7aaec484cb\lwjgl-3.3.1.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\2.0.1\f48d81adce2abf5ad3cfe463df517952749e03bc\slf4j-api-2.0.1.jar
-[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\minecraftMaven\net\minecraft\minecraft-merged-bdabb3aae4\1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2\minecraft-merged-bdabb3aae4-1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2.jar
+[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\minecraftMaven\net\minecraft\minecraft-merged-3760f957dc\1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2\minecraft-merged-3760f957dc-1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\c7350a71920f3ae9142945e25fed4846cce53374\netty-transport-native-epoll-4.1.82.Final-linux-x86_64.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\476409d6255001ca53a55f65b01c13822f8dc93a\netty-transport-native-epoll-4.1.82.Final-linux-aarch_64.jar
-[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\remapped\dev\architectury\architectury-65f153da\9.2.14\architectury-65f153da-9.2.14.jar
-[Architectury Transformer] Read classpath in 3.009 s
+[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\dev\architectury\architectury\9.2.14\architectury-9.2.14.jar
+[Architectury Transformer] Read classpath in 5.604 s
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoTool with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSwim with maxs=true frames=true
@@ -84,29 +86,31 @@
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/ClientEventHandler with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/CatalystKeys with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/Catalyst with maxs=true frames=true
-[Architectury Transformer DEBUG] Closed File Systems for E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionFabric.jar
-[Architectury Transformer] Transformed jar with 5 transformer(s) in 3.179 s
-[Architectury Transformer DEBUG] Closed File Systems for E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT.jar
+[Architectury Transformer DEBUG] Checking whether /catalyst.mixins.json is a mixin config.
+[Architectury Transformer DEBUG] Found mixin config(s): /catalyst.mixins.json
+[Architectury Transformer DEBUG] Injecting catalyst-common-common-refmap.json to /catalyst.mixins.json
+[Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionFabric.jar
+[Architectury Transformer] Transformed jar with 5 transformer(s) in 6.220 s
 [Architectury Transformer DEBUG] 
 [Architectury Transformer DEBUG] ============================
-[Architectury Transformer DEBUG] Transforming from E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionForge.jar
+[Architectury Transformer DEBUG] Transforming from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionForge.jar
 [Architectury Transformer DEBUG] ============================
 [Architectury Transformer DEBUG] 
-[Architectury Transformer DEBUG] Transforming 7 transformer(s) from E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionForge.jar: 
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@1205bced
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@2e9a62a3
+[Architectury Transformer DEBUG] Transforming 7 transformer(s) from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionForge.jar: 
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@2312ad3e
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@40d31e87
 [Architectury Transformer DEBUG]  - AddRefmapName(enabled=() -> kotlin.Boolean)
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@1cac2291
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeAnnotations@596f9ff7
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment@76fc2181
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.FixForgeMixin@1db27f87
-[Architectury Transformer DEBUG] Transforming from E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionForge.jar with 7 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@1176cdc9
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeAnnotations@516f4c12
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment@31a17383
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.FixForgeMixin@56eda405
+[Architectury Transformer DEBUG] Transforming from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionForge.jar with 7 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001ec3008b4b8@7ba60652
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$3257/0x0000023362ea1ac8@3db75542
 [Architectury Transformer DEBUG] Provided 57 classpath jar(s):
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\dev.architectury\architectury-injectables\1.0.10\62db2a366d662606d1b23ad02ccc3212ed37ec3\architectury-injectables-1.0.10.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\net.fabricmc\fabric-loader\0.18.4\dc4682125d5db647d6ce80a98b98945835adcd4b\fabric-loader-0.18.4.jar
-[Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\26.0.2\c7ce3cdeda3d18909368dfe5977332dfad326c6d\annotations-26.0.2.jar
+[Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\25.0.0\c1e6b966db352094ac3bf7f88f3bdef332fe43f0\annotations-25.0.0.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.9\c29635c8a7afa03d74b33c1884df8abb2b3f3dcc\asm-9.9.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.9\bf4fa6e66638851c1cd22c2caea0c3ee5d5f437\asm-analysis-9.9.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.9\db9165a3bf908ded6b08612d583a15d1d0c7bda0\asm-commons-9.9.jar
@@ -157,11 +161,11 @@
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\ff1914111ef2e3e0110ef2dabc8d8cdaad82347\lwjgl-tinyfd-3.3.1.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\ae58664f88e18a9bb2c77b063833ca7aaec484cb\lwjgl-3.3.1.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\2.0.1\f48d81adce2abf5ad3cfe463df517952749e03bc\slf4j-api-2.0.1.jar
-[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\minecraftMaven\net\minecraft\minecraft-merged-bdabb3aae4\1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2\minecraft-merged-bdabb3aae4-1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2.jar
+[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\minecraftMaven\net\minecraft\minecraft-merged-3760f957dc\1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2\minecraft-merged-3760f957dc-1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\c7350a71920f3ae9142945e25fed4846cce53374\netty-transport-native-epoll-4.1.82.Final-linux-x86_64.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\476409d6255001ca53a55f65b01c13822f8dc93a\netty-transport-native-epoll-4.1.82.Final-linux-aarch_64.jar
-[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\remapped\dev\architectury\architectury-65f153da\9.2.14\architectury-65f153da-9.2.14.jar
-[Architectury Transformer] Read classpath in 3.373 s
+[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\dev\architectury\architectury\9.2.14\architectury-9.2.14.jar
+[Architectury Transformer] Read classpath in 2.172 s
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
@@ -173,15 +177,22 @@
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindManager with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindConfigScreen with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWeapon with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoDoor with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSprint with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoDoor with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/GammaOverride with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoTool with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSwim with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWeapon with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSwim with maxs=true frames=true
+[Architectury Transformer DEBUG] Checking whether /catalyst.mixins.json is a mixin config.
+[Architectury Transformer DEBUG] Found mixin config(s): /catalyst.mixins.json
+[Architectury Transformer DEBUG] Injecting catalyst-common-common-refmap.json to /catalyst.mixins.json
 [Architectury Transformer DEBUG] Checking whether /catalyst.mixins.json is a mixin config.
 [Architectury Transformer DEBUG] Found mixin config(s): catalyst.mixins.json
 [Architectury Transformer DEBUG] Injecting MixinConfigs into /META-INF/MANIFEST.MF
-[Architectury Transformer DEBUG] Closed File Systems for E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionForge.jar
-[Architectury Transformer] Transformed jar with 7 transformer(s) in 4.642 s
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-common-common-refmap.json
+[Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionForge.jar
+[Architectury Transformer] Transformed jar with 7 transformer(s) in 3.243 s
+[Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT.jar
