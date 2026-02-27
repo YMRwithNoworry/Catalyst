@@ -4,7 +4,6 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.resources.ResourceLocation;
 import org.alku.catalyst.config.CatalystConfig;
 
 import java.util.ArrayList;
@@ -15,8 +14,6 @@ public class CatalystConfigScreen extends Screen {
     private static final int BUTTON_HEIGHT = 18;
     private static final int PANEL_HEADER_HEIGHT = 20;
     private static final int CORNER_RADIUS = 8;
-    private static final ResourceLocation FONT_LIGHT = new ResourceLocation("catalyst", "alibaba_light");
-    private static final ResourceLocation FONT_MEDIUM = new ResourceLocation("catalyst", "alibaba_medium");
     
     private final Screen parent;
     private List<ModulePanel> panels = new ArrayList<>();
@@ -228,7 +225,7 @@ public class CatalystConfigScreen extends Screen {
         public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
             drawRoundedTopRect(graphics, x, y, x + PANEL_WIDTH, y + PANEL_HEADER_HEIGHT, CORNER_RADIUS, 0xFF4444AA);
             
-            Component title = Component.literal(name).withStyle(Style.EMPTY.withFont(FONT_MEDIUM));
+            Component title = Component.literal(name);
             graphics.drawCenteredString(parent.minecraft.font, title, x + PANEL_WIDTH / 2, y + 5, 0xFFFFFF);
             
             int bodyHeight = height - PANEL_HEADER_HEIGHT;
@@ -317,16 +314,14 @@ public class CatalystConfigScreen extends Screen {
                 graphics.fill(x, y, x + PANEL_WIDTH, y + BUTTON_HEIGHT, drawColor);
             }
             
-            Component featureName = Component.translatable("catalyst.feature." + featureKey)
-                .withStyle(Style.EMPTY.withFont(FONT_LIGHT));
+            Component featureName = Component.translatable("catalyst.feature." + featureKey);
             graphics.drawString(panel.getParentScreen().minecraft.font, featureName, x + 5, y + 5, 0xFFFFFF);
             
             String keybindText = KeybindManager.getBoundKey(keybindKey);
-            Component keybindComponent = Component.literal("[" + keybindText + "]")
-                .withStyle(Style.EMPTY.withColor(0xAAAAAA).withFont(FONT_LIGHT));
+            Component keybindComponent = Component.literal("[" + keybindText + "]");
             int textWidth = panel.getParentScreen().minecraft.font.width(keybindComponent);
             graphics.drawString(panel.getParentScreen().minecraft.font, keybindComponent, 
-                               x + PANEL_WIDTH - 5 - textWidth, y + 5, 0xFFFFFF);
+                               x + PANEL_WIDTH - 5 - textWidth, y + 5, 0xAAAAAA);
         }
         
         private void drawRoundedBottomRect(GuiGraphics graphics, int x1, int y1, int x2, int y2, int radius, int color) {
