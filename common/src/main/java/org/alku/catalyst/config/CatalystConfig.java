@@ -19,7 +19,8 @@ public class CatalystConfig {
     public boolean autoSprintEnabled = true;
     public boolean autoSwimEnabled = true;
     public boolean gammaOverrideEnabled = true;
-    public double gammaValue = 1.0;
+    public double gammaValue = 16.0;
+    public boolean nightVisionMode = true;
     public boolean autoToolEnabled = true;
     public boolean autoWeaponEnabled = true;
     public boolean autoDoorEnabled = true;
@@ -52,7 +53,10 @@ public class CatalystConfig {
                     gammaOverrideEnabled = obj.get("gammaOverrideEnabled").getAsBoolean();
                 }
                 if (obj.has("gammaValue")) {
-                    gammaValue = Math.max(0.0, Math.min(1.0, obj.get("gammaValue").getAsDouble()));
+                    gammaValue = Math.max(0.0, Math.min(16.0, obj.get("gammaValue").getAsDouble()));
+                }
+                if (obj.has("nightVisionMode")) {
+                    nightVisionMode = obj.get("nightVisionMode").getAsBoolean();
                 }
                 if (obj.has("autoToolEnabled")) {
                     autoToolEnabled = obj.get("autoToolEnabled").getAsBoolean();
@@ -86,6 +90,7 @@ public class CatalystConfig {
         obj.addProperty("autoSwimEnabled", autoSwimEnabled);
         obj.addProperty("gammaOverrideEnabled", gammaOverrideEnabled);
         obj.addProperty("gammaValue", gammaValue);
+        obj.addProperty("nightVisionMode", nightVisionMode);
         obj.addProperty("autoToolEnabled", autoToolEnabled);
         obj.addProperty("autoWeaponEnabled", autoWeaponEnabled);
         obj.addProperty("autoDoorEnabled", autoDoorEnabled);

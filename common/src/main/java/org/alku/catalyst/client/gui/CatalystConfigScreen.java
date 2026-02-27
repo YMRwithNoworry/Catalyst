@@ -3,17 +3,16 @@ package org.alku.catalyst.client.gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
 import org.alku.catalyst.config.CatalystConfig;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CatalystConfigScreen extends Screen {
-    private static final int PANEL_WIDTH = 130;
-    private static final int BUTTON_HEIGHT = 18;
-    private static final int PANEL_HEADER_HEIGHT = 20;
-    private static final int CORNER_RADIUS = 8;
+    private static final int PANEL_WIDTH = 140;
+    private static final int BUTTON_HEIGHT = 22;
+    private static final int PANEL_HEADER_HEIGHT = 24;
+    private static final int CORNER_RADIUS = 10;
     
     private final Screen parent;
     private List<ModulePanel> panels = new ArrayList<>();
@@ -36,37 +35,37 @@ public class CatalystConfigScreen extends Screen {
         
         int startX = 10;
         int startY = 10;
-        int spacing = 15;
+        int spacing = 12;
         
         ModulePanel movementPanel = new ModulePanel(
             config.getPanelX("Movement", startX),
             config.getPanelY("Movement", startY),
             "Movement", this);
-        movementPanel.addModule("auto_sprint", "toggle_auto_sprint");
-        movementPanel.addModule("auto_swim", "toggle_auto_swim");
+        movementPanel.addModule("auto_sprint", "toggle_auto_sprint", false);
+        movementPanel.addModule("auto_swim", "toggle_auto_swim", false);
         panels.add(movementPanel);
         
         ModulePanel combatPanel = new ModulePanel(
             config.getPanelX("Combat", startX + (PANEL_WIDTH + spacing)),
             config.getPanelY("Combat", startY),
             "Combat", this);
-        combatPanel.addModule("auto_weapon", "toggle_auto_weapon");
+        combatPanel.addModule("auto_weapon", "toggle_auto_weapon", false);
         panels.add(combatPanel);
         
         ModulePanel playerPanel = new ModulePanel(
             config.getPanelX("Player", startX + (PANEL_WIDTH + spacing) * 2),
             config.getPanelY("Player", startY),
             "Player", this);
-        playerPanel.addModule("gamma_override", "toggle_gamma_override");
-        playerPanel.addModule("auto_door", "toggle_auto_door");
-        playerPanel.addModule("auto_water_bucket", "toggle_auto_water_bucket");
+        playerPanel.addModule("gamma_override", "toggle_gamma_override", true);
+        playerPanel.addModule("auto_door", "toggle_auto_door", false);
+        playerPanel.addModule("auto_water_bucket", "toggle_auto_water_bucket", false);
         panels.add(playerPanel);
         
         ModulePanel toolsPanel = new ModulePanel(
             config.getPanelX("Tools", startX + (PANEL_WIDTH + spacing) * 3),
             config.getPanelY("Tools", startY),
             "Tools", this);
-        toolsPanel.addModule("auto_tool", "toggle_auto_tool");
+        toolsPanel.addModule("auto_tool", "toggle_auto_tool", false);
         panels.add(toolsPanel);
     }
     
@@ -104,15 +103,13 @@ public class CatalystConfigScreen extends Screen {
         for (int i = panels.size() - 1; i >= 0; i--) {
             ModulePanel panel = panels.get(i);
             if (panel.isMouseOver(scaledX, scaledY)) {
-                if (button == 0) {
-                    if (panel.isMouseOverHeader(scaledX, scaledY)) {
-                        draggingPanel = panel;
-                        dragOffsetX = scaledX - panel.getX();
-                        dragOffsetY = scaledY - panel.getY();
-                        panels.remove(i);
-                        panels.add(panel);
-                        return true;
-                    }
+                if (button == 0 && panel.isMouseOverHeader(scaledX, scaledY)) {
+                    draggingPanel = panel;
+                    dragOffsetX = scaledX - panel.getX();
+                    dragOffsetY = scaledY - panel.getY();
+                    panels.remove(i);
+                    panels.add(panel);
+                    return true;
                 }
                 if (panel.mouseClicked(scaledX, scaledY, button)) {
                     return true;
@@ -183,6 +180,7 @@ public class CatalystConfigScreen extends Screen {
         private final CatalystConfigScreen parent;
         private final List<ModuleButton> buttons = new ArrayList<>();
         private int height;
+        private int expandedButton = -1;
         
         public ModulePanel(int x, int y, String name, CatalystConfigScreen parent) {
             this.x = x;
@@ -192,30 +190,24 @@ public class CatalystConfigScreen extends Screen {
             this.height = PANEL_HEADER_HEIGHT;
         }
         
-        public void addModule(String featureKey, String keybindKey) {
-            buttons.add(new ModuleButton(featureKey, keybindKey, this));
+        public void addModule(String featureKey, String keybindKey, boolean hasConfig) {
+            buttons.add(new ModuleButton(featureKey, keybindKey, this, hasConfig));
             height += BUTTON_HEIGHT;
         }
         
-        public int getX() {
-            return x;
-        }
-        
-        public int getY() {
-            return y;
-        }
-        
-        public String getName() {
-            return name;
-        }
-        
-        public void setPosition(int newX, int newY) {
-            this.x = newX;
-            this.y = newY;
-        }
+        public int getX() { return x; }
+        public int getY() { return y; }
+        public String getName() { return name; }
+        public void setPosition(int newX, int newY) { this.x = newX; this.y = newY; }
+        public int getExpandedButton() { return expandedButton; }
+        public void setExpandedButton(int index) { this.expandedButton = index; }
         
         public boolean isMouseOver(double mouseX, double mouseY) {
-            return mouseX >= x && mouseX <= x + PANEL_WIDTH && mouseY >= y && mouseY <= y + height;
+            int totalHeight = height;
+            if (expandedButton >= 0 && expandedButton < buttons.size()) {
+                totalHeight += buttons.get(expandedButton).getConfigHeight();
+            }
+            return mouseX >= x && mouseX <= x + PANEL_WIDTH && mouseY >= y && mouseY <= y + totalHeight;
         }
         
         public boolean isMouseOverHeader(double mouseX, double mouseY) {
@@ -223,139 +215,217 @@ public class CatalystConfigScreen extends Screen {
         }
         
         public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-            drawRoundedTopRect(graphics, x, y, x + PANEL_WIDTH, y + PANEL_HEADER_HEIGHT, CORNER_RADIUS, 0xFF4444AA);
+            drawModernRoundedRect(graphics, x, y, x + PANEL_WIDTH, y + PANEL_HEADER_HEIGHT, CORNER_RADIUS, 0xE0222222, true, false);
             
-            Component title = Component.literal(name);
-            graphics.drawCenteredString(parent.minecraft.font, title, x + PANEL_WIDTH / 2, y + 5, 0xFFFFFF);
-            
-            int bodyHeight = height - PANEL_HEADER_HEIGHT;
-            if (bodyHeight > 0) {
-                graphics.fill(x, y + PANEL_HEADER_HEIGHT, x + PANEL_WIDTH, y + height - BUTTON_HEIGHT, 0x99333333);
-            }
+            graphics.drawCenteredString(parent.minecraft.font, Component.literal(name), x + PANEL_WIDTH / 2, y + 7, 0xFFFFFFFF);
             
             int currentY = y + PANEL_HEADER_HEIGHT;
             for (int i = 0; i < buttons.size(); i++) {
                 ModuleButton button = buttons.get(i);
-                boolean isLast = (i == buttons.size() - 1);
-                button.render(graphics, x, currentY, mouseX, mouseY, isLast);
+                boolean isLast = (i == buttons.size() - 1) && expandedButton != i;
+                boolean isExpanded = (i == expandedButton);
+                
+                button.render(graphics, x, currentY, mouseX, mouseY, isLast, isExpanded);
+                
+                if (isExpanded) {
+                    currentY += button.getConfigHeight();
+                }
                 currentY += BUTTON_HEIGHT;
             }
         }
         
-        private void drawRoundedTopRect(GuiGraphics graphics, int x1, int y1, int x2, int y2, int radius, int color) {
+        private void drawModernRoundedRect(GuiGraphics graphics, int x1, int y1, int x2, int y2, int radius, int color, boolean topRound, boolean bottomRound) {
             graphics.fill(x1 + radius, y1, x2 - radius, y2, color);
-            graphics.fill(x1, y1 + radius, x1 + radius, y2, color);
-            graphics.fill(x2 - radius, y1 + radius, x2, y2, color);
+            graphics.fill(x1, y1 + radius, x2, y2 - radius, color);
             
-            for (int dy = 0; dy < radius; dy++) {
-                for (int dx = 0; dx < radius; dx++) {
-                    double dist = Math.sqrt((radius - dx - 0.5) * (radius - dx - 0.5) + (radius - dy - 0.5) * (radius - dy - 0.5));
-                    if (dist < radius) {
-                        graphics.fill(x1 + dx, y1 + dy, x1 + dx + 1, y1 + dy + 1, color);
-                        graphics.fill(x2 - dx - 1, y1 + dy, x2 - dx, y1 + dy + 1, color);
+            if (topRound) {
+                for (int dy = 0; dy < radius; dy++) {
+                    for (int dx = 0; dx < radius; dx++) {
+                        double dist = Math.sqrt((radius - dx - 0.5) * (radius - dx - 0.5) + (radius - dy - 0.5) * (radius - dy - 0.5));
+                        if (dist < radius) {
+                            graphics.fill(x1 + dx, y1 + dy, x1 + dx + 1, y1 + dy + 1, color);
+                            graphics.fill(x2 - dx - 1, y1 + dy, x2 - dx, y1 + dy + 1, color);
+                        }
+                    }
+                }
+            }
+            if (bottomRound) {
+                for (int dy = 0; dy < radius; dy++) {
+                    for (int dx = 0; dx < radius; dx++) {
+                        double dist = Math.sqrt((radius - dx - 0.5) * (radius - dx - 0.5) + (radius - dy - 0.5) * (radius - dy - 0.5));
+                        if (dist < radius) {
+                            graphics.fill(x1 + dx, y2 - dy - 1, x1 + dx + 1, y2 - dy, color);
+                            graphics.fill(x2 - dx - 1, y2 - dy - 1, x2 - dx, y2 - dy, color);
+                        }
                     }
                 }
             }
         }
         
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
-            if (mouseX >= x && mouseX <= x + PANEL_WIDTH && mouseY >= y && mouseY <= y + height) {
-                int currentY = y + PANEL_HEADER_HEIGHT;
-                for (ModuleButton moduleButton : buttons) {
-                    if (mouseY >= currentY && mouseY <= currentY + BUTTON_HEIGHT) {
-                        moduleButton.onClick(button);
+            int currentY = y + PANEL_HEADER_HEIGHT;
+            for (int i = 0; i < buttons.size(); i++) {
+                int btnHeight = BUTTON_HEIGHT;
+                if (i == expandedButton) {
+                    btnHeight += buttons.get(i).getConfigHeight();
+                }
+                
+                if (mouseY >= currentY && mouseY <= currentY + btnHeight) {
+                    if (buttons.get(i).mouseClicked(mouseX, mouseY, button, currentY)) {
                         return true;
                     }
-                    currentY += BUTTON_HEIGHT;
                 }
+                currentY += btnHeight;
             }
             return false;
         }
         
-        public CatalystConfigScreen getParentScreen() {
-            return parent;
-        }
+        public CatalystConfigScreen getParentScreen() { return parent; }
     }
     
     public static class ModuleButton {
         private final String featureKey;
         private final String keybindKey;
         private final ModulePanel panel;
+        private final boolean hasConfig;
         
-        public ModuleButton(String featureKey, String keybindKey, ModulePanel panel) {
+        public ModuleButton(String featureKey, String keybindKey, ModulePanel panel, boolean hasConfig) {
             this.featureKey = featureKey;
             this.keybindKey = keybindKey;
             this.panel = panel;
+            this.hasConfig = hasConfig;
         }
         
-        public void render(GuiGraphics graphics, int x, int y, int mouseX, int mouseY, boolean isLast) {
-            CatalystConfig config = CatalystConfig.getInstance();
-            boolean isEnabled = false;
-            
-            if (featureKey.equals("auto_sprint")) isEnabled = config.autoSprintEnabled;
-            else if (featureKey.equals("auto_swim")) isEnabled = config.autoSwimEnabled;
-            else if (featureKey.equals("gamma_override")) isEnabled = config.gammaOverrideEnabled;
-            else if (featureKey.equals("auto_tool")) isEnabled = config.autoToolEnabled;
-            else if (featureKey.equals("auto_weapon")) isEnabled = config.autoWeaponEnabled;
-            else if (featureKey.equals("auto_door")) isEnabled = config.autoDoorEnabled;
-            else if (featureKey.equals("auto_water_bucket")) isEnabled = config.autoWaterBucketEnabled;
-            
-            int color = isEnabled ? 0xFF55AA55 : 0xFFAA5555;
-            int hoverColor = isEnabled ? 0xFF77CC77 : 0xFFCC7777;
-            
-            boolean isHovered = mouseX >= x && mouseX <= x + PANEL_WIDTH && 
-                              mouseY >= y && mouseY <= y + BUTTON_HEIGHT;
-            
-            int drawColor = isHovered ? hoverColor : color;
-            
-            if (isLast) {
-                drawRoundedBottomRect(graphics, x, y, x + PANEL_WIDTH, y + BUTTON_HEIGHT, CORNER_RADIUS, drawColor);
-            } else {
-                graphics.fill(x, y, x + PANEL_WIDTH, y + BUTTON_HEIGHT, drawColor);
+        public int getConfigHeight() {
+            if (featureKey.equals("gamma_override")) {
+                return 50;
             }
+            return 0;
+        }
+        
+        public void render(GuiGraphics graphics, int x, int y, int mouseX, int mouseY, boolean isLast, boolean isExpanded) {
+            CatalystConfig config = CatalystConfig.getInstance();
+            boolean isEnabled = getEnabledState(config);
+            
+            int bgColor = isEnabled ? 0xE02B4B2B : 0xE04B2B2B;
+            int hoverColor = isEnabled ? 0xE03D6B3D : 0xE06B3D3D;
+            
+            boolean isHovered = mouseX >= x && mouseX <= x + PANEL_WIDTH && mouseY >= y && mouseY <= y + BUTTON_HEIGHT;
+            int drawColor = isHovered ? hoverColor : bgColor;
+            
+            drawModernButton(graphics, x, y, x + PANEL_WIDTH, y + BUTTON_HEIGHT, CORNER_RADIUS, drawColor, isLast && !isExpanded);
+            
+            int statusColor = isEnabled ? 0xFF55FF55 : 0xFFFF5555;
+            graphics.fill(x + 4, y + 6, x + 8, y + BUTTON_HEIGHT - 6, statusColor);
             
             Component featureName = Component.translatable("catalyst.feature." + featureKey);
-            graphics.drawString(panel.getParentScreen().minecraft.font, featureName, x + 5, y + 5, 0xFFFFFF);
+            graphics.drawString(panel.getParentScreen().minecraft.font, featureName, x + 12, y + 6, 0xFFFFFFFF);
             
             String keybindText = KeybindManager.getBoundKey(keybindKey);
             Component keybindComponent = Component.literal("[" + keybindText + "]");
             int textWidth = panel.getParentScreen().minecraft.font.width(keybindComponent);
-            graphics.drawString(panel.getParentScreen().minecraft.font, keybindComponent, 
-                               x + PANEL_WIDTH - 5 - textWidth, y + 5, 0xAAAAAA);
+            graphics.drawString(panel.getParentScreen().minecraft.font, keybindComponent, x + PANEL_WIDTH - 5 - textWidth, y + 6, 0xFFAAAAAA);
+            
+            if (isExpanded && featureKey.equals("gamma_override")) {
+                int configY = y + BUTTON_HEIGHT;
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 50, 0xE01A1A1A);
+                
+                graphics.drawString(panel.getParentScreen().minecraft.font, "Gamma: " + String.format("%.1f", config.gammaValue), x + 8, configY + 6, 0xFFCCCCCC);
+                
+                int sliderX = x + 8;
+                int sliderWidth = PANEL_WIDTH - 16;
+                int sliderY = configY + 20;
+                graphics.fill(sliderX, sliderY, sliderX + sliderWidth, sliderY + 6, 0xFF333333);
+                int filledWidth = (int)(sliderWidth * (config.gammaValue / 16.0));
+                graphics.fill(sliderX, sliderY, sliderX + filledWidth, sliderY + 6, 0xFF44AA44);
+                
+                graphics.drawString(panel.getParentScreen().minecraft.font, "Night Vision: " + (config.nightVisionMode ? "ON" : "OFF"), x + 8, configY + 34, config.nightVisionMode ? 0xFF55FF55 : 0xFFFF5555);
+            }
         }
         
-        private void drawRoundedBottomRect(GuiGraphics graphics, int x1, int y1, int x2, int y2, int radius, int color) {
-            graphics.fill(x1 + radius, y1, x2 - radius, y2, color);
-            graphics.fill(x1, y1, x1 + radius, y2 - radius, color);
-            graphics.fill(x2 - radius, y1, x2, y2 - radius, color);
+        private boolean getEnabledState(CatalystConfig config) {
+            if (featureKey.equals("auto_sprint")) return config.autoSprintEnabled;
+            if (featureKey.equals("auto_swim")) return config.autoSwimEnabled;
+            if (featureKey.equals("gamma_override")) return config.gammaOverrideEnabled;
+            if (featureKey.equals("auto_tool")) return config.autoToolEnabled;
+            if (featureKey.equals("auto_weapon")) return config.autoWeaponEnabled;
+            if (featureKey.equals("auto_door")) return config.autoDoorEnabled;
+            if (featureKey.equals("auto_water_bucket")) return config.autoWaterBucketEnabled;
+            return false;
+        }
+        
+        private void drawModernButton(GuiGraphics graphics, int x1, int y1, int x2, int y2, int radius, int color, boolean bottomRound) {
+            graphics.fill(x1, y1, x2, y2, color);
             
-            for (int dy = 0; dy < radius; dy++) {
-                for (int dx = 0; dx < radius; dx++) {
-                    double dist = Math.sqrt((radius - dx - 0.5) * (radius - dx - 0.5) + (radius - dy - 0.5) * (radius - dy - 0.5));
-                    if (dist < radius) {
-                        graphics.fill(x1 + dx, y2 - dy - 1, x1 + dx + 1, y2 - dy, color);
-                        graphics.fill(x2 - dx - 1, y2 - dy - 1, x2 - dx, y2 - dy, color);
+            if (bottomRound) {
+                for (int dy = 0; dy < radius; dy++) {
+                    for (int dx = 0; dx < radius; dx++) {
+                        double dist = Math.sqrt((radius - dx - 0.5) * (radius - dx - 0.5) + (radius - dy - 0.5) * (radius - dy - 0.5));
+                        if (dist < radius) {
+                            graphics.fill(x1 + dx, y2 - dy - 1, x1 + dx + 1, y2 - dy, color);
+                            graphics.fill(x2 - dx - 1, y2 - dy - 1, x2 - dx, y2 - dy, color);
+                        }
                     }
                 }
             }
         }
         
-        public void onClick(int button) {
+        public boolean mouseClicked(double mouseX, double mouseY, int button, int buttonY) {
             if (button == 0) {
-                CatalystConfig config = CatalystConfig.getInstance();
+                if (mouseY >= buttonY && mouseY <= buttonY + BUTTON_HEIGHT) {
+                    toggleFeature();
+                    return true;
+                }
                 
-                if (featureKey.equals("auto_sprint")) config.autoSprintEnabled = !config.autoSprintEnabled;
-                else if (featureKey.equals("auto_swim")) config.autoSwimEnabled = !config.autoSwimEnabled;
-                else if (featureKey.equals("gamma_override")) config.gammaOverrideEnabled = !config.gammaOverrideEnabled;
-                else if (featureKey.equals("auto_tool")) config.autoToolEnabled = !config.autoToolEnabled;
-                else if (featureKey.equals("auto_weapon")) config.autoWeaponEnabled = !config.autoWeaponEnabled;
-                else if (featureKey.equals("auto_door")) config.autoDoorEnabled = !config.autoDoorEnabled;
-                else if (featureKey.equals("auto_water_bucket")) config.autoWaterBucketEnabled = !config.autoWaterBucketEnabled;
-                
-                config.save();
-            } else if (button == 1) {
-                panel.getParentScreen().minecraft.setScreen(new KeybindConfigScreen(panel.getParentScreen(), keybindKey));
+                if (featureKey.equals("gamma_override") && panel.getExpandedButton() >= 0) {
+                    int configY = buttonY + BUTTON_HEIGHT;
+                    
+                    if (mouseY >= configY + 20 && mouseY <= configY + 26) {
+                        int sliderX = panel.getX() + 8;
+                        int sliderWidth = PANEL_WIDTH - 16;
+                        double newValue = ((mouseX - sliderX) / (double)sliderWidth) * 16.0;
+                        newValue = Math.max(0.0, Math.min(16.0, newValue));
+                        CatalystConfig.getInstance().gammaValue = newValue;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    if (mouseY >= configY + 34 && mouseY <= configY + 46) {
+                        CatalystConfig.getInstance().nightVisionMode = !CatalystConfig.getInstance().nightVisionMode;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                }
+            } else if (button == 1 && hasConfig) {
+                int myIndex = -1;
+                for (int i = 0; i < panel.buttons.size(); i++) {
+                    if (panel.buttons.get(i) == this) {
+                        myIndex = i;
+                        break;
+                    }
+                }
+                if (panel.getExpandedButton() == myIndex) {
+                    panel.setExpandedButton(-1);
+                } else {
+                    panel.setExpandedButton(myIndex);
+                }
+                return true;
             }
+            return false;
+        }
+        
+        private void toggleFeature() {
+            CatalystConfig config = CatalystConfig.getInstance();
+            
+            if (featureKey.equals("auto_sprint")) config.autoSprintEnabled = !config.autoSprintEnabled;
+            else if (featureKey.equals("auto_swim")) config.autoSwimEnabled = !config.autoSwimEnabled;
+            else if (featureKey.equals("gamma_override")) config.gammaOverrideEnabled = !config.gammaOverrideEnabled;
+            else if (featureKey.equals("auto_tool")) config.autoToolEnabled = !config.autoToolEnabled;
+            else if (featureKey.equals("auto_weapon")) config.autoWeaponEnabled = !config.autoWeaponEnabled;
+            else if (featureKey.equals("auto_door")) config.autoDoorEnabled = !config.autoDoorEnabled;
+            else if (featureKey.equals("auto_water_bucket")) config.autoWaterBucketEnabled = !config.autoWaterBucketEnabled;
+            
+            config.save();
         }
     }
 }
