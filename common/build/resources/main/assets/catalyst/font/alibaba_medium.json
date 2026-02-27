@@ -1,0 +1,15 @@
+{
+  "providers": [
+    {
+      "type": "ttf",
+      "file": "catalyst:font/alibaba_medium.ttf",
+      "shift": [0, 1],
+      "size": 11,
+      "oversample": 2
+    },
+    {
+      "type": "reference",
+      "id": "minecraft:default"
+    }
+  ]
+}

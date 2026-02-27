@@ -1,0 +1,29 @@
+{
+  "autoSprintEnabled": true,
+  "autoSwimEnabled": true,
+  "gammaOverrideEnabled": true,
+  "gammaValue": 1.0,
+  "autoToolEnabled": true,
+  "autoWeaponEnabled": true,
+  "autoDoorEnabled": true,
+  "autoWaterBucketEnabled": true,
+  "guiScale": 1.0,
+  "panelPositions": {
+    "Combat": {
+      "x": 170,
+      "y": 93
+    },
+    "Player": {
+      "x": 205,
+      "y": 10
+    },
+    "Tools": {
+      "x": 445,
+      "y": 10
+    },
+    "Movement": {
+      "x": 18,
+      "y": 58
+    }
+  }
+}

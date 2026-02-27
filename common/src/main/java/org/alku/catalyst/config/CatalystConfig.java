@@ -25,6 +25,9 @@ public class CatalystConfig {
     public boolean autoDoorEnabled = true;
     public boolean autoWaterBucketEnabled = true;
     
+    public float guiScale = 1.0f;
+    public JsonObject panelPositions = new JsonObject();
+    
     public static CatalystConfig getInstance() {
         if (instance == null) {
             instance = new CatalystConfig();
@@ -63,6 +66,12 @@ public class CatalystConfig {
                 if (obj.has("autoWaterBucketEnabled")) {
                     autoWaterBucketEnabled = obj.get("autoWaterBucketEnabled").getAsBoolean();
                 }
+                if (obj.has("guiScale")) {
+                    guiScale = (float) Math.max(0.5, Math.min(2.0, obj.get("guiScale").getAsDouble()));
+                }
+                if (obj.has("panelPositions")) {
+                    panelPositions = obj.getAsJsonObject("panelPositions");
+                }
             } catch (Exception e) {
                 save();
             }
@@ -81,6 +90,8 @@ public class CatalystConfig {
         obj.addProperty("autoWeaponEnabled", autoWeaponEnabled);
         obj.addProperty("autoDoorEnabled", autoDoorEnabled);
         obj.addProperty("autoWaterBucketEnabled", autoWaterBucketEnabled);
+        obj.addProperty("guiScale", guiScale);
+        obj.add("panelPositions", panelPositions);
         
         try {
             Files.createDirectories(CONFIG_PATH.getParent());
@@ -88,5 +99,32 @@ public class CatalystConfig {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void setPanelPosition(String panelName, int x, int y) {
+        JsonObject pos = new JsonObject();
+        pos.addProperty("x", x);
+        pos.addProperty("y", y);
+        panelPositions.add(panelName, pos);
+    }
+    
+    public int getPanelX(String panelName, int defaultX) {
+        if (panelPositions.has(panelName)) {
+            JsonObject pos = panelPositions.getAsJsonObject(panelName);
+            if (pos.has("x")) {
+                return pos.get("x").getAsInt();
+            }
+        }
+        return defaultX;
+    }
+    
+    public int getPanelY(String panelName, int defaultY) {
+        if (panelPositions.has(panelName)) {
+            JsonObject pos = panelPositions.getAsJsonObject(panelName);
+            if (pos.has("y")) {
+                return pos.get("y").getAsInt();
+            }
+        }
+        return defaultY;
     }
 }

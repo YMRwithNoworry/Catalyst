@@ -113,15 +113,15 @@
 [Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-resource-loader-v0\0.11.12+fb82e9d777\fabric-resource-loader-v0-0.11.12+fb82e9d777.jar
 [Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-sound-api-v1\1.0.14+1802ada577\fabric-sound-api-v1-1.0.14+1802ada577.jar
 [Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-transitive-access-wideners-v1\4.3.2+1802ada577\fabric-transitive-access-wideners-v1-4.3.2+1802ada577.jar
-[Architectury Transformer] Read classpath in 1.449 s
+[Architectury Transformer] Read classpath in 1.568 s
 [Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar
-[Architectury Transformer DEBUG] Transforming 5 transformer(s) from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to C:\Users\ADMINI~1\AppData\Local\Temp\11838635110208218873.jar: 
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@319b92f3
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeFabricMod@fcd6521
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@27d415d9
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@5c18298f
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@31f924f5
-[Architectury Transformer DEBUG] Transforming from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to C:\Users\ADMINI~1\AppData\Local\Temp\11838635110208218873.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
+[Architectury Transformer DEBUG] Transforming 5 transformer(s) from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to C:\Users\ADMINI~1\AppData\Local\Temp\9369859041212749840.jar: 
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@5d11346a
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeFabricMod@7a36aefa
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@17211155
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@b3d7190
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@5fdba6f9
+[Architectury Transformer DEBUG] Transforming from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to C:\Users\ADMINI~1\AppData\Local\Temp\9369859041212749840.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/Catalyst with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/CatalystKeys with maxs=true frames=true
@@ -140,59 +140,59 @@
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindManager with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/config/CatalystConfig with maxs=true frames=true
 [Architectury Transformer DEBUG] Checking whether /catalyst.mixins.json is a mixin config.
-[Architectury Transformer DEBUG] Closed File Systems for C:\Users\ADMINI~1\AppData\Local\Temp\11838635110208218873.jar
+[Architectury Transformer DEBUG] Closed File Systems for C:\Users\ADMINI~1\AppData\Local\Temp\9369859041212749840.jar
 [Architectury Transformer] Listening at E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar
-[Architectury Transformer DEBUG] Temporary jar [C:\Users\ADMINI~1\AppData\Local\Temp\11838635110208218873.jar] contains packages: org.alku.catalyst.config, org.alku.catalyst.client.feature, org.alku.catalyst.client.gui, org.alku.catalyst, org.alku.catalyst.client
+[Architectury Transformer DEBUG] Temporary jar [C:\Users\ADMINI~1\AppData\Local\Temp\9369859041212749840.jar] contains packages: org.alku.catalyst.config, org.alku.catalyst.client.feature, org.alku.catalyst.client.gui, org.alku.catalyst, org.alku.catalyst.client
 [Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar
 [Architectury Transformer DEBUG] Classpath entry [E:\代码\MC模组\Catalyst\fabric\build\resources\main] contains packages: 
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/Catalyst.class to org/alku/catalyst/Catalyst.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/Catalyst with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/Catalyst in 952.5 μs
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/Catalyst in 950.9 μs
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/config/CatalystConfig.class to org/alku/catalyst/config/CatalystConfig.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/config/CatalystConfig with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/config/CatalystConfig in 2.668 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/config/CatalystConfig in 4.033 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/ClientEventHandler.class to org/alku/catalyst/client/ClientEventHandler.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/ClientEventHandler with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/ClientEventHandler in 2.372 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/ClientEventHandler in 3.555 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/gui/CatalystConfigScreen.class to org/alku/catalyst/client/gui/CatalystConfigScreen.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen in 1.472 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen in 1.649 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/CatalystKeys.class to org/alku/catalyst/client/CatalystKeys.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/CatalystKeys with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/CatalystKeys in 642.2 μs
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/CatalystKeys in 504.7 μs
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/gui/KeybindManager.class to org/alku/catalyst/client/gui/KeybindManager.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindManager with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/KeybindManager in 1.106 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/KeybindManager in 1.071 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoSprint.class to org/alku/catalyst/client/feature/AutoSprint.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSprint with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoSprint in 1.218 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoSprint in 821.1 μs
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoSwim.class to org/alku/catalyst/client/feature/AutoSwim.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSwim with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoSwim in 876.0 μs
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoSwim in 996.0 μs
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/GammaOverride.class to org/alku/catalyst/client/feature/GammaOverride.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/GammaOverride with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/GammaOverride in 1.040 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/GammaOverride in 792.7 μs
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoTool.class to org/alku/catalyst/client/feature/AutoTool.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoTool with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoTool in 1.237 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoTool in 1.406 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoWeapon.class to org/alku/catalyst/client/feature/AutoWeapon.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWeapon with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoWeapon in 1.405 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoWeapon in 1.438 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoDoor.class to org/alku/catalyst/client/feature/AutoDoor.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoDoor with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoDoor in 1.234 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoDoor in 1.373 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoWaterBucket.class to org/alku/catalyst/client/feature/AutoWaterBucket.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket with maxs=true frames=true
@@ -200,12 +200,12 @@
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel.class to org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel in 1.870 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel in 2.794 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton.class to org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton in 1.680 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton in 1.170 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/gui/KeybindConfigScreen.class to org/alku/catalyst/client/gui/KeybindConfigScreen.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindConfigScreen with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/KeybindConfigScreen in 1.289 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/KeybindConfigScreen in 548.4 μs
