@@ -1,0 +1,36 @@
+package org.alku.catalyst.client.feature;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.phys.BlockHitResult;
+import org.alku.catalyst.config.CatalystConfig;
+
+public class GammaOverride {
+    private static double originalGamma = -1;
+    private static boolean wasEnabled = false;
+    
+    public static void tick(Minecraft mc) {
+        CatalystConfig config = CatalystConfig.getInstance();
+        
+        if (config.gammaOverrideEnabled) {
+            if (!wasEnabled) {
+                originalGamma = mc.options.gamma().get();
+                wasEnabled = true;
+            }
+            if (mc.options.gamma().get() != config.gammaValue) {
+                mc.options.gamma().set(config.gammaValue);
+            }
+        } else {
+            if (wasEnabled && originalGamma >= 0) {
+                mc.options.gamma().set(originalGamma);
+                wasEnabled = false;
+            }
+        }
+    }
+    
+    public static void onDisable(Minecraft mc) {
+        if (wasEnabled && originalGamma >= 0) {
+            mc.options.gamma().set(originalGamma);
+            wasEnabled = false;
+        }
+    }
+}

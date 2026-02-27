@@ -1,0 +1,10 @@
+{
+  "autoSprintEnabled": true,
+  "autoSwimEnabled": true,
+  "gammaOverrideEnabled": true,
+  "gammaValue": 1.0,
+  "autoToolEnabled": true,
+  "autoWeaponEnabled": true,
+  "autoDoorEnabled": true,
+  "autoWaterBucketEnabled": true
+}

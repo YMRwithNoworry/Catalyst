@@ -1,0 +1,20 @@
+{
+  "projectPath": ":fabric",
+  "classpaths": {
+    "test": [
+      "E:\\代码\\MC模组\\Catalyst\\fabric\\build\\classes\\java\\test",
+      "E:\\代码\\MC模组\\Catalyst\\fabric\\build\\resources\\test",
+      "E:\\代码\\MC模组\\Catalyst\\out\\production\\catalyst.fabric.test",
+      "E:\\代码\\MC模组\\Catalyst\\fabric\\out\\test\\classes",
+      "E:\\代码\\MC模组\\Catalyst\\fabric\\out\\test\\resources"
+    ],
+    "main": [
+      "E:\\代码\\MC模组\\Catalyst\\fabric\\build\\classes\\java\\main",
+      "E:\\代码\\MC模组\\Catalyst\\fabric\\build\\resources\\main",
+      "E:\\代码\\MC模组\\Catalyst\\fabric\\build\\devlibs\\catalyst-fabric-1.0-SNAPSHOT-dev.jar",
+      "E:\\代码\\MC模组\\Catalyst\\out\\production\\catalyst.fabric.main",
+      "E:\\代码\\MC模组\\Catalyst\\fabric\\out\\production\\classes",
+      "E:\\代码\\MC模组\\Catalyst\\fabric\\out\\production\\resources"
+    ]
+  }
+}

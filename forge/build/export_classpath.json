@@ -1,0 +1,20 @@
+{
+  "projectPath": ":forge",
+  "classpaths": {
+    "test": [
+      "E:\\代码\\MC模组\\Catalyst\\forge\\build\\classes\\java\\test",
+      "E:\\代码\\MC模组\\Catalyst\\forge\\build\\resources\\test",
+      "E:\\代码\\MC模组\\Catalyst\\out\\production\\catalyst.forge.test",
+      "E:\\代码\\MC模组\\Catalyst\\forge\\out\\test\\classes",
+      "E:\\代码\\MC模组\\Catalyst\\forge\\out\\test\\resources"
+    ],
+    "main": [
+      "E:\\代码\\MC模组\\Catalyst\\forge\\build\\classes\\java\\main",
+      "E:\\代码\\MC模组\\Catalyst\\forge\\build\\resources\\main",
+      "E:\\代码\\MC模组\\Catalyst\\forge\\build\\devlibs\\catalyst-forge-1.0-SNAPSHOT-dev.jar",
+      "E:\\代码\\MC模组\\Catalyst\\out\\production\\catalyst.forge.main",
+      "E:\\代码\\MC模组\\Catalyst\\forge\\out\\production\\classes",
+      "E:\\代码\\MC模组\\Catalyst\\forge\\out\\production\\resources"
+    ]
+  }
+}

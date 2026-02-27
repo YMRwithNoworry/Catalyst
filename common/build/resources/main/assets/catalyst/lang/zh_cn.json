@@ -1,0 +1,28 @@
+{
+  "key.categories.catalyst": "Catalyst",
+  "key.catalyst.toggle_auto_sprint": "切换自动疾跑",
+  "key.catalyst.toggle_auto_swim": "切换自动游泳",
+  "key.catalyst.toggle_gamma_override": "切换伽马值覆写",
+  "key.catalyst.toggle_auto_tool": "切换自动工具",
+  "key.catalyst.toggle_auto_weapon": "切换自动武器",
+  "key.catalyst.toggle_auto_door": "切换自动门",
+  "key.catalyst.toggle_auto_water_bucket": "切换自动水桶",
+  "key.catalyst.open_config": "打开配置界面",
+  
+  "catalyst.feature.auto_sprint": "自动疾跑",
+  "catalyst.feature.auto_swim": "自动游泳",
+  "catalyst.feature.gamma_override": "伽马值覆写",
+  "catalyst.feature.auto_tool": "自动工具",
+  "catalyst.feature.auto_weapon": "自动武器",
+  "catalyst.feature.auto_door": "自动门",
+  "catalyst.feature.auto_water_bucket": "自动水桶",
+  
+  "catalyst.gui.title": "Catalyst 配置",
+  "catalyst.gui.save": "保存并关闭",
+  "catalyst.gui.enabled": "开",
+  "catalyst.gui.disabled": "关",
+  "catalyst.gui.features_header": "[ 功能: 开/关 ]  [ 快捷键 ]",
+  "catalyst.gui.keybind_config": "快捷键配置",
+  "catalyst.gui.press_key": "按下任意键绑定...",
+  "catalyst.gui.escape_to_clear": "按 ESC 清除绑定"
+}

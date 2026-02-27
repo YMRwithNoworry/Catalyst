@@ -1,0 +1,20 @@
+{
+  "projectPath": ":common",
+  "classpaths": {
+    "test": [
+      "E:\\代码\\MC模组\\Catalyst\\common\\build\\classes\\java\\test",
+      "E:\\代码\\MC模组\\Catalyst\\common\\build\\resources\\test",
+      "E:\\代码\\MC模组\\Catalyst\\out\\production\\catalyst.common.test",
+      "E:\\代码\\MC模组\\Catalyst\\common\\out\\test\\classes",
+      "E:\\代码\\MC模组\\Catalyst\\common\\out\\test\\resources"
+    ],
+    "main": [
+      "E:\\代码\\MC模组\\Catalyst\\common\\build\\classes\\java\\main",
+      "E:\\代码\\MC模组\\Catalyst\\common\\build\\resources\\main",
+      "E:\\代码\\MC模组\\Catalyst\\common\\build\\devlibs\\catalyst-common-1.0-SNAPSHOT-dev.jar",
+      "E:\\代码\\MC模组\\Catalyst\\out\\production\\catalyst.common.main",
+      "E:\\代码\\MC模组\\Catalyst\\common\\out\\production\\classes",
+      "E:\\代码\\MC模组\\Catalyst\\common\\out\\production\\resources"
+    ]
+  }
+}
