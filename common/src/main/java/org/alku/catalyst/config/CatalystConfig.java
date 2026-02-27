@@ -19,7 +19,7 @@ public class CatalystConfig {
     public boolean autoSprintEnabled = true;
     public boolean autoSwimEnabled = true;
     public boolean gammaOverrideEnabled = true;
-    public double gammaValue = 16.0;
+    public double gammaValue = 100.0;
     public boolean nightVisionMode = true;
     public boolean autoToolEnabled = true;
     public boolean autoWeaponEnabled = true;
@@ -53,7 +53,7 @@ public class CatalystConfig {
                     gammaOverrideEnabled = obj.get("gammaOverrideEnabled").getAsBoolean();
                 }
                 if (obj.has("gammaValue")) {
-                    gammaValue = Math.max(0.0, Math.min(16.0, obj.get("gammaValue").getAsDouble()));
+                    gammaValue = Math.max(0.0, Math.min(100.0, obj.get("gammaValue").getAsDouble()));
                 }
                 if (obj.has("nightVisionMode")) {
                     nightVisionMode = obj.get("nightVisionMode").getAsBoolean();

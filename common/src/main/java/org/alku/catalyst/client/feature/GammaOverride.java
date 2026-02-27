@@ -6,7 +6,6 @@ import org.alku.catalyst.config.CatalystConfig;
 public class GammaOverride {
     private static double originalGamma = -1;
     private static boolean wasEnabled = false;
-    private static final double MAX_GAMMA = 1.0;
     
     public static void tick(Minecraft mc) {
         CatalystConfig config = CatalystConfig.getInstance();
@@ -17,7 +16,7 @@ public class GammaOverride {
                 wasEnabled = true;
             }
             
-            double targetGamma = config.nightVisionMode ? MAX_GAMMA : Math.min(config.gammaValue, MAX_GAMMA);
+            double targetGamma = config.gammaValue;
             if (mc.options.gamma().get() != targetGamma) {
                 mc.options.gamma().set(targetGamma);
             }

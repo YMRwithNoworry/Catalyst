@@ -21,6 +21,9 @@ public class CatalystConfigScreen extends Screen {
     private double dragOffsetX = 0;
     private double dragOffsetY = 0;
     
+    private boolean isDraggingSlider = false;
+    private int sliderButtonIndex = -1;
+    
     public CatalystConfigScreen(Screen parent) {
         super(Component.translatable("catalyst.gui.title"));
         this.parent = parent;
@@ -121,23 +124,58 @@ public class CatalystConfigScreen extends Screen {
     
     @Override
     public boolean mouseReleased(double mouseX, double mouseY, int button) {
-        if (button == 0 && draggingPanel != null) {
-            draggingPanel = null;
-            savePanelPositions();
-            return true;
+        if (button == 0) {
+            if (draggingPanel != null) {
+                draggingPanel = null;
+                savePanelPositions();
+                return true;
+            }
+            if (isDraggingSlider) {
+                isDraggingSlider = false;
+                sliderButtonIndex = -1;
+                return true;
+            }
         }
         return super.mouseReleased(mouseX, mouseY, button);
     }
     
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
+        int scaledX = getScaledMouseX(mouseX);
+        int scaledY = getScaledMouseY(mouseY);
+        
+        if (isDraggingSlider && button == 0) {
+            for (ModulePanel panel : panels) {
+                int expandedIndex = panel.getExpandedButton();
+                if (expandedIndex >= 0 && expandedIndex < panel.buttons.size()) {
+                    ModuleButton btn = panel.buttons.get(expandedIndex);
+                    if (btn.featureKey.equals("gamma_override")) {
+                        updateSlider(panel, scaledX);
+                        return true;
+                    }
+                }
+            }
+        }
+        
         if (draggingPanel != null && button == 0) {
-            int scaledX = getScaledMouseX(mouseX);
-            int scaledY = getScaledMouseY(mouseY);
             draggingPanel.setPosition((int)(scaledX - dragOffsetX), (int)(scaledY - dragOffsetY));
             return true;
         }
         return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
+    }
+    
+    private void updateSlider(ModulePanel panel, int mouseX) {
+        int sliderX = panel.getX() + 8;
+        int sliderWidth = PANEL_WIDTH - 16;
+        double newValue = ((mouseX - sliderX) / (double)sliderWidth) * 100.0;
+        newValue = Math.max(0.0, Math.min(100.0, newValue));
+        CatalystConfig.getInstance().gammaValue = newValue;
+        CatalystConfig.getInstance().save();
+    }
+    
+    public void startSliderDrag(int buttonIndex) {
+        isDraggingSlider = true;
+        sliderButtonIndex = buttonIndex;
     }
     
     @Override
@@ -335,11 +373,17 @@ public class CatalystConfigScreen extends Screen {
                 int sliderX = x + 8;
                 int sliderWidth = PANEL_WIDTH - 16;
                 int sliderY = configY + 20;
-                graphics.fill(sliderX, sliderY, sliderX + sliderWidth, sliderY + 6, 0xFF333333);
-                int filledWidth = (int)(sliderWidth * (config.gammaValue / 16.0));
-                graphics.fill(sliderX, sliderY, sliderX + filledWidth, sliderY + 6, 0xFF44AA44);
                 
-                graphics.drawString(panel.getParentScreen().minecraft.font, "Night Vision: " + (config.nightVisionMode ? "ON" : "OFF"), x + 8, configY + 34, config.nightVisionMode ? 0xFF55FF55 : 0xFFFF5555);
+                graphics.fill(sliderX, sliderY, sliderX + sliderWidth, sliderY + 8, 0xFF333333);
+                
+                int filledWidth = (int)(sliderWidth * (config.gammaValue / 100.0));
+                graphics.fill(sliderX, sliderY, sliderX + filledWidth, sliderY + 8, 0xFF44AA44);
+                
+                int handleX = sliderX + filledWidth - 4;
+                graphics.fill(handleX, sliderY - 2, handleX + 8, sliderY + 10, 0xFFFFFFFF);
+                
+                String modeText = config.nightVisionMode ? "Mode: Full Bright" : "Mode: Custom";
+                graphics.drawString(panel.getParentScreen().minecraft.font, modeText, x + 8, configY + 34, 0xFF55FF55);
             }
         }
         
@@ -380,18 +424,30 @@ public class CatalystConfigScreen extends Screen {
                 if (featureKey.equals("gamma_override") && panel.getExpandedButton() >= 0) {
                     int configY = buttonY + BUTTON_HEIGHT;
                     
-                    if (mouseY >= configY + 20 && mouseY <= configY + 26) {
+                    if (mouseY >= configY + 18 && mouseY <= configY + 30) {
                         int sliderX = panel.getX() + 8;
                         int sliderWidth = PANEL_WIDTH - 16;
-                        double newValue = ((mouseX - sliderX) / (double)sliderWidth) * 16.0;
-                        newValue = Math.max(0.0, Math.min(16.0, newValue));
+                        double newValue = ((mouseX - sliderX) / (double)sliderWidth) * 100.0;
+                        newValue = Math.max(0.0, Math.min(100.0, newValue));
                         CatalystConfig.getInstance().gammaValue = newValue;
                         CatalystConfig.getInstance().save();
+                        
+                        int myIndex = -1;
+                        for (int i = 0; i < panel.buttons.size(); i++) {
+                            if (panel.buttons.get(i) == this) {
+                                myIndex = i;
+                                break;
+                            }
+                        }
+                        panel.getParentScreen().startSliderDrag(myIndex);
                         return true;
                     }
                     
                     if (mouseY >= configY + 34 && mouseY <= configY + 46) {
                         CatalystConfig.getInstance().nightVisionMode = !CatalystConfig.getInstance().nightVisionMode;
+                        if (CatalystConfig.getInstance().nightVisionMode) {
+                            CatalystConfig.getInstance().gammaValue = 100.0;
+                        }
                         CatalystConfig.getInstance().save();
                         return true;
                     }
