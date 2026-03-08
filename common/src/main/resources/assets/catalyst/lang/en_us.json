@@ -7,6 +7,7 @@
   "key.catalyst.toggle_auto_weapon": "Toggle Auto Weapon",
   "key.catalyst.toggle_auto_door": "Toggle Auto Door",
   "key.catalyst.toggle_auto_water_bucket": "Toggle Auto Water Bucket",
+  "key.catalyst.toggle_chams": "Toggle Chams",
   "key.catalyst.open_config": "Open Config GUI",
   
   "catalyst.feature.auto_sprint": "Auto Sprint",
@@ -16,6 +17,7 @@
   "catalyst.feature.auto_weapon": "Auto Weapon",
   "catalyst.feature.auto_door": "Auto Door",
   "catalyst.feature.auto_water_bucket": "Auto Water Bucket",
+  "catalyst.feature.chams": "Chams",
   
   "catalyst.gui.title": "Catalyst Configuration",
   "catalyst.gui.save": "Save & Close",
@@ -24,5 +26,15 @@
   "catalyst.gui.features_header": "[ Feature: ON/OFF ]  [ Keybind ]",
   "catalyst.gui.keybind_config": "Keybind Configuration",
   "catalyst.gui.press_key": "Press any key to bind...",
-  "catalyst.gui.escape_to_clear": "Press ESC to clear the binding"
+  "catalyst.gui.escape_to_clear": "Press ESC to clear the binding",
+  
+  "catalyst.gui.locked_slot": "Locked Slot: %s",
+  "catalyst.gui.no_locked_slot": "No Locked Slot (Auto)",
+  "catalyst.gui.click_to_lock": "Click slot to lock/unlock",
+  "catalyst.gui.restore_slot": "Restore: %s",
+  "catalyst.gui.on": "ON",
+  "catalyst.gui.off": "OFF",
+  "catalyst.gui.chams_players": "Players",
+  "catalyst.gui.chams_animals": "Animals",
+  "catalyst.gui.chams_monsters": "Monsters"
 }

@@ -1,5 +1,7 @@
 package org.alku.catalyst.client;
 
+import dev.architectury.event.EventResult;
+import dev.architectury.event.events.client.ClientRawInputEvent;
 import dev.architectury.event.events.client.ClientTickEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -11,7 +13,7 @@ import org.alku.catalyst.config.CatalystConfig;
 import org.lwjgl.glfw.GLFW;
 
 public class ClientEventHandler {
-    private static int[] prevKeyStates = new int[8];
+    private static int[] prevKeyStates = new int[9];
     
     public static void init() {
         CatalystKeys.register();
@@ -21,6 +23,15 @@ public class ClientEventHandler {
         }
         
         ClientTickEvent.CLIENT_PRE.register(ClientEventHandler::onClientTick);
+        ClientRawInputEvent.MOUSE_CLICKED_PRE.register(ClientEventHandler::onMouseClicked);
+    }
+    
+    private static EventResult onMouseClicked(Minecraft mc, int button, int action, int mods) {
+        if (button == 0 && action == 1) {
+            AutoWeapon.checkAndSwitch(mc);
+            AutoTool.checkAndSwitch(mc);
+        }
+        return EventResult.pass();
     }
     
     private static void onClientTick(Minecraft mc) {
@@ -85,6 +96,12 @@ public class ClientEventHandler {
             config.autoWaterBucketEnabled = !config.autoWaterBucketEnabled;
             config.save();
             sendFeedback(mc, "auto_water_bucket", config.autoWaterBucketEnabled);
+        }
+        
+        if (checkKeybind(mc, "toggle_chams", 8)) {
+            config.chamsEnabled = !config.chamsEnabled;
+            config.save();
+            sendFeedback(mc, "chams", config.chamsEnabled);
         }
     }
     

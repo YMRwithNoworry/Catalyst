@@ -1,5 +1,5 @@
 [Architectury Transformer] Architectury Runtime 5.2.87
-[Architectury Transformer DEBUG] Closed File Systems for E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar
+[Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar
 [Architectury Transformer DEBUG] Preparing tiny remapper prepared transformer: dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Provided 102 classpath jar(s):
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\fabric-loom\1.20.1\forge\1.20.1-47.4.16\client-extra.jar
@@ -103,21 +103,21 @@
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\fabric-loom\minecraftMaven\net\minecraft\forge-1.20.1-47.4.16-minecraft-merged\1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2-forge-1.20.1-47.4.16\forge-1.20.1-47.4.16-minecraft-merged-1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2-forge-1.20.1-47.4.16.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\c7350a71920f3ae9142945e25fed4846cce53374\netty-transport-native-epoll-4.1.82.Final-linux-x86_64.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\476409d6255001ca53a55f65b01c13822f8dc93a\netty-transport-native-epoll-4.1.82.Final-linux-aarch_64.jar
-[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2_forge_1_20_1_47_4_16_forge\dev\architectury\architectury-forge\9.2.14\architectury-forge-9.2.14.jar
-[Architectury Transformer] Read classpath in 1.546 s
-[Architectury Transformer DEBUG] Closed File Systems for E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar
-[Architectury Transformer DEBUG] Transforming 8 transformer(s) from E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to C:\Users\ADMINI~1\AppData\Local\Temp\36958993375130034.jar: 
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@46238e3f
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@6e2c9341
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@32464a14
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@4e4aea35
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeAnnotations@1442d7b5
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment@1efee8e7
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeForgeMod@1ee807c6
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.FixForgeMixin@76a4d6c
-[Architectury Transformer DEBUG] Transforming from E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to C:\Users\ADMINI~1\AppData\Local\Temp\36958993375130034.jar with 8 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
+[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2_forge_1_20_1_47_4_16_forge\dev\architectury\architectury-forge\9.2.14\architectury-forge-9.2.14.jar
+[Architectury Transformer] Read classpath in 2.537 s
+[Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar
+[Architectury Transformer DEBUG] Transforming 8 transformer(s) from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to C:\Users\ADMINI~1\AppData\Local\Temp\9464962277773266139.jar: 
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@27c6e487
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@49070868
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@6385cb26
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@38364841
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeAnnotations@28c4711c
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment@59717824
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeForgeMod@146044d7
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.FixForgeMixin@1e9e725a
+[Architectury Transformer DEBUG] Transforming from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to C:\Users\ADMINI~1\AppData\Local\Temp\9464962277773266139.jar with 8 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
@@ -125,32 +125,38 @@
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/Catalyst with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/ClientEventHandler with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/CatalystKeys with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSprint with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/GammaOverride with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWeapon with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoDoor with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSwim with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoTool with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindManager with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindConfigScreen with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoTool with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSprint with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoDoor with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWeapon with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/GammaOverride with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket$1 with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSwim with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket$State with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindManager with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindConfigScreen with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/config/CatalystConfig with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/mixin/ChamsMixin with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/mixin/LightTextureMixin with maxs=true frames=true
+[Architectury Transformer DEBUG] Checking whether /catalyst-common-common-refmap.json is a mixin config.
 [Architectury Transformer DEBUG] Checking whether /catalyst.mixins.json is a mixin config.
+[Architectury Transformer DEBUG] Checking whether /catalyst-common-common-refmap.json is a mixin config.
 [Architectury Transformer DEBUG] Checking whether /catalyst.mixins.json is a mixin config.
 [Architectury Transformer DEBUG] Found mixin config(s): catalyst.mixins.json
 [Architectury Transformer DEBUG] Appended Launch Argument: [--mixin.config, catalyst.mixins.json]
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Closed File Systems for C:\Users\ADMINI~1\AppData\Local\Temp\36958993375130034.jar
-[Architectury Transformer] Listening at E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar
-[Architectury Transformer DEBUG] Temporary jar [C:\Users\ADMINI~1\AppData\Local\Temp\36958993375130034.jar] contains packages: org.alku.catalyst.config, org.alku.catalyst.client.feature, org.alku.catalyst.client.gui, org.alku.catalyst, org.alku.catalyst.client
-[Architectury Transformer DEBUG] Closed File Systems for E:\浠ｇ爜\MC妯＄粍\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar
-[Architectury Transformer DEBUG] Classpath entry [E:\浠ｇ爜\MC妯＄粍\Catalyst\forge\build\resources\main] contains packages: 
+[Architectury Transformer DEBUG] Closed File Systems for C:\Users\ADMINI~1\AppData\Local\Temp\9464962277773266139.jar
+[Architectury Transformer] Listening at E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar
+[Architectury Transformer DEBUG] Temporary jar [C:\Users\ADMINI~1\AppData\Local\Temp\9464962277773266139.jar] contains packages: org.alku.catalyst.config, org.alku.catalyst.mixin, org.alku.catalyst.client.feature, org.alku.catalyst.client.gui, org.alku.catalyst, org.alku.catalyst.client
+[Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar
+[Architectury Transformer DEBUG] Classpath entry [E:\代码\MC模组\Catalyst\forge\build\resources\main] contains packages: 
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/Catalyst.class to org/alku/catalyst/Catalyst.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping with Dirty Mappings...
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
@@ -158,154 +164,164 @@
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/Catalyst with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/Catalyst in 179.5 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/Catalyst in 937.9 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/config/CatalystConfig.class to org/alku/catalyst/config/CatalystConfig.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/config/CatalystConfig with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/config/CatalystConfig in 34.59 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/config/CatalystConfig in 91.02 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/ClientEventHandler.class to org/alku/catalyst/client/ClientEventHandler.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/ClientEventHandler with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/ClientEventHandler in 140.0 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/ClientEventHandler in 567.0 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/gui/CatalystConfigScreen.class to org/alku/catalyst/client/gui/CatalystConfigScreen.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen in 27.92 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen in 221.6 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/CatalystKeys.class to org/alku/catalyst/client/CatalystKeys.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/CatalystKeys with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/CatalystKeys in 16.95 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/CatalystKeys in 47.09 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/gui/KeybindManager.class to org/alku/catalyst/client/gui/KeybindManager.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindManager with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/KeybindManager in 13.11 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/KeybindManager in 58.75 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoSprint.class to org/alku/catalyst/client/feature/AutoSprint.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSprint with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoSprint in 9.497 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoSprint in 17.25 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoSwim.class to org/alku/catalyst/client/feature/AutoSwim.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSwim with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoSwim in 9.469 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoSwim in 11.42 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/GammaOverride.class to org/alku/catalyst/client/feature/GammaOverride.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/GammaOverride with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/GammaOverride in 10.67 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/GammaOverride in 10.43 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoTool.class to org/alku/catalyst/client/feature/AutoTool.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoTool with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoTool in 12.79 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoTool in 15.22 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoWeapon.class to org/alku/catalyst/client/feature/AutoWeapon.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWeapon with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoWeapon in 10.17 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoWeapon in 17.11 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoDoor.class to org/alku/catalyst/client/feature/AutoDoor.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoDoor with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoDoor in 13.01 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoDoor in 16.53 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoWaterBucket.class to org/alku/catalyst/client/feature/AutoWaterBucket.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoWaterBucket in 10.90 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoWaterBucket in 16.27 ms
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoWaterBucket$State.class to org/alku/catalyst/client/feature/AutoWaterBucket$State.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket$State with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoWaterBucket$State in 17.60 ms
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoWaterBucket$1.class to org/alku/catalyst/client/feature/AutoWaterBucket$1.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket$1 with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoWaterBucket$1 in 22.91 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel.class to org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel in 17.29 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel in 37.27 ms
 [Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton.class to org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002074608e718@5ad851c9
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton in 15.26 ms
-[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/gui/KeybindConfigScreen.class to org/alku/catalyst/client/gui/KeybindConfigScreen.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda/0x000001b69708ec90@341b80b2
-[Architectury Transformer DEBUG] Remapping Classes:
-[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
-[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindConfigScreen with maxs=true frames=true
-[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/KeybindConfigScreen in 7.769 ms
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton in 31.60 ms

@@ -18,11 +18,7 @@ public class GammaOverride {
             }
             
             double targetGamma = Math.min(config.gammaValue, MAX_GAMMA);
-            double currentGamma = mc.options.gamma().get();
-            
-            if (Math.abs(currentGamma - targetGamma) > 0.01) {
-                mc.options.gamma().set(targetGamma);
-            }
+            mc.options.gamma().set(targetGamma);
         } else {
             if (wasEnabled && originalGamma >= 0) {
                 mc.options.gamma().set(originalGamma);

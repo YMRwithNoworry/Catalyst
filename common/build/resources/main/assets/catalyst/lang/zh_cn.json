@@ -7,6 +7,7 @@
   "key.catalyst.toggle_auto_weapon": "切换自动武器",
   "key.catalyst.toggle_auto_door": "切换自动门",
   "key.catalyst.toggle_auto_water_bucket": "切换自动水桶",
+  "key.catalyst.toggle_chams": "切换透视",
   "key.catalyst.open_config": "打开配置界面",
   
   "catalyst.feature.auto_sprint": "自动疾跑",
@@ -16,6 +17,7 @@
   "catalyst.feature.auto_weapon": "自动武器",
   "catalyst.feature.auto_door": "自动门",
   "catalyst.feature.auto_water_bucket": "自动水桶",
+  "catalyst.feature.chams": "透视",
   
   "catalyst.gui.title": "Catalyst 配置",
   "catalyst.gui.save": "保存并关闭",
@@ -24,5 +26,15 @@
   "catalyst.gui.features_header": "[ 功能: 开/关 ]  [ 快捷键 ]",
   "catalyst.gui.keybind_config": "快捷键配置",
   "catalyst.gui.press_key": "按下任意键绑定...",
-  "catalyst.gui.escape_to_clear": "按 ESC 清除绑定"
+  "catalyst.gui.escape_to_clear": "按 ESC 清除绑定",
+  
+  "catalyst.gui.locked_slot": "锁定槽位: %s",
+  "catalyst.gui.no_locked_slot": "未锁定槽位 (自动选择)",
+  "catalyst.gui.click_to_lock": "点击槽位以锁定/解锁",
+  "catalyst.gui.restore_slot": "回归原槽位: %s",
+  "catalyst.gui.on": "开",
+  "catalyst.gui.off": "关",
+  "catalyst.gui.chams_players": "玩家",
+  "catalyst.gui.chams_animals": "动物",
+  "catalyst.gui.chams_monsters": "怪物"
 }

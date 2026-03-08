@@ -28,6 +28,7 @@ public class KeybindManager {
         DEFAULT_KEYS.put("toggle_auto_weapon", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_auto_door", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_auto_water_bucket", GLFW.GLFW_KEY_UNKNOWN);
+        DEFAULT_KEYS.put("toggle_chams", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("open_config", GLFW.GLFW_KEY_J);
         
         initDefaults();

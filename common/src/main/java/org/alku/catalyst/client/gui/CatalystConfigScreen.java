@@ -14,6 +14,7 @@ public class CatalystConfigScreen extends Screen {
     private static final int BUTTON_HEIGHT = 22;
     private static final int PANEL_HEADER_HEIGHT = 24;
     private static final int CORNER_RADIUS = 10;
+    private static final double MAX_GAMMA = 1500.0;
     
     private final Screen parent;
     private List<ModulePanel> panels = new ArrayList<>();
@@ -53,7 +54,7 @@ public class CatalystConfigScreen extends Screen {
             config.getPanelX("Combat", startX + (PANEL_WIDTH + spacing)),
             config.getPanelY("Combat", startY),
             "Combat", this);
-        combatPanel.addModule("auto_weapon", "toggle_auto_weapon", false);
+        combatPanel.addModule("auto_weapon", "toggle_auto_weapon", true);
         panels.add(combatPanel);
         
         ModulePanel playerPanel = new ModulePanel(
@@ -63,24 +64,30 @@ public class CatalystConfigScreen extends Screen {
         playerPanel.addModule("gamma_override", "toggle_gamma_override", true);
         playerPanel.addModule("auto_door", "toggle_auto_door", false);
         playerPanel.addModule("auto_water_bucket", "toggle_auto_water_bucket", false);
+        playerPanel.addModule("chams", "toggle_chams", true);
         panels.add(playerPanel);
         
         ModulePanel toolsPanel = new ModulePanel(
             config.getPanelX("Tools", startX + (PANEL_WIDTH + spacing) * 3),
             config.getPanelY("Tools", startY),
             "Tools", this);
-        toolsPanel.addModule("auto_tool", "toggle_auto_tool", false);
+        toolsPanel.addModule("auto_tool", "toggle_auto_tool", true);
         panels.add(toolsPanel);
     }
     
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         float scale = getScale();
-        graphics.pose().pushPose();
-        graphics.pose().scale(scale, scale, 1.0f);
+        float centerX = this.width / 2.0f;
+        float centerY = this.height / 2.0f;
         
-        int scaledMouseX = (int)(mouseX / scale);
-        int scaledMouseY = (int)(mouseY / scale);
+        graphics.pose().pushPose();
+        graphics.pose().translate(centerX, centerY, 0);
+        graphics.pose().scale(scale, scale, 1.0f);
+        graphics.pose().translate(-centerX, -centerY, 0);
+        
+        int scaledMouseX = getScaledMouseX(mouseX);
+        int scaledMouseY = getScaledMouseY(mouseY);
         
         for (ModulePanel panel : panels) {
             panel.render(graphics, scaledMouseX, scaledMouseY, partialTick);
@@ -90,11 +97,15 @@ public class CatalystConfigScreen extends Screen {
     }
     
     private int getScaledMouseX(double mouseX) {
-        return (int)(mouseX / getScale());
+        float scale = getScale();
+        float centerX = this.width / 2.0f;
+        return (int)(centerX + (mouseX - centerX) / scale);
     }
     
     private int getScaledMouseY(double mouseY) {
-        return (int)(mouseY / getScale());
+        float scale = getScale();
+        float centerY = this.height / 2.0f;
+        return (int)(centerY + (mouseY - centerY) / scale);
     }
     
     @Override
@@ -166,8 +177,8 @@ public class CatalystConfigScreen extends Screen {
     private void updateSlider(ModulePanel panel, int mouseX) {
         int sliderX = panel.getX() + 8;
         int sliderWidth = PANEL_WIDTH - 16;
-        double newValue = ((mouseX - sliderX) / (double)sliderWidth) * 100.0;
-        newValue = Math.max(0.0, Math.min(100.0, newValue));
+        double newValue = ((mouseX - sliderX) / (double)sliderWidth) * MAX_GAMMA;
+        newValue = Math.max(0.0, Math.min(MAX_GAMMA, newValue));
         CatalystConfig.getInstance().gammaValue = newValue;
         CatalystConfig.getInstance().save();
         if (CatalystConfig.getInstance().gammaOverrideEnabled) {
@@ -340,6 +351,15 @@ public class CatalystConfigScreen extends Screen {
             if (featureKey.equals("gamma_override")) {
                 return 50;
             }
+            if (featureKey.equals("auto_weapon")) {
+                return 70;
+            }
+            if (featureKey.equals("auto_tool")) {
+                return 70;
+            }
+            if (featureKey.equals("chams")) {
+                return 50;
+            }
             return 0;
         }
         
@@ -378,7 +398,7 @@ public class CatalystConfigScreen extends Screen {
                 
                 graphics.fill(sliderX, sliderY, sliderX + sliderWidth, sliderY + 8, 0xFF333333);
                 
-                int filledWidth = (int)(sliderWidth * (config.gammaValue / 100.0));
+                int filledWidth = (int)(sliderWidth * (config.gammaValue / MAX_GAMMA));
                 graphics.fill(sliderX, sliderY, sliderX + filledWidth, sliderY + 8, 0xFF44AA44);
                 
                 int handleX = sliderX + filledWidth - 4;
@@ -386,6 +406,97 @@ public class CatalystConfigScreen extends Screen {
                 
                 String modeText = config.nightVisionMode ? "Mode: Full Bright" : "Mode: Custom";
                 graphics.drawString(panel.getParentScreen().minecraft.font, modeText, x + 8, configY + 34, 0xFF55FF55);
+            }
+            
+            if (isExpanded && featureKey.equals("auto_weapon")) {
+                int configY = y + BUTTON_HEIGHT;
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 70, 0xE01A1A1A);
+                
+                String restoreText = Component.translatable("catalyst.gui.restore_slot", 
+                    config.autoWeaponRestore ? Component.translatable("catalyst.gui.on").getString() : Component.translatable("catalyst.gui.off").getString()).getString();
+                int restoreColor = config.autoWeaponRestore ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, restoreText, x + 8, configY + 6, restoreColor);
+                
+                int lockedSlot = config.autoWeaponLockedSlot;
+                String slotText = lockedSlot >= 0 ? 
+                    Component.translatable("catalyst.gui.locked_slot", lockedSlot + 1).getString() :
+                    Component.translatable("catalyst.gui.no_locked_slot").getString();
+                graphics.drawString(panel.getParentScreen().minecraft.font, slotText, x + 8, configY + 20, 0xFFCCCCCC);
+                
+                int slotStartX = x + 8;
+                int slotY = configY + 34;
+                int slotSize = 12;
+                int slotSpacing = 2;
+                
+                for (int i = 0; i < 9; i++) {
+                    int slotX = slotStartX + i * (slotSize + slotSpacing);
+                    boolean isSelected = (i == lockedSlot);
+                    int slotColor = isSelected ? 0xFF44AA44 : 0xFF333333;
+                    int borderColor = isSelected ? 0xFF55FF55 : 0xFF555555;
+                    
+                    graphics.fill(slotX - 1, slotY - 1, slotX + slotSize + 1, slotY + slotSize + 1, borderColor);
+                    graphics.fill(slotX, slotY, slotX + slotSize, slotY + slotSize, slotColor);
+                    
+                    String slotNum = String.valueOf(i + 1);
+                    graphics.drawCenteredString(panel.getParentScreen().minecraft.font, slotNum, slotX + slotSize / 2, slotY + 2, 0xFFFFFFFF);
+                }
+                
+                String hint = Component.translatable("catalyst.gui.click_to_lock").getString();
+                graphics.drawString(panel.getParentScreen().minecraft.font, hint, x + 8, configY + 52, 0xFF888888);
+            }
+            
+            if (isExpanded && featureKey.equals("auto_tool")) {
+                int configY = y + BUTTON_HEIGHT;
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 70, 0xE01A1A1A);
+                
+                String restoreText = Component.translatable("catalyst.gui.restore_slot", 
+                    config.autoToolRestore ? Component.translatable("catalyst.gui.on").getString() : Component.translatable("catalyst.gui.off").getString()).getString();
+                int restoreColor = config.autoToolRestore ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, restoreText, x + 8, configY + 6, restoreColor);
+                
+                int lockedSlot = config.autoToolLockedSlot;
+                String slotText = lockedSlot >= 0 ? 
+                    Component.translatable("catalyst.gui.locked_slot", lockedSlot + 1).getString() :
+                    Component.translatable("catalyst.gui.no_locked_slot").getString();
+                graphics.drawString(panel.getParentScreen().minecraft.font, slotText, x + 8, configY + 20, 0xFFCCCCCC);
+                
+                int slotStartX = x + 8;
+                int slotY = configY + 34;
+                int slotSize = 12;
+                int slotSpacing = 2;
+                
+                for (int i = 0; i < 9; i++) {
+                    int slotX = slotStartX + i * (slotSize + slotSpacing);
+                    boolean isSelected = (i == lockedSlot);
+                    int slotColor = isSelected ? 0xFF44AA44 : 0xFF333333;
+                    int borderColor = isSelected ? 0xFF55FF55 : 0xFF555555;
+                    
+                    graphics.fill(slotX - 1, slotY - 1, slotX + slotSize + 1, slotY + slotSize + 1, borderColor);
+                    graphics.fill(slotX, slotY, slotX + slotSize, slotY + slotSize, slotColor);
+                    
+                    String slotNum = String.valueOf(i + 1);
+                    graphics.drawCenteredString(panel.getParentScreen().minecraft.font, slotNum, slotX + slotSize / 2, slotY + 2, 0xFFFFFFFF);
+                }
+                
+                String hint = Component.translatable("catalyst.gui.click_to_lock").getString();
+                graphics.drawString(panel.getParentScreen().minecraft.font, hint, x + 8, configY + 52, 0xFF888888);
+            }
+            
+            if (isExpanded && featureKey.equals("chams")) {
+                int configY = y + BUTTON_HEIGHT;
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 50, 0xE01A1A1A);
+                
+                String playersText = Component.translatable("catalyst.gui.chams_players").getString();
+                int playersColor = config.chamsPlayers ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, playersText, x + 8, configY + 6, playersColor);
+                
+                String animalsText = Component.translatable("catalyst.gui.chams_animals").getString();
+                int animalsColor = config.chamsAnimals ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, animalsText, x + 8, configY + 20, animalsColor);
+                
+                String monstersText = Component.translatable("catalyst.gui.chams_monsters").getString();
+                int monstersColor = config.chamsMonsters ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, monstersText, x + 8, configY + 34, monstersColor);
             }
         }
         
@@ -397,6 +508,7 @@ public class CatalystConfigScreen extends Screen {
             if (featureKey.equals("auto_weapon")) return config.autoWeaponEnabled;
             if (featureKey.equals("auto_door")) return config.autoDoorEnabled;
             if (featureKey.equals("auto_water_bucket")) return config.autoWaterBucketEnabled;
+            if (featureKey.equals("chams")) return config.chamsEnabled;
             return false;
         }
         
@@ -429,8 +541,8 @@ public class CatalystConfigScreen extends Screen {
                     if (mouseY >= configY + 18 && mouseY <= configY + 30) {
                         int sliderX = panel.getX() + 8;
                         int sliderWidth = PANEL_WIDTH - 16;
-                        double newValue = ((mouseX - sliderX) / (double)sliderWidth) * 100.0;
-                        newValue = Math.max(0.0, Math.min(100.0, newValue));
+                        double newValue = ((mouseX - sliderX) / (double)sliderWidth) * MAX_GAMMA;
+                        newValue = Math.max(0.0, Math.min(MAX_GAMMA, newValue));
                         CatalystConfig.getInstance().gammaValue = newValue;
                         CatalystConfig.getInstance().save();
                         if (CatalystConfig.getInstance().gammaOverrideEnabled) {
@@ -450,6 +562,90 @@ public class CatalystConfigScreen extends Screen {
                     
                     if (mouseY >= configY + 34 && mouseY <= configY + 46) {
                         CatalystConfig.getInstance().nightVisionMode = !CatalystConfig.getInstance().nightVisionMode;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                }
+                
+                if (featureKey.equals("auto_weapon") && panel.getExpandedButton() >= 0) {
+                    int configY = buttonY + BUTTON_HEIGHT;
+                    
+                    if (mouseY >= configY + 4 && mouseY <= configY + 16) {
+                        CatalystConfig.getInstance().autoWeaponRestore = !CatalystConfig.getInstance().autoWeaponRestore;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    int slotStartX = panel.getX() + 8;
+                    int slotY = configY + 34;
+                    int slotSize = 12;
+                    int slotSpacing = 2;
+                    
+                    if (mouseY >= slotY - 1 && mouseY <= slotY + slotSize + 1) {
+                        for (int i = 0; i < 9; i++) {
+                            int slotX = slotStartX + i * (slotSize + slotSpacing);
+                            if (mouseX >= slotX - 1 && mouseX <= slotX + slotSize + 1) {
+                                int currentLocked = CatalystConfig.getInstance().autoWeaponLockedSlot;
+                                if (currentLocked == i) {
+                                    CatalystConfig.getInstance().autoWeaponLockedSlot = -1;
+                                } else {
+                                    CatalystConfig.getInstance().autoWeaponLockedSlot = i;
+                                }
+                                CatalystConfig.getInstance().save();
+                                return true;
+                            }
+                        }
+                    }
+                }
+                
+                if (featureKey.equals("auto_tool") && panel.getExpandedButton() >= 0) {
+                    int configY = buttonY + BUTTON_HEIGHT;
+                    
+                    if (mouseY >= configY + 4 && mouseY <= configY + 16) {
+                        CatalystConfig.getInstance().autoToolRestore = !CatalystConfig.getInstance().autoToolRestore;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    int slotStartX = panel.getX() + 8;
+                    int slotY = configY + 34;
+                    int slotSize = 12;
+                    int slotSpacing = 2;
+                    
+                    if (mouseY >= slotY - 1 && mouseY <= slotY + slotSize + 1) {
+                        for (int i = 0; i < 9; i++) {
+                            int slotX = slotStartX + i * (slotSize + slotSpacing);
+                            if (mouseX >= slotX - 1 && mouseX <= slotX + slotSize + 1) {
+                                int currentLocked = CatalystConfig.getInstance().autoToolLockedSlot;
+                                if (currentLocked == i) {
+                                    CatalystConfig.getInstance().autoToolLockedSlot = -1;
+                                } else {
+                                    CatalystConfig.getInstance().autoToolLockedSlot = i;
+                                }
+                                CatalystConfig.getInstance().save();
+                                return true;
+                            }
+                        }
+                    }
+                }
+                
+                if (featureKey.equals("chams") && panel.getExpandedButton() >= 0) {
+                    int configY = buttonY + BUTTON_HEIGHT;
+                    
+                    if (mouseY >= configY + 4 && mouseY <= configY + 16) {
+                        CatalystConfig.getInstance().chamsPlayers = !CatalystConfig.getInstance().chamsPlayers;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    if (mouseY >= configY + 18 && mouseY <= configY + 30) {
+                        CatalystConfig.getInstance().chamsAnimals = !CatalystConfig.getInstance().chamsAnimals;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    if (mouseY >= configY + 32 && mouseY <= configY + 44) {
+                        CatalystConfig.getInstance().chamsMonsters = !CatalystConfig.getInstance().chamsMonsters;
                         CatalystConfig.getInstance().save();
                         return true;
                     }
@@ -482,6 +678,7 @@ public class CatalystConfigScreen extends Screen {
             else if (featureKey.equals("auto_weapon")) config.autoWeaponEnabled = !config.autoWeaponEnabled;
             else if (featureKey.equals("auto_door")) config.autoDoorEnabled = !config.autoDoorEnabled;
             else if (featureKey.equals("auto_water_bucket")) config.autoWaterBucketEnabled = !config.autoWaterBucketEnabled;
+            else if (featureKey.equals("chams")) config.chamsEnabled = !config.chamsEnabled;
             
             config.save();
         }

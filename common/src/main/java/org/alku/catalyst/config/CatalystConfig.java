@@ -22,9 +22,17 @@ public class CatalystConfig {
     public double gammaValue = 100.0;
     public boolean nightVisionMode = true;
     public boolean autoToolEnabled = true;
+    public boolean autoToolRestore = true;
+    public int autoToolLockedSlot = -1;
     public boolean autoWeaponEnabled = true;
+    public boolean autoWeaponRestore = true;
+    public int autoWeaponLockedSlot = -1;
     public boolean autoDoorEnabled = true;
     public boolean autoWaterBucketEnabled = true;
+    public boolean chamsEnabled = false;
+    public boolean chamsPlayers = true;
+    public boolean chamsAnimals = true;
+    public boolean chamsMonsters = true;
     
     public float guiScale = 1.0f;
     public JsonObject panelPositions = new JsonObject();
@@ -53,7 +61,7 @@ public class CatalystConfig {
                     gammaOverrideEnabled = obj.get("gammaOverrideEnabled").getAsBoolean();
                 }
                 if (obj.has("gammaValue")) {
-                    gammaValue = Math.max(0.0, Math.min(100.0, obj.get("gammaValue").getAsDouble()));
+                    gammaValue = Math.max(0.0, Math.min(1500.0, obj.get("gammaValue").getAsDouble()));
                 }
                 if (obj.has("nightVisionMode")) {
                     nightVisionMode = obj.get("nightVisionMode").getAsBoolean();
@@ -61,14 +69,38 @@ public class CatalystConfig {
                 if (obj.has("autoToolEnabled")) {
                     autoToolEnabled = obj.get("autoToolEnabled").getAsBoolean();
                 }
+                if (obj.has("autoToolRestore")) {
+                    autoToolRestore = obj.get("autoToolRestore").getAsBoolean();
+                }
+                if (obj.has("autoToolLockedSlot")) {
+                    autoToolLockedSlot = obj.get("autoToolLockedSlot").getAsInt();
+                }
                 if (obj.has("autoWeaponEnabled")) {
                     autoWeaponEnabled = obj.get("autoWeaponEnabled").getAsBoolean();
+                }
+                if (obj.has("autoWeaponRestore")) {
+                    autoWeaponRestore = obj.get("autoWeaponRestore").getAsBoolean();
+                }
+                if (obj.has("autoWeaponLockedSlot")) {
+                    autoWeaponLockedSlot = obj.get("autoWeaponLockedSlot").getAsInt();
                 }
                 if (obj.has("autoDoorEnabled")) {
                     autoDoorEnabled = obj.get("autoDoorEnabled").getAsBoolean();
                 }
                 if (obj.has("autoWaterBucketEnabled")) {
                     autoWaterBucketEnabled = obj.get("autoWaterBucketEnabled").getAsBoolean();
+                }
+                if (obj.has("chamsEnabled")) {
+                    chamsEnabled = obj.get("chamsEnabled").getAsBoolean();
+                }
+                if (obj.has("chamsPlayers")) {
+                    chamsPlayers = obj.get("chamsPlayers").getAsBoolean();
+                }
+                if (obj.has("chamsAnimals")) {
+                    chamsAnimals = obj.get("chamsAnimals").getAsBoolean();
+                }
+                if (obj.has("chamsMonsters")) {
+                    chamsMonsters = obj.get("chamsMonsters").getAsBoolean();
                 }
                 if (obj.has("guiScale")) {
                     guiScale = (float) Math.max(0.5, Math.min(2.0, obj.get("guiScale").getAsDouble()));
@@ -92,9 +124,17 @@ public class CatalystConfig {
         obj.addProperty("gammaValue", gammaValue);
         obj.addProperty("nightVisionMode", nightVisionMode);
         obj.addProperty("autoToolEnabled", autoToolEnabled);
+        obj.addProperty("autoToolRestore", autoToolRestore);
+        obj.addProperty("autoToolLockedSlot", autoToolLockedSlot);
         obj.addProperty("autoWeaponEnabled", autoWeaponEnabled);
+        obj.addProperty("autoWeaponRestore", autoWeaponRestore);
+        obj.addProperty("autoWeaponLockedSlot", autoWeaponLockedSlot);
         obj.addProperty("autoDoorEnabled", autoDoorEnabled);
         obj.addProperty("autoWaterBucketEnabled", autoWaterBucketEnabled);
+        obj.addProperty("chamsEnabled", chamsEnabled);
+        obj.addProperty("chamsPlayers", chamsPlayers);
+        obj.addProperty("chamsAnimals", chamsAnimals);
+        obj.addProperty("chamsMonsters", chamsMonsters);
         obj.addProperty("guiScale", guiScale);
         obj.add("panelPositions", panelPositions);
         

@@ -2,12 +2,20 @@
   "autoSprintEnabled": true,
   "autoSwimEnabled": true,
   "gammaOverrideEnabled": true,
-  "gammaValue": 100.0,
+  "gammaValue": 1500.0,
   "nightVisionMode": true,
   "autoToolEnabled": true,
+  "autoToolRestore": true,
+  "autoToolLockedSlot": -1,
   "autoWeaponEnabled": true,
+  "autoWeaponRestore": true,
+  "autoWeaponLockedSlot": -1,
   "autoDoorEnabled": true,
   "autoWaterBucketEnabled": true,
+  "chamsEnabled": false,
+  "chamsPlayers": true,
+  "chamsAnimals": true,
+  "chamsMonsters": true,
   "guiScale": 0.9000001,
   "panelPositions": {
     "Movement": {
@@ -15,16 +23,16 @@
       "y": 95
     },
     "Player": {
-      "x": 236,
-      "y": 91
+      "x": 263,
+      "y": 74
     },
     "Tools": {
-      "x": 8,
-      "y": 19
+      "x": 14,
+      "y": -3
     },
     "Combat": {
-      "x": 235,
-      "y": 15
+      "x": 161,
+      "y": -6
     }
   }
 }
