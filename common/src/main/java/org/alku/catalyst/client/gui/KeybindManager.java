@@ -30,6 +30,9 @@ public class KeybindManager {
         DEFAULT_KEYS.put("toggle_auto_water_bucket", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_chams", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("open_config", GLFW.GLFW_KEY_J);
+        DEFAULT_KEYS.put("sort_inventory", GLFW.GLFW_KEY_R);
+        DEFAULT_KEYS.put("open_waypoints", GLFW.GLFW_KEY_UNKNOWN);
+        DEFAULT_KEYS.put("add_waypoint", GLFW.GLFW_KEY_UNKNOWN);
         
         initDefaults();
         load();

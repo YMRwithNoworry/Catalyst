@@ -13,8 +13,17 @@ public class CatalystConfigScreen extends Screen {
     private static final int PANEL_WIDTH = 140;
     private static final int BUTTON_HEIGHT = 22;
     private static final int PANEL_HEADER_HEIGHT = 24;
-    private static final int CORNER_RADIUS = 10;
     private static final double MAX_GAMMA = 1500.0;
+    
+    private static final int COLOR_BG_HEADER = 0xB0181818;
+    private static final int COLOR_BG_ENABLED = 0xB01A2A1A;
+    private static final int COLOR_BG_DISABLED = 0xB0141414;
+    private static final int COLOR_BG_HOVER_ENABLED = 0xB0223622;
+    private static final int COLOR_BG_HOVER_DISABLED = 0xB01E1E1E;
+    private static final int COLOR_BG_CONFIG = 0xB0101010;
+    private static final int COLOR_STATUS_ON = 0xFF44DD44;
+    private static final int COLOR_STATUS_OFF = 0xFF444444;
+    private static final int COLOR_BORDER = 0xFF2A2A2A;
     
     private final Screen parent;
     private List<ModulePanel> panels = new ArrayList<>();
@@ -72,6 +81,7 @@ public class CatalystConfigScreen extends Screen {
             config.getPanelY("Tools", startY),
             "Tools", this);
         toolsPanel.addModule("auto_tool", "toggle_auto_tool", true);
+        toolsPanel.addModule("inventory_sorter", "sort_inventory", true);
         panels.add(toolsPanel);
     }
     
@@ -266,51 +276,30 @@ public class CatalystConfigScreen extends Screen {
         }
         
         public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-            drawModernRoundedRect(graphics, x, y, x + PANEL_WIDTH, y + PANEL_HEADER_HEIGHT, CORNER_RADIUS, 0xE0222222, true, false);
+            graphics.fill(x, y, x + PANEL_WIDTH, y + PANEL_HEADER_HEIGHT, CatalystConfigScreen.COLOR_BG_HEADER);
+            graphics.fill(x, y, x + 1, y + PANEL_HEADER_HEIGHT, CatalystConfigScreen.COLOR_BORDER);
+            graphics.fill(x + PANEL_WIDTH - 1, y, x + PANEL_WIDTH, y + PANEL_HEADER_HEIGHT, CatalystConfigScreen.COLOR_BORDER);
+            graphics.fill(x, y, x + PANEL_WIDTH, y + 1, CatalystConfigScreen.COLOR_BORDER);
             
             graphics.drawCenteredString(parent.minecraft.font, Component.literal(name), x + PANEL_WIDTH / 2, y + 7, 0xFFFFFFFF);
             
             int currentY = y + PANEL_HEADER_HEIGHT;
             for (int i = 0; i < buttons.size(); i++) {
                 ModuleButton button = buttons.get(i);
-                boolean isLast = (i == buttons.size() - 1) && expandedButton != i;
-                boolean isExpanded = (i == expandedButton);
+                boolean isLast = (i == buttons.size() - 1);
                 
-                button.render(graphics, x, currentY, mouseX, mouseY, isLast, isExpanded);
+                button.render(graphics, x, currentY, mouseX, mouseY, isLast);
                 
-                if (isExpanded) {
+                if (i == expandedButton) {
                     currentY += button.getConfigHeight();
                 }
                 currentY += BUTTON_HEIGHT;
             }
-        }
-        
-        private void drawModernRoundedRect(GuiGraphics graphics, int x1, int y1, int x2, int y2, int radius, int color, boolean topRound, boolean bottomRound) {
-            graphics.fill(x1 + radius, y1, x2 - radius, y2, color);
-            graphics.fill(x1, y1 + radius, x2, y2 - radius, color);
             
-            if (topRound) {
-                for (int dy = 0; dy < radius; dy++) {
-                    for (int dx = 0; dx < radius; dx++) {
-                        double dist = Math.sqrt((radius - dx - 0.5) * (radius - dx - 0.5) + (radius - dy - 0.5) * (radius - dy - 0.5));
-                        if (dist < radius) {
-                            graphics.fill(x1 + dx, y1 + dy, x1 + dx + 1, y1 + dy + 1, color);
-                            graphics.fill(x2 - dx - 1, y1 + dy, x2 - dx, y1 + dy + 1, color);
-                        }
-                    }
-                }
-            }
-            if (bottomRound) {
-                for (int dy = 0; dy < radius; dy++) {
-                    for (int dx = 0; dx < radius; dx++) {
-                        double dist = Math.sqrt((radius - dx - 0.5) * (radius - dx - 0.5) + (radius - dy - 0.5) * (radius - dy - 0.5));
-                        if (dist < radius) {
-                            graphics.fill(x1 + dx, y2 - dy - 1, x1 + dx + 1, y2 - dy, color);
-                            graphics.fill(x2 - dx - 1, y2 - dy - 1, x2 - dx, y2 - dy, color);
-                        }
-                    }
-                }
-            }
+            int totalHeight = currentY - y;
+            graphics.fill(x, y + totalHeight - 1, x + PANEL_WIDTH, y + totalHeight, CatalystConfigScreen.COLOR_BORDER);
+            graphics.fill(x, y + PANEL_HEADER_HEIGHT, x + 1, y + totalHeight, CatalystConfigScreen.COLOR_BORDER);
+            graphics.fill(x + PANEL_WIDTH - 1, y + PANEL_HEADER_HEIGHT, x + PANEL_WIDTH, y + totalHeight, CatalystConfigScreen.COLOR_BORDER);
         }
         
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
@@ -360,22 +349,26 @@ public class CatalystConfigScreen extends Screen {
             if (featureKey.equals("chams")) {
                 return 50;
             }
+            if (featureKey.equals("inventory_sorter")) {
+                return 90;
+            }
             return 0;
         }
         
-        public void render(GuiGraphics graphics, int x, int y, int mouseX, int mouseY, boolean isLast, boolean isExpanded) {
+        public void render(GuiGraphics graphics, int x, int y, int mouseX, int mouseY, boolean isLast) {
             CatalystConfig config = CatalystConfig.getInstance();
             boolean isEnabled = getEnabledState(config);
+            boolean isExpanded = (panel.getExpandedButton() >= 0 && panel.buttons.get(panel.getExpandedButton()) == this);
             
-            int bgColor = isEnabled ? 0xE02B4B2B : 0xE01A1A1A;
-            int hoverColor = isEnabled ? 0xE03D6B3D : 0xE02A2A2A;
+            int bgColor = isEnabled ? CatalystConfigScreen.COLOR_BG_ENABLED : CatalystConfigScreen.COLOR_BG_DISABLED;
+            int hoverColor = isEnabled ? CatalystConfigScreen.COLOR_BG_HOVER_ENABLED : CatalystConfigScreen.COLOR_BG_HOVER_DISABLED;
             
             boolean isHovered = mouseX >= x && mouseX <= x + PANEL_WIDTH && mouseY >= y && mouseY <= y + BUTTON_HEIGHT;
             int drawColor = isHovered ? hoverColor : bgColor;
             
-            drawModernButton(graphics, x, y, x + PANEL_WIDTH, y + BUTTON_HEIGHT, CORNER_RADIUS, drawColor, isLast && !isExpanded);
+            graphics.fill(x, y, x + PANEL_WIDTH, y + BUTTON_HEIGHT, drawColor);
             
-            int statusColor = isEnabled ? 0xFF55FF55 : 0xFF555555;
+            int statusColor = isEnabled ? CatalystConfigScreen.COLOR_STATUS_ON : CatalystConfigScreen.COLOR_STATUS_OFF;
             graphics.fill(x + 4, y + 6, x + 8, y + BUTTON_HEIGHT - 6, statusColor);
             
             Component featureName = Component.translatable("catalyst.feature." + featureKey);
@@ -388,7 +381,7 @@ public class CatalystConfigScreen extends Screen {
             
             if (isExpanded && featureKey.equals("gamma_override")) {
                 int configY = y + BUTTON_HEIGHT;
-                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 50, 0xE01A1A1A);
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 50, CatalystConfigScreen.COLOR_BG_CONFIG);
                 
                 graphics.drawString(panel.getParentScreen().minecraft.font, "Gamma: " + String.format("%.1f", config.gammaValue), x + 8, configY + 6, 0xFFCCCCCC);
                 
@@ -410,7 +403,7 @@ public class CatalystConfigScreen extends Screen {
             
             if (isExpanded && featureKey.equals("auto_weapon")) {
                 int configY = y + BUTTON_HEIGHT;
-                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 70, 0xE01A1A1A);
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 70, CatalystConfigScreen.COLOR_BG_CONFIG);
                 
                 String restoreText = Component.translatable("catalyst.gui.restore_slot", 
                     config.autoWeaponRestore ? Component.translatable("catalyst.gui.on").getString() : Component.translatable("catalyst.gui.off").getString()).getString();
@@ -447,7 +440,7 @@ public class CatalystConfigScreen extends Screen {
             
             if (isExpanded && featureKey.equals("auto_tool")) {
                 int configY = y + BUTTON_HEIGHT;
-                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 70, 0xE01A1A1A);
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 70, CatalystConfigScreen.COLOR_BG_CONFIG);
                 
                 String restoreText = Component.translatable("catalyst.gui.restore_slot", 
                     config.autoToolRestore ? Component.translatable("catalyst.gui.on").getString() : Component.translatable("catalyst.gui.off").getString()).getString();
@@ -484,7 +477,7 @@ public class CatalystConfigScreen extends Screen {
             
             if (isExpanded && featureKey.equals("chams")) {
                 int configY = y + BUTTON_HEIGHT;
-                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 50, 0xE01A1A1A);
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 50, CatalystConfigScreen.COLOR_BG_CONFIG);
                 
                 String playersText = Component.translatable("catalyst.gui.chams_players").getString();
                 int playersColor = config.chamsPlayers ? 0xFF55FF55 : 0xFF555555;
@@ -498,6 +491,45 @@ public class CatalystConfigScreen extends Screen {
                 int monstersColor = config.chamsMonsters ? 0xFF55FF55 : 0xFF555555;
                 graphics.drawString(panel.getParentScreen().minecraft.font, monstersText, x + 8, configY + 34, monstersColor);
             }
+            
+            if (isExpanded && featureKey.equals("inventory_sorter")) {
+                int configY = y + BUTTON_HEIGHT;
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 90, CatalystConfigScreen.COLOR_BG_CONFIG);
+                
+                String autoSortText = Component.translatable("catalyst.gui.auto_sort_on_open", 
+                    config.autoSortOnOpen ? Component.translatable("catalyst.gui.on").getString() : Component.translatable("catalyst.gui.off").getString()).getString();
+                int autoSortColor = config.autoSortOnOpen ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, autoSortText, x + 8, configY + 6, autoSortColor);
+                
+                String sortHotbarText = Component.translatable("catalyst.gui.sort_hotbar", 
+                    config.sortHotbar ? Component.translatable("catalyst.gui.on").getString() : Component.translatable("catalyst.gui.off").getString()).getString();
+                int sortHotbarColor = config.sortHotbar ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, sortHotbarText, x + 8, configY + 20, sortHotbarColor);
+                
+                String sortPlayerText = Component.translatable("catalyst.gui.sort_player_inv", 
+                    config.sortPlayerInventoryInContainer ? Component.translatable("catalyst.gui.on").getString() : Component.translatable("catalyst.gui.off").getString()).getString();
+                int sortPlayerColor = config.sortPlayerInventoryInContainer ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, sortPlayerText, x + 8, configY + 34, sortPlayerColor);
+                
+                String[] modes = {"Category", "Name", "ID"};
+                String modeText = Component.translatable("catalyst.gui.sort_mode", modes[config.sortMode]).getString();
+                graphics.drawString(panel.getParentScreen().minecraft.font, modeText, x + 8, configY + 48, 0xFFCCCCCC);
+                
+                int modeBtnX = x + 8;
+                int modeBtnY = configY + 62;
+                int modeBtnWidth = (PANEL_WIDTH - 20) / 3;
+                for (int i = 0; i < 3; i++) {
+                    int btnX = modeBtnX + i * (modeBtnWidth + 4);
+                    boolean isSelected = (config.sortMode == i);
+                    int btnColor = isSelected ? 0xFF44AA44 : 0xFF333333;
+                    int borderColor = isSelected ? 0xFF55FF55 : 0xFF555555;
+                    
+                    graphics.fill(btnX - 1, modeBtnY - 1, btnX + modeBtnWidth + 1, modeBtnY + 18, borderColor);
+                    graphics.fill(btnX, modeBtnY, btnX + modeBtnWidth, modeBtnY + 17, btnColor);
+                    
+                    graphics.drawCenteredString(panel.getParentScreen().minecraft.font, modes[i], btnX + modeBtnWidth / 2, modeBtnY + 4, 0xFFFFFFFF);
+                }
+            }
         }
         
         private boolean getEnabledState(CatalystConfig config) {
@@ -509,23 +541,8 @@ public class CatalystConfigScreen extends Screen {
             if (featureKey.equals("auto_door")) return config.autoDoorEnabled;
             if (featureKey.equals("auto_water_bucket")) return config.autoWaterBucketEnabled;
             if (featureKey.equals("chams")) return config.chamsEnabled;
+            if (featureKey.equals("inventory_sorter")) return config.inventorySorterEnabled;
             return false;
-        }
-        
-        private void drawModernButton(GuiGraphics graphics, int x1, int y1, int x2, int y2, int radius, int color, boolean bottomRound) {
-            graphics.fill(x1, y1, x2, y2, color);
-            
-            if (bottomRound) {
-                for (int dy = 0; dy < radius; dy++) {
-                    for (int dx = 0; dx < radius; dx++) {
-                        double dist = Math.sqrt((radius - dx - 0.5) * (radius - dx - 0.5) + (radius - dy - 0.5) * (radius - dy - 0.5));
-                        if (dist < radius) {
-                            graphics.fill(x1 + dx, y2 - dy - 1, x1 + dx + 1, y2 - dy, color);
-                            graphics.fill(x2 - dx - 1, y2 - dy - 1, x2 - dx, y2 - dy, color);
-                        }
-                    }
-                }
-            }
         }
         
         public boolean mouseClicked(double mouseX, double mouseY, int button, int buttonY) {
@@ -650,6 +667,43 @@ public class CatalystConfigScreen extends Screen {
                         return true;
                     }
                 }
+                
+                if (featureKey.equals("inventory_sorter") && panel.getExpandedButton() >= 0) {
+                    int configY = buttonY + BUTTON_HEIGHT;
+                    
+                    if (mouseY >= configY + 4 && mouseY <= configY + 16) {
+                        CatalystConfig.getInstance().autoSortOnOpen = !CatalystConfig.getInstance().autoSortOnOpen;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    if (mouseY >= configY + 18 && mouseY <= configY + 30) {
+                        CatalystConfig.getInstance().sortHotbar = !CatalystConfig.getInstance().sortHotbar;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    if (mouseY >= configY + 32 && mouseY <= configY + 44) {
+                        CatalystConfig.getInstance().sortPlayerInventoryInContainer = !CatalystConfig.getInstance().sortPlayerInventoryInContainer;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    int modeBtnX = panel.getX() + 8;
+                    int modeBtnY = configY + 62;
+                    int modeBtnWidth = (PANEL_WIDTH - 20) / 3;
+                    
+                    if (mouseY >= modeBtnY - 1 && mouseY <= modeBtnY + 18) {
+                        for (int i = 0; i < 3; i++) {
+                            int btnX = modeBtnX + i * (modeBtnWidth + 4);
+                            if (mouseX >= btnX - 1 && mouseX <= btnX + modeBtnWidth + 1) {
+                                CatalystConfig.getInstance().sortMode = i;
+                                CatalystConfig.getInstance().save();
+                                return true;
+                            }
+                        }
+                    }
+                }
             } else if (button == 1 && hasConfig) {
                 int myIndex = -1;
                 for (int i = 0; i < panel.buttons.size(); i++) {
@@ -679,6 +733,7 @@ public class CatalystConfigScreen extends Screen {
             else if (featureKey.equals("auto_door")) config.autoDoorEnabled = !config.autoDoorEnabled;
             else if (featureKey.equals("auto_water_bucket")) config.autoWaterBucketEnabled = !config.autoWaterBucketEnabled;
             else if (featureKey.equals("chams")) config.chamsEnabled = !config.chamsEnabled;
+            else if (featureKey.equals("inventory_sorter")) config.inventorySorterEnabled = !config.inventorySorterEnabled;
             
             config.save();
         }

@@ -9,6 +9,9 @@
   "key.catalyst.toggle_auto_water_bucket": "切换自动水桶",
   "key.catalyst.toggle_chams": "切换透视",
   "key.catalyst.open_config": "打开配置界面",
+  "key.catalyst.open_waypoints": "打开路径点界面",
+  "key.catalyst.add_waypoint": "添加路径点",
+  "key.catalyst.sort_inventory": "整理背包",
   
   "catalyst.feature.auto_sprint": "自动疾跑",
   "catalyst.feature.auto_swim": "自动游泳",
@@ -18,6 +21,8 @@
   "catalyst.feature.auto_door": "自动门",
   "catalyst.feature.auto_water_bucket": "自动水桶",
   "catalyst.feature.chams": "透视",
+  "catalyst.feature.waypoint_added": "路径点已添加",
+  "catalyst.feature.inventory_sorter": "背包整理",
   
   "catalyst.gui.title": "Catalyst 配置",
   "catalyst.gui.save": "保存并关闭",
@@ -36,5 +41,20 @@
   "catalyst.gui.off": "关",
   "catalyst.gui.chams_players": "玩家",
   "catalyst.gui.chams_animals": "动物",
-  "catalyst.gui.chams_monsters": "怪物"
+  "catalyst.gui.chams_monsters": "怪物",
+  
+  "catalyst.gui.waypoints.title": "路径点",
+  "catalyst.gui.waypoints.add_current": "添加当前位置",
+  "catalyst.gui.waypoints.empty": "没有保存的路径点",
+  "catalyst.gui.waypoints.add": "添加路径点",
+  "catalyst.gui.waypoints.name": "路径点名称",
+  "catalyst.gui.waypoints.create": "创建",
+  "catalyst.gui.waypoints.teleport": "传送",
+  "catalyst.gui.waypoints.delete": "删除",
+  
+  "catalyst.gui.auto_sort_on_open": "打开容器自动整理: %s",
+  "catalyst.gui.sort_hotbar": "整理快捷栏: %s",
+  "catalyst.gui.sort_player_inv": "整理玩家背包: %s",
+  "catalyst.gui.sort_mode": "排序模式: %s",
+  "catalyst.gui.sort_button": "整理"
 }

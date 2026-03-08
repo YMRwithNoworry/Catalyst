@@ -5,7 +5,9 @@
   "minVersion": "0.8",
   "client": [
     "LightTextureMixin",
-    "ChamsMixin"
+    "ChamsMixin",
+    "WaypointRenderMixin",
+    "ContainerScreenMixin"
   ],
   "mixins": [
   ],

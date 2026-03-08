@@ -9,6 +9,9 @@
   "key.catalyst.toggle_auto_water_bucket": "Toggle Auto Water Bucket",
   "key.catalyst.toggle_chams": "Toggle Chams",
   "key.catalyst.open_config": "Open Config GUI",
+  "key.catalyst.open_waypoints": "Open Waypoints GUI",
+  "key.catalyst.add_waypoint": "Add Waypoint",
+  "key.catalyst.sort_inventory": "Sort Inventory",
   
   "catalyst.feature.auto_sprint": "Auto Sprint",
   "catalyst.feature.auto_swim": "Auto Swim",
@@ -18,6 +21,8 @@
   "catalyst.feature.auto_door": "Auto Door",
   "catalyst.feature.auto_water_bucket": "Auto Water Bucket",
   "catalyst.feature.chams": "Chams",
+  "catalyst.feature.waypoint_added": "Waypoint Added",
+  "catalyst.feature.inventory_sorter": "Inventory Sorter",
   
   "catalyst.gui.title": "Catalyst Configuration",
   "catalyst.gui.save": "Save & Close",
@@ -36,5 +41,20 @@
   "catalyst.gui.off": "OFF",
   "catalyst.gui.chams_players": "Players",
   "catalyst.gui.chams_animals": "Animals",
-  "catalyst.gui.chams_monsters": "Monsters"
+  "catalyst.gui.chams_monsters": "Monsters",
+  
+  "catalyst.gui.waypoints.title": "Waypoints",
+  "catalyst.gui.waypoints.add_current": "Add Current Position",
+  "catalyst.gui.waypoints.empty": "No waypoints saved",
+  "catalyst.gui.waypoints.add": "Add Waypoint",
+  "catalyst.gui.waypoints.name": "Waypoint Name",
+  "catalyst.gui.waypoints.create": "Create",
+  "catalyst.gui.waypoints.teleport": "Teleport",
+  "catalyst.gui.waypoints.delete": "Delete",
+  
+  "catalyst.gui.auto_sort_on_open": "Auto Sort on Open: %s",
+  "catalyst.gui.sort_hotbar": "Sort Hotbar: %s",
+  "catalyst.gui.sort_player_inv": "Sort Player Inv: %s",
+  "catalyst.gui.sort_mode": "Sort Mode: %s",
+  "catalyst.gui.sort_button": "Sort"
 }

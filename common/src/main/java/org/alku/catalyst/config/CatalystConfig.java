@@ -34,6 +34,12 @@ public class CatalystConfig {
     public boolean chamsAnimals = true;
     public boolean chamsMonsters = true;
     
+    public boolean inventorySorterEnabled = true;
+    public boolean autoSortOnOpen = false;
+    public boolean sortHotbar = false;
+    public boolean sortPlayerInventoryInContainer = true;
+    public int sortMode = 0;
+    
     public float guiScale = 1.0f;
     public JsonObject panelPositions = new JsonObject();
     
@@ -102,6 +108,21 @@ public class CatalystConfig {
                 if (obj.has("chamsMonsters")) {
                     chamsMonsters = obj.get("chamsMonsters").getAsBoolean();
                 }
+                if (obj.has("inventorySorterEnabled")) {
+                    inventorySorterEnabled = obj.get("inventorySorterEnabled").getAsBoolean();
+                }
+                if (obj.has("autoSortOnOpen")) {
+                    autoSortOnOpen = obj.get("autoSortOnOpen").getAsBoolean();
+                }
+                if (obj.has("sortHotbar")) {
+                    sortHotbar = obj.get("sortHotbar").getAsBoolean();
+                }
+                if (obj.has("sortPlayerInventoryInContainer")) {
+                    sortPlayerInventoryInContainer = obj.get("sortPlayerInventoryInContainer").getAsBoolean();
+                }
+                if (obj.has("sortMode")) {
+                    sortMode = Math.max(0, Math.min(2, obj.get("sortMode").getAsInt()));
+                }
                 if (obj.has("guiScale")) {
                     guiScale = (float) Math.max(0.5, Math.min(2.0, obj.get("guiScale").getAsDouble()));
                 }
@@ -135,6 +156,11 @@ public class CatalystConfig {
         obj.addProperty("chamsPlayers", chamsPlayers);
         obj.addProperty("chamsAnimals", chamsAnimals);
         obj.addProperty("chamsMonsters", chamsMonsters);
+        obj.addProperty("inventorySorterEnabled", inventorySorterEnabled);
+        obj.addProperty("autoSortOnOpen", autoSortOnOpen);
+        obj.addProperty("sortHotbar", sortHotbar);
+        obj.addProperty("sortPlayerInventoryInContainer", sortPlayerInventoryInContainer);
+        obj.addProperty("sortMode", sortMode);
         obj.addProperty("guiScale", guiScale);
         obj.add("panelPositions", panelPositions);
         

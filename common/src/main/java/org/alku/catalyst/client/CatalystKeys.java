@@ -3,7 +3,7 @@ package org.alku.catalyst.client;
 import com.mojang.blaze3d.platform.InputConstants;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import net.minecraft.client.KeyMapping;
-import org.alku.catalyst.client.gui.KeybindManager;
+import org.lwjgl.glfw.GLFW;
 
 public class CatalystKeys {
     public static final String KEY_CATEGORY = "key.categories.catalyst";
@@ -14,14 +14,57 @@ public class CatalystKeys {
     public static KeyMapping TOGGLE_AUTO_TOOL;
     public static KeyMapping TOGGLE_AUTO_WEAPON;
     public static KeyMapping OPEN_CONFIG;
+    public static KeyMapping SORT_INVENTORY;
     
     public static void register() {
-        TOGGLE_AUTO_SPRINT = createKey("toggle_auto_sprint");
-        TOGGLE_AUTO_SWIM = createKey("toggle_auto_swim");
-        TOGGLE_GAMMA_OVERRIDE = createKey("toggle_gamma_override");
-        TOGGLE_AUTO_TOOL = createKey("toggle_auto_tool");
-        TOGGLE_AUTO_WEAPON = createKey("toggle_auto_weapon");
-        OPEN_CONFIG = createKey("open_config");
+        TOGGLE_AUTO_SPRINT = new KeyMapping(
+            "key.catalyst.toggle_auto_sprint",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_UNKNOWN,
+            KEY_CATEGORY
+        );
+        
+        TOGGLE_AUTO_SWIM = new KeyMapping(
+            "key.catalyst.toggle_auto_swim",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_UNKNOWN,
+            KEY_CATEGORY
+        );
+        
+        TOGGLE_GAMMA_OVERRIDE = new KeyMapping(
+            "key.catalyst.toggle_gamma_override",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_UNKNOWN,
+            KEY_CATEGORY
+        );
+        
+        TOGGLE_AUTO_TOOL = new KeyMapping(
+            "key.catalyst.toggle_auto_tool",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_UNKNOWN,
+            KEY_CATEGORY
+        );
+        
+        TOGGLE_AUTO_WEAPON = new KeyMapping(
+            "key.catalyst.toggle_auto_weapon",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_UNKNOWN,
+            KEY_CATEGORY
+        );
+        
+        OPEN_CONFIG = new KeyMapping(
+            "key.catalyst.open_config",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_J,
+            KEY_CATEGORY
+        );
+        
+        SORT_INVENTORY = new KeyMapping(
+            "key.catalyst.sort_inventory",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_R,
+            KEY_CATEGORY
+        );
         
         KeyMappingRegistry.register(TOGGLE_AUTO_SPRINT);
         KeyMappingRegistry.register(TOGGLE_AUTO_SWIM);
@@ -29,15 +72,6 @@ public class CatalystKeys {
         KeyMappingRegistry.register(TOGGLE_AUTO_TOOL);
         KeyMappingRegistry.register(TOGGLE_AUTO_WEAPON);
         KeyMappingRegistry.register(OPEN_CONFIG);
-    }
-    
-    private static KeyMapping createKey(String name) {
-        int defaultKey = KeybindManager.getKey(name);
-        return new KeyMapping(
-            "key.catalyst." + name,
-            InputConstants.Type.KEYSYM,
-            defaultKey,
-            KEY_CATEGORY
-        );
+        KeyMappingRegistry.register(SORT_INVENTORY);
     }
 }

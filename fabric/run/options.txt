@@ -42,7 +42,7 @@ ao:true
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:"true"
-resourcePacks:[]
+resourcePacks:["fabric"]
 incompatibleResourcePacks:[]
 lastServer:
 lang:zh_cn
@@ -124,6 +124,7 @@ key_key.catalyst.toggle_gamma_override:key.keyboard.unknown
 key_key.catalyst.toggle_auto_tool:key.keyboard.unknown
 key_key.catalyst.toggle_auto_weapon:key.keyboard.unknown
 key_key.catalyst.open_config:key.keyboard.o
+key_key.catalyst.sort_inventory:key.keyboard.r
 soundCategory_master:0.15397350993377484
 soundCategory_music:0.0
 soundCategory_record:1.0
