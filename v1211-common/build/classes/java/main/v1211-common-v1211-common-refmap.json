@@ -1,0 +1,36 @@
+{
+  "mappings": {
+    "org/alku/catalyst/mixin/ChamsMixin": {
+      "render(Lnet/minecraft/world/entity/Entity;DDDFFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V": "Lnet/minecraft/class_898;method_3954(Lnet/minecraft/class_1297;DDDFFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V"
+    },
+    "org/alku/catalyst/mixin/ContainerScreenMixin": {
+      "init": "Lnet/minecraft/class_465;method_25426()V",
+      "keyPressed": "Lnet/minecraft/class_465;method_25404(III)Z",
+      "render": "Lnet/minecraft/class_465;method_25394(Lnet/minecraft/class_332;IIF)V"
+    },
+    "org/alku/catalyst/mixin/LightTextureMixin": {
+      "updateLightTexture": "Lnet/minecraft/class_765;method_3313(F)V"
+    },
+    "org/alku/catalyst/mixin/WaypointRenderMixin": {
+      "renderLevel": "Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_9779;ZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;)V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "org/alku/catalyst/mixin/ChamsMixin": {
+        "render(Lnet/minecraft/world/entity/Entity;DDDFFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V": "Lnet/minecraft/class_898;method_3954(Lnet/minecraft/class_1297;DDDFFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V"
+      },
+      "org/alku/catalyst/mixin/ContainerScreenMixin": {
+        "init": "Lnet/minecraft/class_465;method_25426()V",
+        "keyPressed": "Lnet/minecraft/class_465;method_25404(III)Z",
+        "render": "Lnet/minecraft/class_465;method_25394(Lnet/minecraft/class_332;IIF)V"
+      },
+      "org/alku/catalyst/mixin/LightTextureMixin": {
+        "updateLightTexture": "Lnet/minecraft/class_765;method_3313(F)V"
+      },
+      "org/alku/catalyst/mixin/WaypointRenderMixin": {
+        "renderLevel": "Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_9779;ZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;)V"
+      }
+    }
+  }
+}

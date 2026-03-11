@@ -1,0 +1,39 @@
+modLoader = "javafml"
+loaderVersion = "[5,)"
+license = "All Rights Reserved"
+
+[[mods]]
+modId = "catalyst"
+version = "1.0-SNAPSHOT"
+displayName = "Catalyst"
+authors = ""
+description = '''
+
+'''
+
+[[mixins]]
+config = "catalyst.mixins.json"
+
+[[accessTransformers]]
+file = "META-INF/accesstransformer.cfg"
+
+[[dependencies.catalyst]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1.83,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.catalyst]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.catalyst]]
+modId = "architectury"
+type = "required"
+versionRange = "[13.0.8,)"
+ordering = "AFTER"
+side = "BOTH"

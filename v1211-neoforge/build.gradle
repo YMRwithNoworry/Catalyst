@@ -5,15 +5,13 @@ plugins {
     id 'maven-publish'
 }
 
+repositories {
+    maven { url = "https://maven.neoforged.net/releases" }
+}
+
 architectury {
     platformSetupLoomIde()
     neoForge()
-}
-
-loom {
-    neoForge {
-        mixinConfig "catalyst.mixins.json"
-    }
 }
 
 configurations {
@@ -37,7 +35,7 @@ dependencies {
     neoForge "net.neoforged:neoforge:$neoforge_version_1211"
     modImplementation "dev.architectury:architectury-neoforge:$architectury_api_version_1211"
     
-    common(project(path: ':v1211-common', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':v1211-common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':v1211-common', configuration: 'transformProductionNeoForge')
 }
 
@@ -48,28 +46,28 @@ processResources {
     }
 }
 
-shadowJar {
+shadowJar{
     configurations = [project.configurations.shadowBundle]
     archiveClassifier = 'dev-shadow'
 }
 
-remapJar {
+remapJar{
     input.set shadowJar.archiveFile
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release = Integer.parseInt(java_version_1211)
+    options.release = Integer.parseInt(java_version_1211)
 }
 
-java {
+java{
     sourceCompatibility = JavaVersion.toVersion(java_version_1211)
     targetCompatibility = JavaVersion.toVersion(java_version_1211)
     withSourcesJar()
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
+publishing{
+    publications{
+        mavenJava(MavenPublication){
             from components.java
         }
     }
