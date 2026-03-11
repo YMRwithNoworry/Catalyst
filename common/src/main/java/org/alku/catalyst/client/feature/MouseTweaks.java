@@ -65,32 +65,25 @@ public class MouseTweaks {
         }
         
         try {
-            Field hoveredSlotField = AbstractContainerScreen.class.getDeclaredField("hoveredSlot");
-            hoveredSlotField.setAccessible(true);
-            Slot hoveredSlot = (Slot) hoveredSlotField.get(screen);
-            return hoveredSlot;
-        } catch (Exception e) {
-            try {
-                Field leftPosField = AbstractContainerScreen.class.getDeclaredField("leftPos");
-                Field topPosField = AbstractContainerScreen.class.getDeclaredField("topPos");
-                leftPosField.setAccessible(true);
-                topPosField.setAccessible(true);
-                
-                int leftPos = leftPosField.getInt(screen);
-                int topPos = topPosField.getInt(screen);
-                
-                int relX = mouseX - leftPos;
-                int relY = mouseY - topPos;
-                
-                for (int i = 0; i < screen.getMenu().slots.size(); i++) {
-                    Slot slot = screen.getMenu().getSlot(i);
-                    if (relX >= slot.x && relX < slot.x + 16 && relY >= slot.y && relY < slot.y + 16) {
-                        return slot;
-                    }
+            Field leftPosField = AbstractContainerScreen.class.getDeclaredField("leftPos");
+            Field topPosField = AbstractContainerScreen.class.getDeclaredField("topPos");
+            leftPosField.setAccessible(true);
+            topPosField.setAccessible(true);
+            
+            int leftPos = leftPosField.getInt(screen);
+            int topPos = topPosField.getInt(screen);
+            
+            int relX = mouseX - leftPos;
+            int relY = mouseY - topPos;
+            
+            for (int i = 0; i < screen.getMenu().slots.size(); i++) {
+                Slot slot = screen.getMenu().getSlot(i);
+                if (relX >= slot.x && relX < slot.x + 16 && relY >= slot.y && relY < slot.y + 16) {
+                    return slot;
                 }
-            } catch (Exception ex) {
-                ex.printStackTrace();
             }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
         
         return null;
@@ -105,7 +98,7 @@ public class MouseTweaks {
     public static EventResult onMouseClicked(Minecraft mc, int button, int action, int mods) {
         CatalystConfig config = CatalystConfig.getInstance();
         
-        if (!(mc.screen instanceof AbstractContainerScreen)) {
+        if (!(mc.screen instanceof AbstractContainerScreen) || !config.rmbTweak) {
             return EventResult.pass();
         }
         
@@ -135,9 +128,7 @@ public class MouseTweaks {
                 lastMouseY = currentMouseY;
                 processedSlots.clear();
                 
-                if (config.rmbTweak) {
-                    return handleRightClickStart(mc, button, action, mods, currentMouseX, currentMouseY);
-                }
+                return handleRightClickStart(mc, button, action, mods, currentMouseX, currentMouseY);
             }
         } else if (action == 0) {
             if (button == 0) {
@@ -161,7 +152,7 @@ public class MouseTweaks {
     public static EventResult onMouseScrolled(Minecraft mc, double scrollDelta) {
         CatalystConfig config = CatalystConfig.getInstance();
         
-        if (!config.wheelTweak || !(mc.screen instanceof AbstractContainerScreen)) {
+        if (!config.rmbTweak || !config.wheelTweak || !(mc.screen instanceof AbstractContainerScreen)) {
             return EventResult.pass();
         }
         
@@ -227,14 +218,15 @@ public class MouseTweaks {
     }
     
     private static void processSlot(Minecraft mc, Slot slot, AbstractContainerScreen<?> screen) {
+        CatalystConfig config = CatalystConfig.getInstance();
         boolean shiftDown = isShiftKeyDown(mc);
         
         if (dragButton == 0) {
-            if (lmbShiftDragMode) {
+            if (lmbShiftDragMode && config.lmbTweakWithoutItem) {
                 if (shiftDown && !slot.getItem().isEmpty()) {
                     performShiftClick(mc, slot);
                 }
-            } else if (!lmbDragItem.isEmpty()) {
+            } else if (!lmbDragItem.isEmpty() && config.lmbTweakWithItem) {
                 ItemStack slotItem = slot.getItem();
                 if (!slotItem.isEmpty() && ItemStack.isSameItemSameTags(lmbDragItem, slotItem)) {
                     if (shiftDown) {
