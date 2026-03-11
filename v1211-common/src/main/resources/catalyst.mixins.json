@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "org.alku.catalyst.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+    "LightTextureMixin",
+    "ChamsMixin",
+    "WaypointRenderMixin",
+    "ContainerScreenMixin"
+  ],
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

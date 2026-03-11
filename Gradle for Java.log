@@ -1,0 +1,363 @@
+[info] [gradle-server] Gradle Server started, listening on 13713
+[info] Gradle client connected to server
+[info] Java Home: C:\Users\Administrator\.trae-cn\extensions\redhat.java-1.54.2026031008-win32-x64\jre\21.0.10-win32-x86_64
+[info] JVM Args: -Xmx2G,-Dfile.encoding=UTF-8,-Duser.country=CN,-Duser.language=zh,-Duser.variant
+[info] Gradle User Home: C:\Users\Administrator\.gradle
+[info] Gradle Version: 8.12.1
+[info] > Configure project :
+Architect Plugin: 3.4.162
+Architectury Loom: 1.9.436
+You are using an outdated version of Architectury Loom! This version will not receive any support, please consider updating!
+
+[Incubating] Problems report is available at: file:///E:/%E4%BB%A3%E7%A0%81/MC%E6%A8%A1%E7%BB%84/Catalyst/build/reports/problems/problems-report.html
+[error] FAILURE: Build failed with an exception.
+
+* What went wrong:
+A problem occurred configuring project ':versions'.
+> Failed to notify project evaluation listener.
+   > Failed to setup Minecraft, java.lang.IllegalArgumentException: Configuration 'minecraft' has no dependencies
+   > Failed to calculate the value of extension 'loom' property 'minecraftJarConfiguration'.
+      > Cannot get MinecraftMetadataProvider before it has been setup
+   > Failed to calculate the value of extension 'loom' property 'minecraftJarConfiguration'.
+      > Cannot get MinecraftMetadataProvider before it has been setup
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.12.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+CONFIGURE FAILED in 22s
+[error] [gradle-server] The supplied build action failed with an exception.
+[error] Error getting build for e:\代码\MC模组\Catalyst: The supplied build action failed with an exception.
+[info] Found 0 tasks
+[info] Java Home: C:\Users\Administrator\.trae-cn\extensions\redhat.java-1.54.2026031008-win32-x64\jre\21.0.10-win32-x86_64
+[info] JVM Args: -Xmx2G,-Dfile.encoding=UTF-8,-Duser.country=CN,-Duser.language=zh,-Duser.variant
+[info] Gradle User Home: C:\Users\Administrator\.gradle
+[info] Gradle Version: 8.12.1
+[info] > Configure project :
+Architect Plugin: 3.4.162
+Architectury Loom: 1.9.436
+You are using an outdated version of Architectury Loom! This version will not receive any support, please consider updating!
+
+> Configure project :versions
+Previous process has disowned the lock due to abrupt termination.
+Found existing cache lock file (ACQUIRED_PREVIOUS_OWNER_DISOWNED), rebuilding loom cache. This may have been caused by a failed or canceled build.
+
+[Incubating] Problems report is available at: file:///E:/%E4%BB%A3%E7%A0%81/MC%E6%A8%A1%E7%BB%84/Catalyst/build/reports/problems/problems-report.html
+[error] FAILURE: Build failed with an exception.
+
+* What went wrong:
+A problem occurred configuring project ':versions'.
+> Failed to notify project evaluation listener.
+   > Failed to setup Minecraft, java.lang.IllegalArgumentException: Configuration 'minecraft' has no dependencies
+   > Failed to calculate the value of extension 'loom' property 'minecraftJarConfiguration'.
+      > Cannot get MinecraftMetadataProvider before it has been setup
+   > Failed to calculate the value of extension 'loom' property 'minecraftJarConfiguration'.
+      > Cannot get MinecraftMetadataProvider before it has been setup
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.12.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+CONFIGURE FAILED in 1s
+[error] [gradle-server] The supplied build action failed with an exception.
+[error] Error getting build for e:\代码\MC模组\Catalyst: The supplied build action failed with an exception.
+[info] Java Home: C:\Users\Administrator\.trae-cn\extensions\redhat.java-1.54.2026031008-win32-x64\jre\21.0.10-win32-x86_64
+[info] JVM Args: -Xmx2G,-Dfile.encoding=UTF-8,-Duser.country=CN,-Duser.language=zh,-Duser.variant
+[info] Gradle User Home: C:\Users\Administrator\.gradle
+[info] Gradle Version: 8.12.1
+[info] > Configure project :
+Architect Plugin: 3.4.162
+Architectury Loom: 1.9.436
+You are using an outdated version of Architectury Loom! This version will not receive any support, please consider updating!
+
+[Incubating] Problems report is available at: file:///E:/%E4%BB%A3%E7%A0%81/MC%E6%A8%A1%E7%BB%84/Catalyst/build/reports/problems/problems-report.html
+[error] FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'E:\代码\MC模组\Catalyst\v1201-common\build.gradle' line: 2
+
+* What went wrong:
+A problem occurred evaluating project ':v1201-common'.
+> Could not get unknown property 'enabled_platforms' for extension 'architectury' of type dev.architectury.plugin.ArchitectPluginExtension.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.12.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+CONFIGURE FAILED in 1s
+[error] [gradle-server] The supplied build action failed with an exception.
+[error] Error getting build for e:\代码\MC模组\Catalyst: The supplied build action failed with an exception.
+[info] Found 0 tasks
+[info] Java Home: C:\Users\Administrator\.trae-cn\extensions\redhat.java-1.54.2026031008-win32-x64\jre\21.0.10-win32-x86_64
+[info] JVM Args: -Xmx2G,-Dfile.encoding=UTF-8,-Duser.country=CN,-Duser.language=zh,-Duser.variant
+[info] Gradle User Home: C:\Users\Administrator\.gradle
+[info] Gradle Version: 8.12.1
+[info] > Configure project :
+Architect Plugin: 3.4.162
+Architectury Loom: 1.9.436
+You are using an outdated version of Architectury Loom! This version will not receive any support, please consider updating!
+
+[Incubating] Problems report is available at: file:///E:/%E4%BB%A3%E7%A0%81/MC%E6%A8%A1%E7%BB%84/Catalyst/build/reports/problems/problems-report.html
+[error] FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'E:\代码\MC模组\Catalyst\v1201-fabric\build.gradle' line: 25
+
+* What went wrong:
+A problem occurred evaluating project ':v1201-fabric'.
+> Could not get unknown property 'minecraft_version' for object of type org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.12.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+CONFIGURE FAILED in 2s
+[error] [gradle-server] The supplied build action failed with an exception.
+[error] Error getting build for e:\代码\MC模组\Catalyst: The supplied build action failed with an exception.
+[info] Found 0 tasks
+[info] Java Home: C:\Users\Administrator\.trae-cn\extensions\redhat.java-1.54.2026031008-win32-x64\jre\21.0.10-win32-x86_64
+[info] JVM Args: -Xmx2G,-Dfile.encoding=UTF-8,-Duser.country=CN,-Duser.language=zh,-Duser.variant
+[info] Gradle User Home: C:\Users\Administrator\.gradle
+[info] Gradle Version: 8.12.1
+[info] > Configure project :
+Architect Plugin: 3.4.162
+Architectury Loom: 1.9.436
+You are using an outdated version of Architectury Loom! This version will not receive any support, please consider updating!
+
+[Incubating] Problems report is available at: file:///E:/%E4%BB%A3%E7%A0%81/MC%E6%A8%A1%E7%BB%84/Catalyst/build/reports/problems/problems-report.html
+[error] FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'E:\代码\MC模组\Catalyst\v1201-fabric\build.gradle' line: 25
+
+* What went wrong:
+A problem occurred evaluating project ':v1201-fabric'.
+> Could not get unknown property 'minecraft_version' for object of type org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.12.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+CONFIGURE FAILED in 396ms
+[error] Error getting build for e:\代码\MC模组\Catalyst: The supplied build action failed with an exception.
+[info] Found 0 tasks
+[error] [gradle-server] The supplied build action failed with an exception.
+[info] Java Home: C:\Users\Administrator\.trae-cn\extensions\redhat.java-1.54.2026031008-win32-x64\jre\21.0.10-win32-x86_64
+[info] JVM Args: -Xmx2G,-Dfile.encoding=UTF-8,-Duser.country=CN,-Duser.language=zh,-Duser.variant
+[info] Gradle User Home: C:\Users\Administrator\.gradle
+[info] Gradle Version: 8.12.1
+[info] > Configure project :
+Architect Plugin: 3.4.162
+Architectury Loom: 1.9.436
+You are using an outdated version of Architectury Loom! This version will not receive any support, please consider updating!
+
+[Incubating] Problems report is available at: file:///E:/%E4%BB%A3%E7%A0%81/MC%E6%A8%A1%E7%BB%84/Catalyst/build/reports/problems/problems-report.html
+[error] FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'E:\代码\MC模组\Catalyst\build.gradle' line: 29
+
+* What went wrong:
+A problem occurred configuring project ':v1201-fabric'.
+> Could not create task ':v1201-fabric:compileJava'.
+   > Could not get unknown property 'java_version' for task ':v1201-fabric:compileJava' of type org.gradle.api.tasks.compile.JavaCompile.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.12.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+CONFIGURE FAILED in 12s
+[error] [gradle-server] The supplied build action failed with an exception.
+[error] Error getting build for e:\代码\MC模组\Catalyst: The supplied build action failed with an exception.
+[info] Found 0 tasks
+[info] Java Home: C:\Users\Administrator\.trae-cn\extensions\redhat.java-1.54.2026031008-win32-x64\jre\21.0.10-win32-x86_64
+[info] JVM Args: -Xmx2G,-Dfile.encoding=UTF-8,-Duser.country=CN,-Duser.language=zh,-Duser.variant
+[info] Gradle User Home: C:\Users\Administrator\.gradle
+[info] Gradle Version: 8.12.1
+[info] > Configure project :
+Architect Plugin: 3.4.162
+Architectury Loom: 1.9.436
+You are using an outdated version of Architectury Loom! This version will not receive any support, please consider updating!
+
+[Incubating] Problems report is available at: file:///E:/%E4%BB%A3%E7%A0%81/MC%E6%A8%A1%E7%BB%84/Catalyst/build/reports/problems/problems-report.html
+[error] FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'E:\代码\MC模组\Catalyst\v1201-forge\build.gradle' line: 6
+
+* What went wrong:
+A problem occurred evaluating project ':v1201-forge'.
+> Loom is not running on Forge.
+  You can switch to it by adding 'loom.platform = forge' to your gradle.properties
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.12.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+CONFIGURE FAILED in 1s
+[error] Error getting build for e:\代码\MC模组\Catalyst: The supplied build action failed with an exception.
+[info] Found 0 tasks
+[error] [gradle-server] The supplied build action failed with an exception.
+[info] Java Home: C:\Users\Administrator\.trae-cn\extensions\redhat.java-1.54.2026031008-win32-x64\jre\21.0.10-win32-x86_64
+[info] JVM Args: -Xmx2G,-Dfile.encoding=UTF-8,-Duser.country=CN,-Duser.language=zh,-Duser.variant
+[info] Gradle User Home: C:\Users\Administrator\.gradle
+[info] Gradle Version: 8.12.1
+[info] > Configure project :
+Architect Plugin: 3.4.162
+Architectury Loom: 1.9.436
+You are using an outdated version of Architectury Loom! This version will not receive any support, please consider updating!
+
+[Incubating] Problems report is available at: file:///E:/%E4%BB%A3%E7%A0%81/MC%E6%A8%A1%E7%BB%84/Catalyst/build/reports/problems/problems-report.html
+[error] FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'E:\代码\MC模组\Catalyst\v1201-forge\build.gradle' line: 6
+
+* What went wrong:
+A problem occurred evaluating project ':v1201-forge'.
+> Loom is not running on Forge.
+  You can switch to it by adding 'loom.platform = forge' to your gradle.properties
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.12.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+CONFIGURE FAILED in 743ms
+[error] Error getting build for e:\代码\MC模组\Catalyst: The supplied build action failed with an exception.
+[info] Found 0 tasks
+[error] [gradle-server] The supplied build action failed with an exception.
+[info] Java Home: C:\Users\Administrator\.trae-cn\extensions\redhat.java-1.54.2026031008-win32-x64\jre\21.0.10-win32-x86_64
+[info] JVM Args: -Xmx2G,-Dfile.encoding=UTF-8,-Duser.country=CN,-Duser.language=zh,-Duser.variant
+[info] Gradle User Home: C:\Users\Administrator\.gradle
+[info] Gradle Version: 8.12.1
+[info] > Configure project :
+Architect Plugin: 3.4.162
+Architectury Loom: 1.9.436
+You are using an outdated version of Architectury Loom! This version will not receive any support, please consider updating!
+
+[Incubating] Problems report is available at: file:///E:/%E4%BB%A3%E7%A0%81/MC%E6%A8%A1%E7%BB%84/Catalyst/build/reports/problems/problems-report.html
+[error] FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'E:\代码\MC模组\Catalyst\build.gradle' line: 13
+
+* What went wrong:
+A problem occurred evaluating root project 'catalyst'.
+> Failed to apply plugin 'dev.architectury.loom'.
+   > No enum constant net.fabricmc.loom.util.ModPlatform.COMMON
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.12.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+CONFIGURE FAILED in 312ms
+[error] Error getting build for e:\代码\MC模组\Catalyst: The supplied build action failed with an exception.
+[info] Found 0 tasks
+[error] [gradle-server] The supplied build action failed with an exception.
+[info] Java Home: C:\Users\Administrator\.trae-cn\extensions\redhat.java-1.54.2026031008-win32-x64\jre\21.0.10-win32-x86_64
+[info] JVM Args: -Xmx2G,-Dfile.encoding=UTF-8,-Duser.country=CN,-Duser.language=zh,-Duser.variant
+[info] Gradle User Home: C:\Users\Administrator\.gradle
+[info] Gradle Version: 8.12.1
+[info] > Configure project :v1201-common
+Architectury Loom: 1.9.436
+You are using an outdated version of Architectury Loom! This version will not receive any support, please consider updating!
+Architect Plugin: 3.4.162
+
+[Incubating] Problems report is available at: file:///E:/%E4%BB%A3%E7%A0%81/MC%E6%A8%A1%E7%BB%84/Catalyst/build/reports/problems/problems-report.html
+[error] FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'E:\代码\MC模组\Catalyst\v1201-common\build.gradle' line: 28
+
+* What went wrong:
+A problem occurred evaluating project ':v1201-common'.
+> Could not find method publishing() for arguments [build_9owfmintgb6jaxt1i7m9c9mpk$_run_closure5@7a62782] on project ':v1201-common' of type org.gradle.api.Project.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.12.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+CONFIGURE FAILED in 447ms
+[error] Error getting build for e:\代码\MC模组\Catalyst: The supplied build action failed with an exception.
+[info] Found 0 tasks
+[error] [gradle-server] The supplied build action failed with an exception.

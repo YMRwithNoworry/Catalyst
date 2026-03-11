@@ -1,11 +1,7 @@
 plugins {
     id 'dev.architectury.loom' version '1.9-SNAPSHOT' apply false
-    id 'architectury-plugin' version '3.4-SNAPSHOT'
+    id 'architectury-plugin' version '3.4-SNAPSHOT' apply false
     id 'com.github.johnrengelman.shadow' version '8.1.1' apply false
-}
-
-architectury {
-    minecraft = project.minecraft_version
 }
 
 allprojects {
@@ -13,58 +9,80 @@ allprojects {
     version = rootProject.mod_version
 }
 
-subprojects {
-    apply plugin: 'dev.architectury.loom'
-    apply plugin: 'architectury-plugin'
-    apply plugin: 'maven-publish'
+tasks.register('build1201Fabric', DefaultTask) {
+    group = 'catalyst build'
+    description = 'Build 1.20.1 Fabric version'
+    dependsOn ':v1201-fabric:build'
+}
 
-    base {
-        // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
-        archivesName = "$rootProject.archives_name-$project.name"
-    }
+tasks.register('build1201Forge', DefaultTask) {
+    group = 'catalyst build'
+    description = 'Build 1.20.1 Forge version'
+    dependsOn ':v1201-forge:build'
+}
 
-    repositories {
-        // Add repositories to retrieve artifacts from in here.
-        // You should only use this when depending on other mods because
-        // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-        // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-        // for more information about repositories.
-    }
+tasks.register('build1211Fabric', DefaultTask) {
+    group = 'catalyst build'
+    description = 'Build 1.21.1 Fabric version'
+    dependsOn ':v1211-fabric:build'
+}
 
-    dependencies {
-        minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
-        mappings loom.officialMojangMappings()
-    }
+tasks.register('build1211NeoForge', DefaultTask) {
+    group = 'catalyst build'
+    description = 'Build 1.21.1 NeoForge version'
+    dependsOn ':v1211-neoforge:build'
+}
 
-    java {
-        // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-        // if it is present.
-        // If you remove this line, sources will not be generated.
-        withSourcesJar()
+tasks.register('buildAll1201', DefaultTask) {
+    group = 'catalyst build'
+    description = 'Build all 1.20.1 versions'
+    dependsOn ':v1201-fabric:build', ':v1201-forge:build'
+}
 
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
+tasks.register('buildAll1211', DefaultTask) {
+    group = 'catalyst build'
+    description = 'Build all 1.21.1 versions'
+    dependsOn ':v1211-fabric:build', ':v1211-neoforge:build'
+}
 
-    tasks.withType(JavaCompile).configureEach {
-        it.options.release = 17
-    }
+tasks.register('buildAll', DefaultTask) {
+    group = 'catalyst build'
+    description = 'Build all versions'
+    dependsOn ':v1201-fabric:build', ':v1201-forge:build', 
+              ':v1211-fabric:build', ':v1211-neoforge:build'
+}
 
-    // Configure Maven publishing.
-    publishing {
-        publications {
-            mavenJava(MavenPublication) {
-                artifactId = base.archivesName.get()
-                from components.java
-            }
-        }
+tasks.register('cleanAll', Delete) {
+    group = 'catalyst build'
+    description = 'Clean all build outputs'
+    delete fileTree('v1201-common/build'),
+           fileTree('v1201-fabric/build'),
+           fileTree('v1201-forge/build'),
+           fileTree('v1211-common/build'),
+           fileTree('v1211-fabric/build'),
+           fileTree('v1211-neoforge/build')
+}
 
-        // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-        repositories {
-            // Add repositories to publish to here.
-            // Notice: This block does NOT have the same function as the block in the top level.
-            // The repositories here will be used for publishing your artifact, not for
-            // retrieving dependencies.
-        }
-    }
+tasks.register('run1201Fabric', DefaultTask) {
+    group = 'catalyst run'
+    description = 'Run 1.20.1 Fabric client'
+    dependsOn ':v1201-fabric:runClient'
+}
+
+tasks.register('run1201Forge', DefaultTask) {
+    group = 'catalyst run'
+    description = 'Run 1.20.1 Forge client'
+    dependsOn ':v1201-forge:runClient'
+}
+
+tasks.register('run1211Fabric', DefaultTask) {
+    group = 'catalyst run'
+    description = 'Run 1.21.1 Fabric client'
+    dependsOn ':v1211-fabric:runClient'
+}
+
+tasks.register('run1211NeoForge', DefaultTask) {
+    group = 'catalyst run'
+    description = 'Run 1.21.1 NeoForge client'
+    dependsOn ':v1211-neoforge:runClient'
 }

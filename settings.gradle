@@ -3,12 +3,17 @@ pluginManagement {
         maven { url "https://maven.fabricmc.net/" }
         maven { url "https://maven.architectury.dev/" }
         maven { url "https://files.minecraftforge.net/maven/" }
+        maven { url "https://maven.neoforged.net/releases/" }
         gradlePluginPortal()
     }
 }
 
 rootProject.name = 'catalyst'
 
-include 'common'
-include 'fabric'
-include 'forge'
+include 'v1201-common'
+include 'v1201-fabric'
+include 'v1201-forge'
+
+include 'v1211-common'
+include 'v1211-fabric'
+include 'v1211-neoforge'

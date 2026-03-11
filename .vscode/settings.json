@@ -1,4 +1,6 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
-    "domyh-auto-accept.enabled": true
+    "domyh-auto-accept.enabled": true,
+    "java.dependency.syncWithFolderExplorer": false,
+    "java.search.scope": "all"
 }

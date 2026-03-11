@@ -1,0 +1,35 @@
+plugins {
+    id 'dev.architectury.loom'
+    id 'architectury-plugin'
+    id 'maven-publish'
+}
+
+architectury {
+    common enabled_platforms_1211.split(',')
+}
+
+dependencies {
+    minecraft "net.minecraft:minecraft:$minecraft_version_1211"
+    mappings loom.officialMojangMappings()
+    
+    modImplementation "net.fabricmc:fabric-loader:$fabric_loader_version_1211"
+    modImplementation "dev.architectury:architectury:$architectury_api_version_1211"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = Integer.parseInt(java_version_1211)
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion(java_version_1211)
+    targetCompatibility = JavaVersion.toVersion(java_version_1211)
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}

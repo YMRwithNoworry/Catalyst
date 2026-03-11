@@ -1,0 +1,76 @@
+plugins {
+    id 'dev.architectury.loom'
+    id 'architectury-plugin'
+    id 'com.github.johnrengelman.shadow'
+    id 'maven-publish'
+}
+
+architectury {
+    platformSetupLoomIde()
+    forge()
+}
+
+loom {
+    forge {
+        mixinConfig "catalyst.mixins.json"
+    }
+}
+
+configurations {
+    common {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentForge.extendsFrom common
+    shadowBundle {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+}
+
+dependencies {
+    minecraft "net.minecraft:minecraft:$minecraft_version_1201"
+    mappings loom.officialMojangMappings()
+    
+    forge "net.minecraftforge:forge:$forge_version_1201"
+    modImplementation "dev.architectury:architectury-forge:$architectury_api_version_1201"
+    
+    common(project(path: ':v1201-common', configuration: 'namedElements')) { transitive false }
+    shadowBundle project(path: ':v1201-common', configuration: 'transformProductionForge')
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/mods.toml') {
+        expand version: project.version
+    }
+}
+
+shadowJar {
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = 'dev-shadow'
+}
+
+remapJar {
+    input.set shadowJar.archiveFile
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = Integer.parseInt(java_version_1201)
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion(java_version_1201)
+    targetCompatibility = JavaVersion.toVersion(java_version_1201)
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}

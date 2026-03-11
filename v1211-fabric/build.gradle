@@ -1,0 +1,71 @@
+plugins {
+    id 'dev.architectury.loom'
+    id 'architectury-plugin'
+    id 'com.github.johnrengelman.shadow'
+    id 'maven-publish'
+}
+
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+configurations {
+    common {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentFabric.extendsFrom common
+    shadowBundle {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+}
+
+dependencies {
+    minecraft "net.minecraft:minecraft:$minecraft_version_1211"
+    mappings loom.officialMojangMappings()
+    
+    modImplementation "net.fabricmc:fabric-loader:$fabric_loader_version_1211"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_api_version_1211"
+    modImplementation "dev.architectury:architectury-fabric:$architectury_api_version_1211"
+    
+    common(project(path: ':v1211-common', configuration: 'namedElements')) { transitive false }
+    shadowBundle project(path: ':v1211-common', configuration: 'transformProductionFabric')
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand version: project.version
+    }
+}
+
+shadowJar {
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = 'dev-shadow'
+}
+
+remapJar {
+    input.set shadowJar.archiveFile
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = Integer.parseInt(java_version_1211)
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion(java_version_1211)
+    targetCompatibility = JavaVersion.toVersion(java_version_1211)
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}

@@ -1,0 +1,76 @@
+plugins {
+    id 'dev.architectury.loom'
+    id 'architectury-plugin'
+    id 'com.github.johnrengelman.shadow'
+    id 'maven-publish'
+}
+
+architectury {
+    platformSetupLoomIde()
+    neoForge()
+}
+
+loom {
+    neoForge {
+        mixinConfig "catalyst.mixins.json"
+    }
+}
+
+configurations {
+    common {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentNeoForge.extendsFrom common
+    shadowBundle {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+}
+
+dependencies {
+    minecraft "net.minecraft:minecraft:$minecraft_version_1211"
+    mappings loom.officialMojangMappings()
+    
+    neoForge "net.neoforged:neoforge:$neoforge_version_1211"
+    modImplementation "dev.architectury:architectury-neoforge:$architectury_api_version_1211"
+    
+    common(project(path: ':v1211-common', configuration: 'namedElements')) { transitive false }
+    shadowBundle project(path: ':v1211-common', configuration: 'transformProductionNeoForge')
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand version: project.version
+    }
+}
+
+shadowJar {
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = 'dev-shadow'
+}
+
+remapJar {
+    input.set shadowJar.archiveFile
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = Integer.parseInt(java_version_1211)
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion(java_version_1211)
+    targetCompatibility = JavaVersion.toVersion(java_version_1211)
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
