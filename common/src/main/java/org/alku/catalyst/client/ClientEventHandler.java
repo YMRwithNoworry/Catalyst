@@ -22,15 +22,27 @@ public class ClientEventHandler {
         
         ClientTickEvent.CLIENT_PRE.register(ClientEventHandler::onClientTick);
         ClientRawInputEvent.MOUSE_CLICKED_PRE.register(ClientEventHandler::onMouseClicked);
+        ClientRawInputEvent.MOUSE_SCROLLED.register(ClientEventHandler::onMouseScrolled);
     }
     
     private static EventResult onMouseClicked(Minecraft mc, int button, int action, int mods) {
+        EventResult mouseTweaksResult = MouseTweaks.onMouseClicked(mc, button, action, mods);
+        if (mouseTweaksResult == EventResult.interruptDefault()) {
+            return mouseTweaksResult;
+        }
+        
         if (button == 0 && action == 1) {
             AutoWeapon.checkAndSwitch(mc);
             AutoTool.checkAndSwitch(mc);
         }
         return EventResult.pass();
     }
+    
+    private static EventResult onMouseScrolled(Minecraft mc, double amount) {
+        return MouseTweaks.onMouseScrolled(mc, amount);
+    }
+    
+
     
     private static void onClientTick(Minecraft mc) {
         handleKeyInputs(mc);
@@ -42,6 +54,8 @@ public class ClientEventHandler {
         AutoWeapon.tick(mc);
         AutoDoor.tick(mc);
         AutoWaterBucket.tick(mc);
+        InventorySorter.tick(mc);
+        MouseTweaks.tick(mc);
     }
     
     private static void handleKeyInputs(Minecraft mc) {

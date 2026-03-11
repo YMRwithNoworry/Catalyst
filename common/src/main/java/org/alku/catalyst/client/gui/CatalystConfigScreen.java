@@ -82,6 +82,7 @@ public class CatalystConfigScreen extends Screen {
             "Tools", this);
         toolsPanel.addModule("auto_tool", "toggle_auto_tool", true);
         toolsPanel.addModule("inventory_sorter", "sort_inventory", true);
+        toolsPanel.addModule("mouse_gestures", "toggle_mouse_gestures", true);
         panels.add(toolsPanel);
     }
     
@@ -138,6 +139,8 @@ public class CatalystConfigScreen extends Screen {
                     return true;
                 }
             }
+            
+
         }
         return super.mouseClicked(mouseX, mouseY, button);
     }
@@ -155,6 +158,8 @@ public class CatalystConfigScreen extends Screen {
                 sliderButtonIndex = -1;
                 return true;
             }
+            
+
         }
         return super.mouseReleased(mouseX, mouseY, button);
     }
@@ -175,6 +180,8 @@ public class CatalystConfigScreen extends Screen {
                     }
                 }
             }
+            
+
         }
         
         if (draggingPanel != null && button == 0) {
@@ -351,6 +358,9 @@ public class CatalystConfigScreen extends Screen {
             }
             if (featureKey.equals("inventory_sorter")) {
                 return 90;
+            }
+            if (featureKey.equals("mouse_gestures")) {
+                return 100;
             }
             return 0;
         }
@@ -530,6 +540,53 @@ public class CatalystConfigScreen extends Screen {
                     graphics.drawCenteredString(panel.getParentScreen().minecraft.font, modes[i], btnX + modeBtnWidth / 2, modeBtnY + 4, 0xFFFFFFFF);
                 }
             }
+            
+            if (isExpanded && featureKey.equals("mouse_gestures")) {
+                int configY = y + BUTTON_HEIGHT;
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 100, CatalystConfigScreen.COLOR_BG_CONFIG);
+                
+                String onText = Component.translatable("catalyst.gui.on").getString();
+                String offText = Component.translatable("catalyst.gui.off").getString();
+                
+                String rmbText = Component.translatable("catalyst.gui.rmb_tweak").getString() + ": " + (config.rmbTweak ? onText : offText);
+                int rmbColor = config.rmbTweak ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, rmbText, x + 8, configY + 6, rmbColor);
+                
+                String lmbWithItemText = Component.translatable("catalyst.gui.lmb_tweak_with_item").getString() + ": " + (config.lmbTweakWithItem ? onText : offText);
+                int lmbWithItemColor = config.lmbTweakWithItem ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, lmbWithItemText, x + 8, configY + 20, lmbWithItemColor);
+                
+                String lmbNoItemText = Component.translatable("catalyst.gui.lmb_tweak_without_item").getString() + ": " + (config.lmbTweakWithoutItem ? onText : offText);
+                int lmbNoItemColor = config.lmbTweakWithoutItem ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, lmbNoItemText, x + 8, configY + 34, lmbNoItemColor);
+                
+                String wheelText = Component.translatable("catalyst.gui.wheel_tweak").getString() + ": " + (config.wheelTweak ? onText : offText);
+                int wheelColor = config.wheelTweak ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, wheelText, x + 8, configY + 48, wheelColor);
+                
+                String[] directions = {
+                    Component.translatable("catalyst.gui.scroll_normal").getString(),
+                    Component.translatable("catalyst.gui.scroll_inverted").getString(),
+                    Component.translatable("catalyst.gui.scroll_inventory").getString()
+                };
+                String dirText = Component.translatable("catalyst.gui.scroll_direction", directions[config.wheelScrollDirection]).getString();
+                graphics.drawString(panel.getParentScreen().minecraft.font, dirText, x + 8, configY + 62, 0xFFCCCCCC);
+                
+                int dirBtnX = x + 8;
+                int dirBtnY = configY + 76;
+                int dirBtnWidth = (PANEL_WIDTH - 20) / 3;
+                for (int i = 0; i < 3; i++) {
+                    int btnX = dirBtnX + i * (dirBtnWidth + 4);
+                    boolean isSelected = (config.wheelScrollDirection == i);
+                    int btnColor = isSelected ? 0xFF44AA44 : 0xFF333333;
+                    int borderColor = isSelected ? 0xFF55FF55 : 0xFF555555;
+                    
+                    graphics.fill(btnX - 1, dirBtnY - 1, btnX + dirBtnWidth + 1, dirBtnY + 18, borderColor);
+                    graphics.fill(btnX, dirBtnY, btnX + dirBtnWidth, dirBtnY + 17, btnColor);
+                    
+                    graphics.drawCenteredString(panel.getParentScreen().minecraft.font, directions[i], btnX + dirBtnWidth / 2, dirBtnY + 4, 0xFFFFFFFF);
+                }
+            }
         }
         
         private boolean getEnabledState(CatalystConfig config) {
@@ -542,6 +599,7 @@ public class CatalystConfigScreen extends Screen {
             if (featureKey.equals("auto_water_bucket")) return config.autoWaterBucketEnabled;
             if (featureKey.equals("chams")) return config.chamsEnabled;
             if (featureKey.equals("inventory_sorter")) return config.inventorySorterEnabled;
+            if (featureKey.equals("mouse_gestures")) return config.rmbTweak;
             return false;
         }
         
@@ -704,6 +762,49 @@ public class CatalystConfigScreen extends Screen {
                         }
                     }
                 }
+                
+                if (featureKey.equals("mouse_gestures") && panel.getExpandedButton() >= 0) {
+                    int configY = buttonY + BUTTON_HEIGHT;
+                    
+                    if (mouseY >= configY + 4 && mouseY <= configY + 16) {
+                        CatalystConfig.getInstance().rmbTweak = !CatalystConfig.getInstance().rmbTweak;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    if (mouseY >= configY + 18 && mouseY <= configY + 30) {
+                        CatalystConfig.getInstance().lmbTweakWithItem = !CatalystConfig.getInstance().lmbTweakWithItem;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    if (mouseY >= configY + 32 && mouseY <= configY + 44) {
+                        CatalystConfig.getInstance().lmbTweakWithoutItem = !CatalystConfig.getInstance().lmbTweakWithoutItem;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    if (mouseY >= configY + 46 && mouseY <= configY + 58) {
+                        CatalystConfig.getInstance().wheelTweak = !CatalystConfig.getInstance().wheelTweak;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    int dirBtnX = panel.getX() + 8;
+                    int dirBtnY = configY + 76;
+                    int dirBtnWidth = (PANEL_WIDTH - 20) / 3;
+                    
+                    if (mouseY >= dirBtnY - 1 && mouseY <= dirBtnY + 18) {
+                        for (int i = 0; i < 3; i++) {
+                            int btnX = dirBtnX + i * (dirBtnWidth + 4);
+                            if (mouseX >= btnX - 1 && mouseX <= btnX + dirBtnWidth + 1) {
+                                CatalystConfig.getInstance().wheelScrollDirection = i;
+                                CatalystConfig.getInstance().save();
+                                return true;
+                            }
+                        }
+                    }
+                }
             } else if (button == 1 && hasConfig) {
                 int myIndex = -1;
                 for (int i = 0; i < panel.buttons.size(); i++) {
@@ -734,6 +835,7 @@ public class CatalystConfigScreen extends Screen {
             else if (featureKey.equals("auto_water_bucket")) config.autoWaterBucketEnabled = !config.autoWaterBucketEnabled;
             else if (featureKey.equals("chams")) config.chamsEnabled = !config.chamsEnabled;
             else if (featureKey.equals("inventory_sorter")) config.inventorySorterEnabled = !config.inventorySorterEnabled;
+            else if (featureKey.equals("mouse_gestures")) config.rmbTweak = !config.rmbTweak;
             
             config.save();
         }

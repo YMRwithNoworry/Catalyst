@@ -4,15 +4,15 @@
 [Architectury Transformer DEBUG] ============================
 [Architectury Transformer DEBUG] 
 [Architectury Transformer DEBUG] Transforming 5 transformer(s) from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionFabric.jar: 
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapMixinVariables@10e0c246
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@689da149
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@4b86e99c
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapMixinVariables@4740b13f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@36068dd1
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@68d9ac1c
 [Architectury Transformer DEBUG]  - AddRefmapName(enabled=() -> kotlin.Boolean)
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@216784fb
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@1587ce8f
 [Architectury Transformer DEBUG] Transforming from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionFabric.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
 [Architectury Transformer DEBUG] Reading mixin mappings file: E:\代码\MC模组\Catalyst\common\build\loom-cache\mixin-map-loom.mappings.1_20_1.layered+hash.40545-v2.main.tiny
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.shadowed.impl.dev.architectury.tinyremapper.TinyUtils$$Lambda$3016/0x0000023681be3850@18789a57
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.shadowed.impl.dev.architectury.tinyremapper.TinyUtils$$Lambda$3175/0x0000027e90eb3488@52a82238
 [Architectury Transformer DEBUG] Provided 57 classpath jar(s):
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\dev.architectury\architectury-injectables\1.0.10\62db2a366d662606d1b23ad02ccc3212ed37ec3\architectury-injectables-1.0.10.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\net.fabricmc\fabric-loader\0.18.4\dc4682125d5db647d6ce80a98b98945835adcd4b\fabric-loader-0.18.4.jar
@@ -71,7 +71,7 @@
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\c7350a71920f3ae9142945e25fed4846cce53374\netty-transport-native-epoll-4.1.82.Final-linux-x86_64.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\476409d6255001ca53a55f65b01c13822f8dc93a\netty-transport-native-epoll-4.1.82.Final-linux-aarch_64.jar
 [Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\dev\architectury\architectury\9.2.14\architectury-9.2.14.jar
-[Architectury Transformer] Read classpath in 2.674 s
+[Architectury Transformer] Read classpath in 2.964 s
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/Catalyst with maxs=true frames=true
@@ -82,52 +82,58 @@
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/config/CatalystConfig with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/ClientEventHandler with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/CatalystKeys with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/waypoint/WaypointRenderer with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/waypoint/Waypoint with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/waypoint/WaypointManager with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/waypoint/Waypoint with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/waypoint/WaypointRenderer with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindManager with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/WaypointScreen with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/AddWaypointScreen with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/WaypointScreen$WaypointButton with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindManager with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindConfigScreen with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/WaypointScreen with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/WaypointDetailScreen with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoDoor with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSprint with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/GammaOverride with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoTool with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWeapon with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/MouseTweaks with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSprint with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoTool with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoDoor with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter$DisplayNameComparator with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/GammaOverride with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter$ItemKey with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter$IPNRuleComparator with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket$State with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSwim with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter$ItemIdComparator with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter$MergedItem with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket$1 with maxs=true frames=true
 [Architectury Transformer DEBUG] Checking whether /catalyst.mixins.json is a mixin config.
 [Architectury Transformer DEBUG] Checking whether /catalyst-common-common-refmap.json is a mixin config.
 [Architectury Transformer DEBUG] Found mixin config(s): /catalyst.mixins.json
 [Architectury Transformer DEBUG] Injecting catalyst-common-common-refmap.json to /catalyst.mixins.json
 [Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionFabric.jar
-[Architectury Transformer] Transformed jar with 5 transformer(s) in 3.512 s
+[Architectury Transformer] Transformed jar with 5 transformer(s) in 4.580 s
 [Architectury Transformer DEBUG] 
 [Architectury Transformer DEBUG] ============================
 [Architectury Transformer DEBUG] Transforming from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionForge.jar
 [Architectury Transformer DEBUG] ============================
 [Architectury Transformer DEBUG] 
 [Architectury Transformer DEBUG] Transforming 7 transformer(s) from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionForge.jar: 
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@5fc3e410
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@65c6f38e
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@3bf7ded
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@5ea60ca6
 [Architectury Transformer DEBUG]  - AddRefmapName(enabled=() -> kotlin.Boolean)
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@e8201c8
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeAnnotations@7876f973
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment@1a57b7d9
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.FixForgeMixin@210ab8d8
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@fc815b4
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeAnnotations@65d0a44b
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment@ed14697
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.FixForgeMixin@33aa4ad5
 [Architectury Transformer DEBUG] Transforming from E:\代码\MC模组\Catalyst\common\build\devlibs\catalyst-common-1.0-SNAPSHOT-dev.jar to E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionForge.jar with 7 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
 [Architectury Transformer DEBUG] Reading mixin mappings file: E:\代码\MC模组\Catalyst\common\build\loom-cache\mixin-map-loom.mappings.1_20_1.layered+hash.40545-v2.main.tiny
 [Architectury Transformer DEBUG] Remapping with 2 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$3420/0x0000023681f4a1b8@159908f9
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$3421/0x0000023681f4a3e0@2838d32b
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$3321/0x0000027e90cac7e8@3a13e9f2
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$3322/0x0000027e90caca10@2f5ffec8
 [Architectury Transformer DEBUG] Provided 57 classpath jar(s):
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\dev.architectury\architectury-injectables\1.0.10\62db2a366d662606d1b23ad02ccc3212ed37ec3\architectury-injectables-1.0.10.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\net.fabricmc\fabric-loader\0.18.4\dc4682125d5db647d6ce80a98b98945835adcd4b\fabric-loader-0.18.4.jar
@@ -186,7 +192,7 @@
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\c7350a71920f3ae9142945e25fed4846cce53374\netty-transport-native-epoll-4.1.82.Final-linux-x86_64.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\476409d6255001ca53a55f65b01c13822f8dc93a\netty-transport-native-epoll-4.1.82.Final-linux-aarch_64.jar
 [Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\dev\architectury\architectury\9.2.14\architectury-9.2.14.jar
-[Architectury Transformer] Read classpath in 1.297 s
+[Architectury Transformer] Read classpath in 2.350 s
 [Architectury Transformer DEBUG] Remap mixin field org/alku/catalyst/mixin/ContainerScreenMixin#leftPos:I -> f_97735_
 [Architectury Transformer DEBUG] Remap mixin field org/alku/catalyst/mixin/ContainerScreenMixin#topPos:I -> f_97736_
 [Architectury Transformer DEBUG] Remap mixin field org/alku/catalyst/mixin/ContainerScreenMixin#menu:Lnet/minecraft/world/inventory/AbstractContainerMenu; -> f_97732_
@@ -205,8 +211,8 @@
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/mixin/LightTextureMixin with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/mixin/WaypointRenderMixin with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/config/CatalystConfig with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/CatalystKeys with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/ClientEventHandler with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/CatalystKeys with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/waypoint/WaypointManager with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/waypoint/Waypoint with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/waypoint/WaypointRenderer with maxs=true frames=true
@@ -214,20 +220,26 @@
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/AddWaypointScreen with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/WaypointScreen$WaypointButton with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindManager with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/KeybindConfigScreen with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModuleButton with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/WaypointScreen with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen$ModulePanel with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/WaypointDetailScreen with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket$State with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSprint with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/MouseTweaks with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoDoor with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter$DisplayNameComparator with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/GammaOverride with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoTool with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWeapon with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter$ItemKey with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket$State with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter$IPNRuleComparator with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter$MergedItem with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSwim with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter$ItemIdComparator with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket$1 with maxs=true frames=true
 [Architectury Transformer DEBUG] Checking whether /catalyst.mixins.json is a mixin config.
 [Architectury Transformer DEBUG] Checking whether /catalyst-common-common-refmap.json is a mixin config.
@@ -238,18 +250,18 @@
 [Architectury Transformer DEBUG] Found mixin config(s): catalyst.mixins.json
 [Architectury Transformer DEBUG] Injecting MixinConfigs into /META-INF/MANIFEST.MF
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: catalyst-common-common-refmap.json
-[Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_897;render(Lnet/minecraft/class_1297;DDDFFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V -> Lnet/minecraft/client/renderer/entity/EntityRenderer;render(Lnet/minecraft/world/entity/Entity;DDDFFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V
 [Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_898;method_3954(Lnet/minecraft/class_1297;DDDFFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V -> Lnet/minecraft/client/renderer/entity/EntityRenderDispatcher;m_114384_(Lnet/minecraft/world/entity/Entity;DDDFFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V
 [Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_465;method_25426()V -> Lnet/minecraft/client/gui/screens/inventory/AbstractContainerScreen;m_7856_()V
+[Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_465;method_25404(III)Z -> Lnet/minecraft/client/gui/screens/inventory/AbstractContainerScreen;m_7933_(III)Z
 [Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_465;method_25394(Lnet/minecraft/class_332;IIF)V -> Lnet/minecraft/client/gui/screens/inventory/AbstractContainerScreen;m_88315_(Lnet/minecraft/client/gui/GuiGraphics;IIF)V
 [Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_765;method_3313(F)V -> Lnet/minecraft/client/renderer/LightTexture;m_109881_(F)V
 [Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_4587;FJZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;)V -> Lnet/minecraft/client/renderer/LevelRenderer;m_109599_(Lcom/mojang/blaze3d/vertex/PoseStack;FJZLnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/renderer/LightTexture;Lorg/joml/Matrix4f;)V
-[Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_897;render(Lnet/minecraft/class_1297;DDDFFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V -> Lnet/minecraft/client/renderer/entity/EntityRenderer;render(Lnet/minecraft/world/entity/Entity;DDDFFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V
 [Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_898;method_3954(Lnet/minecraft/class_1297;DDDFFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V -> Lnet/minecraft/client/renderer/entity/EntityRenderDispatcher;m_114384_(Lnet/minecraft/world/entity/Entity;DDDFFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V
 [Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_465;method_25426()V -> Lnet/minecraft/client/gui/screens/inventory/AbstractContainerScreen;m_7856_()V
+[Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_465;method_25404(III)Z -> Lnet/minecraft/client/gui/screens/inventory/AbstractContainerScreen;m_7933_(III)Z
 [Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_465;method_25394(Lnet/minecraft/class_332;IIF)V -> Lnet/minecraft/client/gui/screens/inventory/AbstractContainerScreen;m_88315_(Lnet/minecraft/client/gui/GuiGraphics;IIF)V
 [Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_765;method_3313(F)V -> Lnet/minecraft/client/renderer/LightTexture;m_109881_(F)V
 [Architectury Transformer DEBUG] Remapped refmap value Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_4587;FJZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lnet/minecraft/class_765;Lorg/joml/Matrix4f;)V -> Lnet/minecraft/client/renderer/LevelRenderer;m_109599_(Lcom/mojang/blaze3d/vertex/PoseStack;FJZLnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/renderer/LightTexture;Lorg/joml/Matrix4f;)V
 [Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT-transformProductionForge.jar
-[Architectury Transformer] Transformed jar with 7 transformer(s) in 2.049 s
+[Architectury Transformer] Transformed jar with 7 transformer(s) in 4.024 s
 [Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\common\build\libs\catalyst-common-1.0-SNAPSHOT.jar

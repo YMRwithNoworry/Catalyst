@@ -23,6 +23,7 @@
   "catalyst.feature.chams": "透视",
   "catalyst.feature.waypoint_added": "路径点已添加",
   "catalyst.feature.inventory_sorter": "背包整理",
+  "catalyst.feature.mouse_gestures": "鼠标手势",
   
   "catalyst.gui.title": "Catalyst 配置",
   "catalyst.gui.save": "保存并关闭",
@@ -56,5 +57,14 @@
   "catalyst.gui.sort_hotbar": "整理快捷栏: %s",
   "catalyst.gui.sort_player_inv": "整理玩家背包: %s",
   "catalyst.gui.sort_mode": "排序模式: %s",
-  "catalyst.gui.sort_button": "整理"
+  "catalyst.gui.sort_button": "整理",
+  
+  "catalyst.gui.rmb_tweak": "右键拖拽放置",
+  "catalyst.gui.lmb_tweak_with_item": "左键拖拽合并",
+  "catalyst.gui.lmb_tweak_without_item": "Shift+左键快速移动",
+  "catalyst.gui.wheel_tweak": "滚轮移动物品",
+  "catalyst.gui.scroll_direction": "滚动方向: %s",
+  "catalyst.gui.scroll_normal": "正常",
+  "catalyst.gui.scroll_inverted": "反转",
+  "catalyst.gui.scroll_inventory": "背包优先"
 }

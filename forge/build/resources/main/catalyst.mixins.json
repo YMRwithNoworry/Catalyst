@@ -4,10 +4,15 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
+    "LightTextureMixin",
+    "ChamsMixin",
+    "WaypointRenderMixin",
+    "ContainerScreenMixin"
   ],
   "mixins": [
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "refmap": "catalyst-forge-refmap.json"
 }

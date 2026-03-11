@@ -27,7 +27,7 @@ public class LightTextureMixin {
     )
     private void onUpdateLightTexture(CallbackInfo ci) {
         CatalystConfig config = CatalystConfig.getInstance();
-        if (config.gammaOverrideEnabled && config.gammaValue >= 100) {
+        if (config.gammaOverrideEnabled && config.nightVisionMode) {
             for (int x = 0; x < 16; x++) {
                 for (int y = 0; y < 16; y++) {
                     this.lightPixels.setPixelRGBA(x, y, -1);

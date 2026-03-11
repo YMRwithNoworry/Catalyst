@@ -2,12 +2,20 @@ package org.alku.catalyst.client.feature;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import org.alku.catalyst.config.CatalystConfig;
 
 import java.util.ArrayList;
@@ -17,15 +25,11 @@ import java.util.List;
 import java.util.Map;
 
 public class InventorySorter {
-    private static boolean isSorting = false;
-    private static final List<Runnable> pendingActions = new ArrayList<>();
-    private static int actionIndex = 0;
-    private static long lastActionTime = 0;
-    private static final int ACTION_DELAY_MS = 50;
-    private static int currentContainerId = -1;
+    
+    private static boolean sorting = false;
     
     public static void sortCurrentContainer(Minecraft mc) {
-        if (!CatalystConfig.getInstance().inventorySorterEnabled || isSorting) {
+        if (!CatalystConfig.getInstance().inventorySorterEnabled || sorting) {
             return;
         }
         
@@ -39,292 +43,546 @@ public class InventorySorter {
             return;
         }
         
-        isSorting = true;
-        pendingActions.clear();
-        actionIndex = 0;
-        currentContainerId = container.containerId;
+        System.out.println("[Catalyst] Sorting container: " + container.getClass().getSimpleName() + " (inventorySorterEnabled=" + CatalystConfig.getInstance().inventorySorterEnabled + ", autoSortOnOpen=" + CatalystConfig.getInstance().autoSortOnOpen + ")");
         
-        if (container instanceof InventoryMenu) {
-            sortPlayerInventory(mc, player, container);
-        } else {
-            sortOpenContainer(mc, player, container);
-        }
-        
-        if (pendingActions.isEmpty()) {
-            isSorting = false;
+        sorting = true;
+        try {
+            int containerId = container.containerId;
+            
+            if (container instanceof InventoryMenu) {
+                sortPlayerInventory(mc, player, container, containerId);
+            } else {
+                sortOpenContainer(mc, player, container, containerId);
+            }
+        } finally {
+            sorting = false;
         }
     }
     
     public static void tick(Minecraft mc) {
-        if (!isSorting || pendingActions.isEmpty()) {
-            return;
-        }
-        
-        LocalPlayer player = mc.player;
-        if (player == null || player.containerMenu == null || 
-            player.containerMenu.containerId != currentContainerId) {
-            reset();
-            return;
-        }
-        
-        long currentTime = System.currentTimeMillis();
-        if (currentTime - lastActionTime < ACTION_DELAY_MS) {
-            return;
-        }
-        
-        if (actionIndex < pendingActions.size()) {
-            pendingActions.get(actionIndex).run();
-            actionIndex++;
-            lastActionTime = currentTime;
-        } else {
-            reset();
-        }
     }
     
-    private static void clickSlot(Minecraft mc, int slotIndex, int button, ClickType clickType) {
+    private static void clickSlot(Minecraft mc, int containerId, int slotIndex, int button, ClickType clickType) {
         if (mc.player != null && mc.gameMode != null) {
-            mc.gameMode.handleInventoryMouseClick(currentContainerId, slotIndex, button, clickType, mc.player);
+            mc.gameMode.handleInventoryMouseClick(containerId, slotIndex, button, clickType, mc.player);
         }
     }
     
-    public static void sortPlayerInventory(Minecraft mc, LocalPlayer player, AbstractContainerMenu container) {
-        List<Integer> inventorySlots = new ArrayList<>();
+    public static void sortPlayerInventory(Minecraft mc, LocalPlayer player, AbstractContainerMenu container, int containerId) {
+        List<Integer> mainInventorySlots = new ArrayList<>();
         List<Integer> hotbarSlots = new ArrayList<>();
         
-        for (Slot slot : container.slots) {
-            if (slot.container == player.getInventory()) {
-                int index = slot.index;
-                if (index >= 0 && index < 9) {
-                    hotbarSlots.add(slot.index);
-                } else if (index >= 9 && index < 36) {
-                    inventorySlots.add(slot.index);
+        Container playerInventory = player.getInventory();
+        
+        for (int i = 0; i < container.slots.size(); i++) {
+            Slot slot = container.getSlot(i);
+            if (slot.container == playerInventory) {
+                int containerSlot = slot.getContainerSlot();
+                if (containerSlot >= 0 && containerSlot < 9) {
+                    hotbarSlots.add(i);
+                } else if (containerSlot >= 9 && containerSlot < 36) {
+                    mainInventorySlots.add(i);
                 }
             }
         }
         
         CatalystConfig config = CatalystConfig.getInstance();
         
-        if (config.sortHotbar) {
-            planSortSlots(mc, container, hotbarSlots, config.sortMode);
-        }
+        doSort(mc, container, containerId, mainInventorySlots, config.sortMode);
         
-        planSortSlots(mc, container, inventorySlots, config.sortMode);
+        if (config.sortHotbar) {
+            doSort(mc, container, containerId, hotbarSlots, config.sortMode);
+        }
     }
     
-    public static void sortOpenContainer(Minecraft mc, LocalPlayer player, AbstractContainerMenu container) {
+    public static void sortOpenContainer(Minecraft mc, LocalPlayer player, AbstractContainerMenu container, int containerId) {
         List<Integer> containerSlots = new ArrayList<>();
         List<Integer> playerInvSlots = new ArrayList<>();
         List<Integer> playerHotbarSlots = new ArrayList<>();
         
         Container playerInventory = player.getInventory();
         
-        for (Slot slot : container.slots) {
+        for (int i = 0; i < container.slots.size(); i++) {
+            Slot slot = container.getSlot(i);
             if (slot.container == playerInventory) {
-                int index = slot.index;
-                if (index >= 0 && index < 9) {
-                    playerHotbarSlots.add(slot.index);
-                } else if (index >= 9 && index < 36) {
-                    playerInvSlots.add(slot.index);
+                int containerSlot = slot.getContainerSlot();
+                if (containerSlot >= 0 && containerSlot < 9) {
+                    playerHotbarSlots.add(i);
+                } else if (containerSlot >= 9 && containerSlot < 36) {
+                    playerInvSlots.add(i);
                 }
             } else if (slot.container != null && slot.container != playerInventory) {
-                containerSlots.add(slot.index);
+                containerSlots.add(i);
             }
         }
         
+        System.out.println("[Catalyst] sortOpenContainer: totalSlots=" + container.slots.size() + ", containerSlots=" + containerSlots.size() + ", playerInvSlots=" + playerInvSlots.size() + ", playerHotbarSlots=" + playerHotbarSlots.size());
+        
         CatalystConfig config = CatalystConfig.getInstance();
         
-        planSortSlots(mc, container, containerSlots, config.sortMode);
+        doSort(mc, container, containerId, containerSlots, config.sortMode);
         
         if (config.sortPlayerInventoryInContainer) {
-            planSortSlots(mc, container, playerInvSlots, config.sortMode);
+            doSort(mc, container, containerId, playerInvSlots, config.sortMode);
             if (config.sortHotbar) {
-                planSortSlots(mc, container, playerHotbarSlots, config.sortMode);
+                doSort(mc, container, containerId, playerHotbarSlots, config.sortMode);
             }
         }
     }
     
-    private static void planSortSlots(Minecraft mc, AbstractContainerMenu container, List<Integer> slotIndices, int sortMode) {
+    private static void doSort(Minecraft mc, AbstractContainerMenu container, int containerId, 
+                                List<Integer> slotIndices, int sortMode) {
         if (slotIndices.isEmpty()) {
             return;
         }
         
-        List<ItemStack> items = new ArrayList<>();
-        for (int slotIndex : slotIndices) {
-            Slot slot = container.getSlot(slotIndex);
-            if (slot != null && !slot.getItem().isEmpty()) {
-                items.add(slot.getItem().copy());
-            }
+        int n = slotIndices.size();
+        
+        List<ItemStack> currentItems = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            currentItems.add(container.getSlot(slotIndices.get(i)).getItem().copy());
         }
         
-        if (items.isEmpty()) {
-            return;
+        mergeItems(mc, container, containerId, slotIndices, currentItems);
+        
+        currentItems.clear();
+        for (int i = 0; i < n; i++) {
+            currentItems.add(container.getSlot(slotIndices.get(i)).getItem().copy());
         }
         
-        List<ItemStack> merged = mergeStacks(items);
-        Comparator<ItemStack> comparator = getComparator(sortMode);
-        merged.sort(comparator);
+        List<ItemStack> targetItems = buildTargetItems(currentItems, sortMode);
         
-        Map<Integer, ItemStack> targetLayout = new HashMap<>();
-        for (int i = 0; i < slotIndices.size(); i++) {
-            if (i < merged.size()) {
-                targetLayout.put(slotIndices.get(i), merged.get(i));
-            } else {
-                targetLayout.put(slotIndices.get(i), ItemStack.EMPTY);
-            }
-        }
+        boolean[] done = new boolean[n];
         
-        planMoveActions(mc, container, slotIndices, targetLayout);
-    }
-    
-    private static void planMoveActions(Minecraft mc, AbstractContainerMenu container, List<Integer> slotIndices, Map<Integer, ItemStack> targetLayout) {
-        Map<Integer, ItemStack> currentLayout = new HashMap<>();
-        for (int slotIndex : slotIndices) {
-            Slot slot = container.getSlot(slotIndex);
-            if (slot != null) {
-                currentLayout.put(slotIndex, slot.getItem().copy());
-            }
-        }
-        
-        List<int[]> moves = new ArrayList<>();
-        
-        for (int targetSlot : slotIndices) {
-            ItemStack targetStack = targetLayout.get(targetSlot);
-            ItemStack currentStack = currentLayout.get(targetSlot);
+        for (int targetIdx = 0; targetIdx < n; targetIdx++) {
+            if (done[targetIdx]) continue;
             
-            if (ItemStack.isSameItemSameTags(targetStack, currentStack) && 
-                targetStack.getCount() == currentStack.getCount()) {
+            ItemStack target = targetItems.get(targetIdx);
+            
+            if (isAlreadyCorrect(currentItems, targetItems, targetIdx)) {
+                done[targetIdx] = true;
                 continue;
             }
             
-            if (!targetStack.isEmpty() && !ItemStack.isSameItemSameTags(targetStack, currentStack)) {
-                for (int sourceSlot : slotIndices) {
-                    if (sourceSlot == targetSlot) continue;
-                    
-                    ItemStack sourceStack = currentLayout.get(sourceSlot);
-                    if (!sourceStack.isEmpty() && ItemStack.isSameItemSameTags(sourceStack, targetStack)) {
-                        moves.add(new int[]{sourceSlot, targetSlot});
-                        
-                        int transferCount = Math.min(sourceStack.getCount(), 
-                            targetStack.getMaxStackSize() - currentStack.getCount());
-                        
-                        if (currentStack.isEmpty()) {
-                            currentLayout.put(targetSlot, sourceStack.copy());
-                        } else {
-                            currentLayout.get(targetSlot).grow(transferCount);
-                        }
-                        currentLayout.get(sourceSlot).shrink(transferCount);
-                        
-                        if (currentLayout.get(sourceSlot).isEmpty()) {
-                            currentLayout.put(sourceSlot, ItemStack.EMPTY);
-                        }
-                        break;
+            if (target.isEmpty()) {
+                ItemStack current = currentItems.get(targetIdx);
+                if (!current.isEmpty()) {
+                    int emptyIdx = findEmptySlot(currentItems, done, targetIdx);
+                    if (emptyIdx != -1) {
+                        moveItem(mc, containerId, slotIndices, currentItems, targetIdx, emptyIdx);
                     }
+                }
+                done[targetIdx] = true;
+                continue;
+            }
+            
+            int sourceIdx = findSourceSlot(currentItems, target, done, targetIdx);
+            if (sourceIdx == -1) {
+                done[targetIdx] = true;
+                continue;
+            }
+            
+            ItemStack atTarget = currentItems.get(targetIdx);
+            
+            if (atTarget.isEmpty()) {
+                moveItem(mc, containerId, slotIndices, currentItems, sourceIdx, targetIdx);
+                done[targetIdx] = true;
+            } else {
+                int emptyIdx = findEmptySlot(currentItems, done, targetIdx);
+                if (emptyIdx != -1) {
+                    moveItem(mc, containerId, slotIndices, currentItems, targetIdx, emptyIdx);
+                    moveItem(mc, containerId, slotIndices, currentItems, sourceIdx, targetIdx);
+                    done[targetIdx] = true;
+                    done[emptyIdx] = false;
+                } else {
+                    swapItems(mc, containerId, slotIndices, currentItems, targetIdx, sourceIdx);
+                    done[targetIdx] = true;
+                    done[sourceIdx] = false;
                 }
             }
-        }
-        
-        for (int[] move : moves) {
-            int fromSlot = move[0];
-            int toSlot = move[1];
-            
-            pendingActions.add(() -> {
-                clickSlot(mc, fromSlot, 0, ClickType.PICKUP);
-            });
-            pendingActions.add(() -> {
-                clickSlot(mc, toSlot, 0, ClickType.PICKUP);
-            });
-            pendingActions.add(() -> {
-                if (mc.player != null) {
-                    AbstractContainerMenu c = mc.player.containerMenu;
-                    if (c != null && !c.getCarried().isEmpty()) {
-                        clickSlot(mc, fromSlot, 0, ClickType.PICKUP);
-                    }
-                }
-            });
         }
     }
     
-    private static List<ItemStack> mergeStacks(List<ItemStack> items) {
-        List<ItemStack> merged = new ArrayList<>();
+    private static void mergeItems(Minecraft mc, AbstractContainerMenu container, int containerId,
+                                    List<Integer> slotIndices, List<ItemStack> items) {
+        int n = slotIndices.size();
         
-        for (ItemStack stack : items) {
-            boolean merged_flag = false;
+        for (int i = 0; i < n; i++) {
+            ItemStack stackI = items.get(i);
+            if (stackI.isEmpty()) continue;
             
-            for (ItemStack existing : merged) {
-                if (ItemStack.isSameItemSameTags(stack, existing) && existing.getCount() < existing.getMaxStackSize()) {
-                    int space = existing.getMaxStackSize() - existing.getCount();
-                    int toAdd = Math.min(space, stack.getCount());
-                    existing.grow(toAdd);
-                    stack.shrink(toAdd);
-                    
-                    if (stack.isEmpty()) {
-                        merged_flag = true;
-                        break;
-                    }
+            int maxStack = stackI.getMaxStackSize();
+            if (stackI.getCount() >= maxStack) continue;
+            
+            for (int j = i + 1; j < n; j++) {
+                ItemStack stackJ = items.get(j);
+                if (stackJ.isEmpty()) continue;
+                
+                if (!ItemStack.isSameItemSameTags(stackI, stackJ)) continue;
+                
+                int spaceInI = maxStack - stackI.getCount();
+                int toMove = Math.min(spaceInI, stackJ.getCount());
+                
+                if (toMove > 0) {
+                    mergeStacks(mc, containerId, slotIndices, items, j, i, toMove);
+                    stackI = items.get(i);
+                    if (stackI.getCount() >= maxStack) break;
                 }
             }
+        }
+    }
+    
+    private static void mergeStacks(Minecraft mc, int containerId, List<Integer> slotIndices,
+                                     List<ItemStack> items, int fromIdx, int toIdx, int amount) {
+        int fromSlot = slotIndices.get(fromIdx);
+        int toSlot = slotIndices.get(toIdx);
+        
+        clickSlot(mc, containerId, fromSlot, 0, ClickType.PICKUP);
+        clickSlot(mc, containerId, toSlot, 0, ClickType.PICKUP);
+        clickSlot(mc, containerId, fromSlot, 0, ClickType.PICKUP);
+        
+        ItemStack fromStack = items.get(fromIdx);
+        ItemStack toStack = items.get(toIdx);
+        
+        int actualMoved = Math.min(amount, fromStack.getCount());
+        toStack.grow(actualMoved);
+        fromStack.shrink(actualMoved);
+        
+        if (fromStack.isEmpty()) {
+            items.set(fromIdx, ItemStack.EMPTY);
+        }
+    }
+    
+    private static boolean isAlreadyCorrect(List<ItemStack> current, List<ItemStack> target, int idx) {
+        ItemStack currentStack = current.get(idx);
+        ItemStack targetStack = target.get(idx);
+        
+        if (currentStack.isEmpty() && targetStack.isEmpty()) return true;
+        if (currentStack.isEmpty() || targetStack.isEmpty()) return false;
+        
+        return ItemStack.isSameItemSameTags(currentStack, targetStack) && currentStack.getCount() == targetStack.getCount();
+    }
+    
+    private static int findEmptySlot(List<ItemStack> items, boolean[] done, int excludeIdx) {
+        for (int i = excludeIdx + 1; i < items.size(); i++) {
+            if (!done[i] && items.get(i).isEmpty()) {
+                return i;
+            }
+        }
+        for (int i = 0; i < excludeIdx; i++) {
+            if (!done[i] && items.get(i).isEmpty()) {
+                return i;
+            }
+        }
+        for (int i = 0; i < items.size(); i++) {
+            if (i != excludeIdx && items.get(i).isEmpty()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    private static int findSourceSlot(List<ItemStack> items, ItemStack target, boolean[] done, int excludeIdx) {
+        for (int i = 0; i < items.size(); i++) {
+            if (i == excludeIdx || done[i]) continue;
             
-            if (!merged_flag && !stack.isEmpty()) {
-                merged.add(stack);
+            ItemStack src = items.get(i);
+            if (!src.isEmpty() && ItemStack.isSameItemSameTags(src, target) && src.getCount() == target.getCount()) {
+                return i;
             }
         }
         
-        return merged;
+        for (int i = 0; i < items.size(); i++) {
+            if (i == excludeIdx || done[i]) continue;
+            
+            ItemStack src = items.get(i);
+            if (!src.isEmpty() && ItemStack.isSameItemSameTags(src, target)) {
+                return i;
+            }
+        }
+        
+        return -1;
+    }
+    
+    private static void moveItem(Minecraft mc, int containerId, List<Integer> slotIndices, 
+                                  List<ItemStack> items, int fromIdx, int toIdx) {
+        int fromSlot = slotIndices.get(fromIdx);
+        int toSlot = slotIndices.get(toIdx);
+        
+        clickSlot(mc, containerId, fromSlot, 0, ClickType.PICKUP);
+        clickSlot(mc, containerId, toSlot, 0, ClickType.PICKUP);
+        
+        ItemStack temp = items.get(fromIdx);
+        items.set(fromIdx, items.get(toIdx));
+        items.set(toIdx, temp);
+    }
+    
+    private static void swapItems(Minecraft mc, int containerId, List<Integer> slotIndices, 
+                                   List<ItemStack> items, int idx1, int idx2) {
+        int slot1 = slotIndices.get(idx1);
+        int slot2 = slotIndices.get(idx2);
+        
+        clickSlot(mc, containerId, slot1, 0, ClickType.PICKUP);
+        clickSlot(mc, containerId, slot2, 0, ClickType.PICKUP);
+        clickSlot(mc, containerId, slot1, 0, ClickType.PICKUP);
+        
+        ItemStack temp = items.get(idx1);
+        items.set(idx1, items.get(idx2));
+        items.set(idx2, temp);
+    }
+    
+    private static List<ItemStack> buildTargetItems(List<ItemStack> currentItems, int sortMode) {
+        Map<ItemKey, MergedItem> mergedMap = new HashMap<>();
+        
+        for (ItemStack stack : currentItems) {
+            if (!stack.isEmpty()) {
+                ItemKey key = new ItemKey(stack);
+                MergedItem merged = mergedMap.computeIfAbsent(key, k -> new MergedItem(stack.copy()));
+                merged.totalCount += stack.getCount();
+            }
+        }
+        
+        List<ItemStack> result = new ArrayList<>();
+        
+        for (MergedItem merged : mergedMap.values()) {
+            int remaining = merged.totalCount;
+            int maxStack = merged.template.getMaxStackSize();
+            
+            while (remaining > 0) {
+                int count = Math.min(remaining, maxStack);
+                ItemStack newStack = merged.template.copy();
+                newStack.setCount(count);
+                result.add(newStack);
+                remaining -= count;
+            }
+        }
+        
+        result.sort(getComparator(sortMode));
+        
+        while (result.size() < currentItems.size()) {
+            result.add(ItemStack.EMPTY);
+        }
+        
+        return result;
+    }
+    
+    private static class ItemKey {
+        private final ResourceLocation itemId;
+        private final int tagHash;
+        
+        public ItemKey(ItemStack stack) {
+            this.itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
+            this.tagHash = stack.hasTag() ? stack.getTag().hashCode() : 0;
+        }
+        
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            ItemKey itemKey = (ItemKey) o;
+            return tagHash == itemKey.tagHash && itemId.equals(itemKey.itemId);
+        }
+        
+        @Override
+        public int hashCode() {
+            return 31 * itemId.hashCode() + tagHash;
+        }
+    }
+    
+    private static class MergedItem {
+        final ItemStack template;
+        int totalCount;
+        
+        MergedItem(ItemStack template) {
+            this.template = template;
+            this.totalCount = 0;
+        }
     }
     
     private static Comparator<ItemStack> getComparator(int sortMode) {
         return switch (sortMode) {
-            case 1 -> Comparator.comparing(stack -> stack.getDisplayName().getString());
-            case 2 -> Comparator.comparingInt(stack -> net.minecraft.core.registries.BuiltInRegistries.ITEM.getId(stack.getItem()));
-            default -> (stack1, stack2) -> {
-                String category1 = getItemCategory(stack1);
-                String category2 = getItemCategory(stack2);
-                
-                if (!category1.equals(category2)) {
-                    return category1.compareTo(category2);
-                }
-                
-                return stack1.getDisplayName().getString().compareTo(stack2.getDisplayName().getString());
-            };
+            case 1 -> new DisplayNameComparator();
+            case 2 -> new ItemIdComparator();
+            default -> new IPNRuleComparator();
         };
     }
     
-    private static String getItemCategory(ItemStack stack) {
-        var item = stack.getItem();
+    private static class IPNRuleComparator implements Comparator<ItemStack> {
+        @Override
+        public int compare(ItemStack a, ItemStack b) {
+            if (a.isEmpty() && b.isEmpty()) return 0;
+            if (a.isEmpty()) return 1;
+            if (b.isEmpty()) return -1;
+            
+            int result = compareCreativeMenuOrder(a, b);
+            if (result != 0) return result;
+            
+            result = compareCustomName(a, b);
+            if (result != 0) return result;
+            
+            result = compareEnchantmentScore(a, b);
+            if (result != 0) return result;
+            
+            result = compareDurability(a, b);
+            if (result != 0) return result;
+            
+            result = compareDisplayName(a, b);
+            if (result != 0) return result;
+            
+            result = comparePotionEffects(a, b);
+            if (result != 0) return result;
+            
+            result = compareNBT(a, b);
+            if (result != 0) return result;
+            
+            return Integer.compare(b.getCount(), a.getCount());
+        }
         
-        if (item instanceof net.minecraft.world.item.BlockItem) {
-            return "1_Blocks";
+        private int compareCreativeMenuOrder(ItemStack a, ItemStack b) {
+            int indexA = getSearchTabIndex(a);
+            int indexB = getSearchTabIndex(b);
+            return Integer.compare(indexA, indexB);
         }
-        if (item instanceof net.minecraft.world.item.SwordItem || 
-            item instanceof net.minecraft.world.item.AxeItem ||
-            item instanceof net.minecraft.world.item.PickaxeItem ||
-            item instanceof net.minecraft.world.item.ShovelItem ||
-            item instanceof net.minecraft.world.item.HoeItem ||
-            item instanceof net.minecraft.world.item.BowItem ||
-            item instanceof net.minecraft.world.item.CrossbowItem ||
-            item instanceof net.minecraft.world.item.TridentItem) {
-            return "2_Weapons_Tools";
+        
+        private int getSearchTabIndex(ItemStack stack) {
+            int idx = 0;
+            for (CreativeModeTab tab : CreativeModeTabs.allTabs()) {
+                if (tab.getType() == CreativeModeTab.Type.CATEGORY) {
+                    if (tab.contains(stack)) {
+                        return idx;
+                    }
+                    idx++;
+                }
+            }
+            return Integer.MAX_VALUE;
         }
-        if (item instanceof net.minecraft.world.item.ArmorItem) {
-            return "3_Armor";
+        
+        private int compareCustomName(ItemStack a, ItemStack b) {
+            boolean hasCustomA = a.hasCustomHoverName();
+            boolean hasCustomB = b.hasCustomHoverName();
+            if (hasCustomA && !hasCustomB) return -1;
+            if (!hasCustomA && hasCustomB) return 1;
+            return 0;
         }
-        if (item.isEdible()) {
-            return "4_Food";
+        
+        private int compareEnchantmentScore(ItemStack a, ItemStack b) {
+            int scoreA = computeEnchantmentScore(a);
+            int scoreB = computeEnchantmentScore(b);
+            return Integer.compare(scoreB, scoreA);
         }
-        if (stack.getBarWidth() > 0) {
-            return "5_Durability";
+        
+        private int computeEnchantmentScore(ItemStack stack) {
+            if (!stack.hasTag()) return 0;
+            CompoundTag tag = stack.getTag();
+            if (tag == null || !tag.contains("Enchantments", Tag.TAG_LIST)) return 0;
+            
+            int score = 0;
+            ListTag enchantments = tag.getList("Enchantments", Tag.TAG_COMPOUND);
+            for (int i = 0; i < enchantments.size(); i++) {
+                CompoundTag ench = enchantments.getCompound(i);
+                score += ench.getInt("lvl");
+            }
+            return score;
         }
-        return "6_Other";
+        
+        private int compareDurability(ItemStack a, ItemStack b) {
+            boolean damageableA = a.isDamageableItem();
+            boolean damageableB = b.isDamageableItem();
+            
+            if (!damageableA && !damageableB) return 0;
+            if (damageableA && !damageableB) return -1;
+            if (!damageableA && damageableB) return 1;
+            
+            int durabilityA = a.getMaxDamage() - a.getDamageValue();
+            int durabilityB = b.getMaxDamage() - b.getDamageValue();
+            return Integer.compare(durabilityB, durabilityA);
+        }
+        
+        private int compareDisplayName(ItemStack a, ItemStack b) {
+            String nameA = a.getDisplayName().getString();
+            String nameB = b.getDisplayName().getString();
+            return nameA.compareToIgnoreCase(nameB);
+        }
+        
+        private int comparePotionEffects(ItemStack a, ItemStack b) {
+            boolean isPotionA = a.getItem() instanceof net.minecraft.world.item.PotionItem;
+            boolean isPotionB = b.getItem() instanceof net.minecraft.world.item.PotionItem;
+            
+            if (isPotionA && isPotionB) {
+                String potionA = PotionUtils.getPotion(a).getName("");
+                String potionB = PotionUtils.getPotion(b).getName("");
+                return potionA.compareTo(potionB);
+            }
+            if (isPotionA) return -1;
+            if (isPotionB) return 1;
+            return 0;
+        }
+        
+        private int compareNBT(ItemStack a, ItemStack b) {
+            boolean hasNbtA = a.hasTag();
+            boolean hasNbtB = b.hasTag();
+            
+            if (hasNbtA && hasNbtB) {
+                return a.getTag().toString().compareTo(b.getTag().toString());
+            }
+            if (hasNbtA) return -1;
+            if (hasNbtB) return 1;
+            return 0;
+        }
+    }
+    
+    private static class DisplayNameComparator implements Comparator<ItemStack> {
+        @Override
+        public int compare(ItemStack a, ItemStack b) {
+            if (a.isEmpty() && b.isEmpty()) return 0;
+            if (a.isEmpty()) return 1;
+            if (b.isEmpty()) return -1;
+            
+            int result = compareCustomName(a, b);
+            if (result != 0) return result;
+            
+            String nameA = a.getDisplayName().getString();
+            String nameB = b.getDisplayName().getString();
+            result = nameA.compareToIgnoreCase(nameB);
+            if (result != 0) return result;
+            
+            return Integer.compare(b.getCount(), a.getCount());
+        }
+        
+        private int compareCustomName(ItemStack a, ItemStack b) {
+            boolean hasCustomA = a.hasCustomHoverName();
+            boolean hasCustomB = b.hasCustomHoverName();
+            if (hasCustomA && !hasCustomB) return -1;
+            if (!hasCustomA && hasCustomB) return 1;
+            return 0;
+        }
+    }
+    
+    private static class ItemIdComparator implements Comparator<ItemStack> {
+        @Override
+        public int compare(ItemStack a, ItemStack b) {
+            if (a.isEmpty() && b.isEmpty()) return 0;
+            if (a.isEmpty()) return 1;
+            if (b.isEmpty()) return -1;
+            
+            ResourceLocation idA = BuiltInRegistries.ITEM.getKey(a.getItem());
+            ResourceLocation idB = BuiltInRegistries.ITEM.getKey(b.getItem());
+            
+            int result = idA.getNamespace().compareTo(idB.getNamespace());
+            if (result != 0) return result;
+            
+            result = idA.getPath().compareTo(idB.getPath());
+            if (result != 0) return result;
+            
+            return Integer.compare(b.getCount(), a.getCount());
+        }
     }
     
     public static boolean isSorting() {
-        return isSorting;
+        return sorting;
     }
     
     public static void reset() {
-        isSorting = false;
-        pendingActions.clear();
-        actionIndex = 0;
-        currentContainerId = -1;
+        sorting = false;
     }
 }

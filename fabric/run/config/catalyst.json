@@ -20,16 +20,22 @@
   "autoSortOnOpen": true,
   "sortHotbar": true,
   "sortPlayerInventoryInContainer": true,
-  "sortMode": 1,
-  "guiScale": 0.9000001,
+  "sortMode": 0,
+  "rmbTweak": true,
+  "lmbTweakWithItem": true,
+  "lmbTweakWithoutItem": true,
+  "wheelTweak": true,
+  "wheelSearchOrder": 1,
+  "wheelScrollDirection": 0,
+  "guiScale": 0.8000001,
   "panelPositions": {
     "Movement": {
       "x": 118,
       "y": 164
     },
     "Player": {
-      "x": 263,
-      "y": 74
+      "x": 320,
+      "y": 43
     },
     "Tools": {
       "x": -20,

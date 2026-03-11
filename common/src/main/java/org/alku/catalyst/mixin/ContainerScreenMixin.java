@@ -7,8 +7,10 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import org.alku.catalyst.client.CatalystKeys;
 import org.alku.catalyst.client.feature.InventorySorter;
 import org.alku.catalyst.config.CatalystConfig;
+import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -16,6 +18,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractContainerScreen.class)
 public abstract class ContainerScreenMixin extends Screen {
@@ -46,11 +49,12 @@ public abstract class ContainerScreenMixin extends Screen {
                     InventorySorter.sortCurrentContainer(mc);
                 }
             }
-        ).bounds(leftPos + imageWidth - 60, topPos + 4, 56, 18).build();
+        ).bounds(leftPos + imageWidth - 40, topPos + 4, 36, 14).build();
         
         this.addRenderableWidget(catalyst$sortButton);
         
         if (CatalystConfig.getInstance().autoSortOnOpen && !InventorySorter.isSorting()) {
+            System.out.println("[Catalyst] autoSortOnOpen triggered for container screen");
             Minecraft mc = Minecraft.getInstance();
             if (mc.player != null) {
                 InventorySorter.sortCurrentContainer(mc);
@@ -61,8 +65,23 @@ public abstract class ContainerScreenMixin extends Screen {
     @Inject(method = "render", at = @At("HEAD"))
     protected void onRender(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
         if (catalyst$sortButton != null) {
-            catalyst$sortButton.setX(leftPos + imageWidth - 60);
+            catalyst$sortButton.setX(leftPos + imageWidth - 40);
             catalyst$sortButton.setY(topPos + 4);
+        }
+    }
+    
+    @Inject(method = "keyPressed", at = @At("HEAD"), cancellable = true)
+    protected void onKeyPressed(int keyCode, int scanCode, int modifiers, CallbackInfoReturnable<Boolean> cir) {
+        if (!CatalystConfig.getInstance().inventorySorterEnabled) {
+            return;
+        }
+        
+        if (CatalystKeys.SORT_INVENTORY.matches(keyCode, scanCode)) {
+            Minecraft mc = Minecraft.getInstance();
+            if (mc.player != null && !InventorySorter.isSorting()) {
+                InventorySorter.sortCurrentContainer(mc);
+                cir.setReturnValue(true);
+            }
         }
     }
 }

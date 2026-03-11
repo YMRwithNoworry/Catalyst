@@ -35,10 +35,17 @@ public class CatalystConfig {
     public boolean chamsMonsters = true;
     
     public boolean inventorySorterEnabled = true;
-    public boolean autoSortOnOpen = false;
+    public boolean autoSortOnOpen = true;
     public boolean sortHotbar = false;
     public boolean sortPlayerInventoryInContainer = true;
     public int sortMode = 0;
+    
+    public boolean rmbTweak = true;
+    public boolean lmbTweakWithItem = true;
+    public boolean lmbTweakWithoutItem = true;
+    public boolean wheelTweak = true;
+    public int wheelSearchOrder = 1;
+    public int wheelScrollDirection = 0;
     
     public float guiScale = 1.0f;
     public JsonObject panelPositions = new JsonObject();
@@ -67,7 +74,7 @@ public class CatalystConfig {
                     gammaOverrideEnabled = obj.get("gammaOverrideEnabled").getAsBoolean();
                 }
                 if (obj.has("gammaValue")) {
-                    gammaValue = Math.max(0.0, Math.min(1500.0, obj.get("gammaValue").getAsDouble()));
+                    gammaValue = Math.max(0.0, Math.min(10000.0, obj.get("gammaValue").getAsDouble()));
                 }
                 if (obj.has("nightVisionMode")) {
                     nightVisionMode = obj.get("nightVisionMode").getAsBoolean();
@@ -123,6 +130,24 @@ public class CatalystConfig {
                 if (obj.has("sortMode")) {
                     sortMode = Math.max(0, Math.min(2, obj.get("sortMode").getAsInt()));
                 }
+                if (obj.has("rmbTweak")) {
+                    rmbTweak = obj.get("rmbTweak").getAsBoolean();
+                }
+                if (obj.has("lmbTweakWithItem")) {
+                    lmbTweakWithItem = obj.get("lmbTweakWithItem").getAsBoolean();
+                }
+                if (obj.has("lmbTweakWithoutItem")) {
+                    lmbTweakWithoutItem = obj.get("lmbTweakWithoutItem").getAsBoolean();
+                }
+                if (obj.has("wheelTweak")) {
+                    wheelTweak = obj.get("wheelTweak").getAsBoolean();
+                }
+                if (obj.has("wheelSearchOrder")) {
+                    wheelSearchOrder = Math.max(0, Math.min(1, obj.get("wheelSearchOrder").getAsInt()));
+                }
+                if (obj.has("wheelScrollDirection")) {
+                    wheelScrollDirection = Math.max(0, Math.min(2, obj.get("wheelScrollDirection").getAsInt()));
+                }
                 if (obj.has("guiScale")) {
                     guiScale = (float) Math.max(0.5, Math.min(2.0, obj.get("guiScale").getAsDouble()));
                 }
@@ -161,6 +186,12 @@ public class CatalystConfig {
         obj.addProperty("sortHotbar", sortHotbar);
         obj.addProperty("sortPlayerInventoryInContainer", sortPlayerInventoryInContainer);
         obj.addProperty("sortMode", sortMode);
+        obj.addProperty("rmbTweak", rmbTweak);
+        obj.addProperty("lmbTweakWithItem", lmbTweakWithItem);
+        obj.addProperty("lmbTweakWithoutItem", lmbTweakWithoutItem);
+        obj.addProperty("wheelTweak", wheelTweak);
+        obj.addProperty("wheelSearchOrder", wheelSearchOrder);
+        obj.addProperty("wheelScrollDirection", wheelScrollDirection);
         obj.addProperty("guiScale", guiScale);
         obj.add("panelPositions", panelPositions);
         

@@ -23,6 +23,7 @@
   "catalyst.feature.chams": "Chams",
   "catalyst.feature.waypoint_added": "Waypoint Added",
   "catalyst.feature.inventory_sorter": "Inventory Sorter",
+  "catalyst.feature.mouse_gestures": "Mouse Gestures",
   
   "catalyst.gui.title": "Catalyst Configuration",
   "catalyst.gui.save": "Save & Close",
@@ -56,5 +57,14 @@
   "catalyst.gui.sort_hotbar": "Sort Hotbar: %s",
   "catalyst.gui.sort_player_inv": "Sort Player Inv: %s",
   "catalyst.gui.sort_mode": "Sort Mode: %s",
-  "catalyst.gui.sort_button": "Sort"
+  "catalyst.gui.sort_button": "Sort",
+  
+  "catalyst.gui.rmb_tweak": "RMB Drag Place",
+  "catalyst.gui.lmb_tweak_with_item": "LMB Drag Merge",
+  "catalyst.gui.lmb_tweak_without_item": "Shift+LMB Quick Move",
+  "catalyst.gui.wheel_tweak": "Wheel Move Item",
+  "catalyst.gui.scroll_direction": "Scroll Direction: %s",
+  "catalyst.gui.scroll_normal": "Normal",
+  "catalyst.gui.scroll_inverted": "Inverted",
+  "catalyst.gui.scroll_inventory": "Inventory"
 }

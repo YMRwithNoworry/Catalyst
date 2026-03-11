@@ -124,6 +124,7 @@ key_key.catalyst.toggle_gamma_override:key.keyboard.unknown
 key_key.catalyst.toggle_auto_tool:key.keyboard.unknown
 key_key.catalyst.toggle_auto_weapon:key.keyboard.unknown
 key_key.catalyst.open_config:key.keyboard.j
+key_key.catalyst.sort_inventory:key.keyboard.r
 soundCategory_master:0.12748344370860928
 soundCategory_music:0.0
 soundCategory_record:1.0
