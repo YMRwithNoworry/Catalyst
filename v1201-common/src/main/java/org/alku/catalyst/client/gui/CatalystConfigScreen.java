@@ -211,9 +211,14 @@ public class CatalystConfigScreen extends Screen {
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
         CatalystConfig config = CatalystConfig.getInstance();
-        config.guiScale += delta * 0.1f;
+        float oldScale = config.guiScale;
+        config.guiScale += (float) delta * 0.1f;
         config.guiScale = Math.max(0.5f, Math.min(2.0f, config.guiScale));
-        config.save();
+        
+        if (oldScale != config.guiScale) {
+            config.save();
+            init();
+        }
         return true;
     }
     

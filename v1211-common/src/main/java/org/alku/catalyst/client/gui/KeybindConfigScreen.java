@@ -47,7 +47,7 @@ public class KeybindConfigScreen extends Screen {
     
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(graphics);
+        super.renderBackground(graphics, mouseX, mouseY, partialTick);
         
         String currentKey = KeybindManager.getBoundKey(keyName);
         

@@ -145,7 +145,7 @@ public class WaypointManager {
                         String dimensionStr = obj.get("dimension").getAsString();
                         int color = obj.has("color") ? obj.get("color").getAsInt() : 0xFFFFFF;
                         
-                        ResourceLocation dimLoc = new ResourceLocation(dimensionStr);
+                        ResourceLocation dimLoc = ResourceLocation.parse(dimensionStr);
                         ResourceKey<Level> dimension = ResourceKey.create(Registries.DIMENSION, dimLoc);
                         
                         waypoints.add(new Waypoint(id, name, new BlockPos(x, y, z), dimension, color));

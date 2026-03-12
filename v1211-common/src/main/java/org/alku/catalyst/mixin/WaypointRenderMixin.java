@@ -2,6 +2,7 @@ package org.alku.catalyst.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Camera;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.LightTexture;
@@ -19,7 +20,8 @@ public abstract class WaypointRenderMixin {
         method = "renderLevel",
         at = @At("RETURN")
     )
-    private void afterRenderLevel(PoseStack poseStack, float partialTick, long finishNanoTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightTexture lightTexture, Matrix4f projectionMatrix, CallbackInfo ci) {
-        WaypointRenderer.renderWaypoints(poseStack, partialTick);
+    private void afterRenderLevel(DeltaTracker deltaTracker, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightTexture lightTexture, Matrix4f projectionMatrix, Matrix4f projectionMatrix2, CallbackInfo ci) {
+        PoseStack poseStack = new PoseStack();
+        WaypointRenderer.renderWaypoints(poseStack, deltaTracker.getGameTimeDeltaPartialTick(false));
     }
 }

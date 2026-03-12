@@ -2,6 +2,7 @@ package org.alku.catalyst.client.feature;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -15,7 +16,8 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import org.alku.catalyst.config.CatalystConfig;
 
 import java.util.ArrayList;
@@ -218,7 +220,7 @@ public class InventorySorter {
                 ItemStack stackJ = items.get(j);
                 if (stackJ.isEmpty()) continue;
                 
-                if (!ItemStack.isSameItemSameTags(stackI, stackJ)) continue;
+                if (!ItemStack.isSameItemSameComponents(stackI, stackJ)) continue;
                 
                 int spaceInI = maxStack - stackI.getCount();
                 int toMove = Math.min(spaceInI, stackJ.getCount());
@@ -260,7 +262,7 @@ public class InventorySorter {
         if (currentStack.isEmpty() && targetStack.isEmpty()) return true;
         if (currentStack.isEmpty() || targetStack.isEmpty()) return false;
         
-        return ItemStack.isSameItemSameTags(currentStack, targetStack) && currentStack.getCount() == targetStack.getCount();
+        return ItemStack.isSameItemSameComponents(currentStack, targetStack) && currentStack.getCount() == targetStack.getCount();
     }
     
     private static int findEmptySlot(List<ItemStack> items, boolean[] done, int excludeIdx) {
@@ -287,7 +289,7 @@ public class InventorySorter {
             if (i == excludeIdx || done[i]) continue;
             
             ItemStack src = items.get(i);
-            if (!src.isEmpty() && ItemStack.isSameItemSameTags(src, target) && src.getCount() == target.getCount()) {
+            if (!src.isEmpty() && ItemStack.isSameItemSameComponents(src, target) && src.getCount() == target.getCount()) {
                 return i;
             }
         }
@@ -296,7 +298,7 @@ public class InventorySorter {
             if (i == excludeIdx || done[i]) continue;
             
             ItemStack src = items.get(i);
-            if (!src.isEmpty() && ItemStack.isSameItemSameTags(src, target)) {
+            if (!src.isEmpty() && ItemStack.isSameItemSameComponents(src, target)) {
                 return i;
             }
         }
@@ -368,11 +370,11 @@ public class InventorySorter {
     
     private static class ItemKey {
         private final ResourceLocation itemId;
-        private final int componentHash;
+        private final int tagHash;
         
         public ItemKey(ItemStack stack) {
             this.itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
-            this.componentHash = stack.getComponents().hashCode();
+            this.tagHash = stack.getComponents().hashCode();
         }
         
         @Override
@@ -380,12 +382,12 @@ public class InventorySorter {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             ItemKey itemKey = (ItemKey) o;
-            return componentHash == itemKey.componentHash && itemId.equals(itemKey.itemId);
+            return tagHash == itemKey.tagHash && itemId.equals(itemKey.itemId);
         }
         
         @Override
         public int hashCode() {
-            return 31 * itemId.hashCode() + componentHash;
+            return 31 * itemId.hashCode() + tagHash;
         }
     }
     
@@ -458,8 +460,8 @@ public class InventorySorter {
         }
         
         private int compareCustomName(ItemStack a, ItemStack b) {
-            boolean hasCustomA = a.hasCustomHoverName();
-            boolean hasCustomB = b.hasCustomHoverName();
+            boolean hasCustomA = a.has(DataComponents.CUSTOM_NAME);
+            boolean hasCustomB = b.has(DataComponents.CUSTOM_NAME);
             if (hasCustomA && !hasCustomB) return -1;
             if (!hasCustomA && hasCustomB) return 1;
             return 0;
@@ -472,8 +474,8 @@ public class InventorySorter {
         }
         
         private int computeEnchantmentScore(ItemStack stack) {
-            var enchantments = stack.get(net.minecraft.core.component.DataComponents.ENCHANTMENTS);
-            if (enchantments == null) return 0;
+            ItemEnchantments enchantments = EnchantmentHelper.getEnchantmentsForCrafting(stack);
+            if (enchantments.isEmpty()) return 0;
             
             int score = 0;
             for (var entry : enchantments.entrySet()) {
@@ -506,9 +508,9 @@ public class InventorySorter {
             boolean isPotionB = b.getItem() instanceof net.minecraft.world.item.PotionItem;
             
             if (isPotionA && isPotionB) {
-                String potionA = a.getOrDefault(net.minecraft.core.component.DataComponents.POTION_CONTENTS, PotionContents.EMPTY).potion().map(p -> p.unwrapKey().map(k -> k.location().toString()).orElse("")).orElse("");
-                String potionB = b.getOrDefault(net.minecraft.core.component.DataComponents.POTION_CONTENTS, PotionContents.EMPTY).potion().map(p -> p.unwrapKey().map(k -> k.location().toString()).orElse("")).orElse("");
-                return potionA.compareTo(potionB);
+                String nameA = a.getDisplayName().getString();
+                String nameB = b.getDisplayName().getString();
+                return nameA.compareToIgnoreCase(nameB);
             }
             if (isPotionA) return -1;
             if (isPotionB) return 1;
@@ -516,14 +518,14 @@ public class InventorySorter {
         }
         
         private int compareNBT(ItemStack a, ItemStack b) {
-            boolean hasComponentsA = !a.getComponents().isEmpty();
-            boolean hasComponentsB = !b.getComponents().isEmpty();
+            boolean hasNbtA = !a.getComponents().isEmpty();
+            boolean hasNbtB = !b.getComponents().isEmpty();
             
-            if (hasComponentsA && hasComponentsB) {
+            if (hasNbtA && hasNbtB) {
                 return a.getComponents().toString().compareTo(b.getComponents().toString());
             }
-            if (hasComponentsA) return -1;
-            if (hasComponentsB) return 1;
+            if (hasNbtA) return -1;
+            if (hasNbtB) return 1;
             return 0;
         }
     }
@@ -547,8 +549,8 @@ public class InventorySorter {
         }
         
         private int compareCustomName(ItemStack a, ItemStack b) {
-            boolean hasCustomA = a.hasCustomHoverName();
-            boolean hasCustomB = b.hasCustomHoverName();
+            boolean hasCustomA = a.has(DataComponents.CUSTOM_NAME);
+            boolean hasCustomB = b.has(DataComponents.CUSTOM_NAME);
             if (hasCustomA && !hasCustomB) return -1;
             if (!hasCustomA && hasCustomB) return 1;
             return 0;

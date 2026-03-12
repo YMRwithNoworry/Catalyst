@@ -228,7 +228,7 @@ public class MouseTweaks {
                 }
             } else if (!lmbDragItem.isEmpty() && config.lmbTweakWithItem) {
                 ItemStack slotItem = slot.getItem();
-                if (!slotItem.isEmpty() && ItemStack.isSameItemSameTags(lmbDragItem, slotItem)) {
+                if (!slotItem.isEmpty() && ItemStack.isSameItemSameComponents(lmbDragItem, slotItem)) {
                     if (shiftDown) {
                         performShiftClick(mc, slot);
                     } else {
@@ -464,7 +464,7 @@ public class MouseTweaks {
         ItemStack slotItem = slot.getItem();
         ItemStack carried = menu.getCarried();
         
-        if (carried.isEmpty() || !ItemStack.isSameItemSameTags(carried, slotItem)) {
+        if (carried.isEmpty() || !ItemStack.isSameItemSameComponents(carried, slotItem)) {
             return;
         }
         
@@ -539,7 +539,7 @@ public class MouseTweaks {
                 ItemStack slotItem = slot.getItem();
                 if (slotItem.isEmpty()) {
                     return slot;
-                } else if (ItemStack.isSameItemSameTags(item, slotItem) && slotItem.getCount() < slotItem.getMaxStackSize()) {
+                } else if (ItemStack.isSameItemSameComponents(item, slotItem) && slotItem.getCount() < slotItem.getMaxStackSize()) {
                     return slot;
                 }
             }
@@ -562,7 +562,7 @@ public class MouseTweaks {
         if (targetItem.isEmpty()) {
             mc.gameMode.handleInventoryMouseClick(containerId, sourceSlot.index, 0, ClickType.PICKUP, mc.player);
             mc.gameMode.handleInventoryMouseClick(containerId, targetSlot.index, 0, ClickType.PICKUP, mc.player);
-        } else if (ItemStack.isSameItemSameTags(sourceItem, targetItem)) {
+        } else if (ItemStack.isSameItemSameComponents(sourceItem, targetItem)) {
             int maxStackSize = sourceItem.getMaxStackSize();
             int total = sourceItem.getCount() + targetItem.getCount();
             

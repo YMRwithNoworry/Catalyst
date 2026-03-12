@@ -38,7 +38,7 @@ public class ClientEventHandler {
         return EventResult.pass();
     }
     
-    private static EventResult onMouseScrolled(Minecraft mc, double amount) {
+    private static EventResult onMouseScrolled(Minecraft mc, double amount, double amount2) {
         return MouseTweaks.onMouseScrolled(mc, amount);
     }
     

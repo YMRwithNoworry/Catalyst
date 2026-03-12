@@ -6,7 +6,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TieredItem;
 import org.alku.catalyst.config.CatalystConfig;
 
@@ -98,9 +97,6 @@ public class AutoWeapon {
     
     private static double getWeaponDamage(ItemStack stack) {
         var item = stack.getItem();
-        if (item instanceof SwordItem sword) {
-            return sword.components().attackDamage();
-        }
         if (item instanceof TieredItem tiered) {
             return tiered.getTier().getAttackDamageBonus();
         }

@@ -88,6 +88,8 @@ public class CatalystConfigScreen extends Screen {
     
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+        super.renderBackground(graphics, mouseX, mouseY, partialTick);
+        
         float scale = getScale();
         float centerX = this.width / 2.0f;
         float centerY = this.height / 2.0f;
@@ -209,11 +211,16 @@ public class CatalystConfigScreen extends Screen {
     }
     
     @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
+    public boolean mouseScrolled(double mouseX, double mouseY, double delta, double delta2) {
         CatalystConfig config = CatalystConfig.getInstance();
-        config.guiScale += delta * 0.1f;
+        float oldScale = config.guiScale;
+        config.guiScale += (float) delta * 0.1f;
         config.guiScale = Math.max(0.5f, Math.min(2.0f, config.guiScale));
-        config.save();
+        
+        if (oldScale != config.guiScale) {
+            config.save();
+            init();
+        }
         return true;
     }
     
