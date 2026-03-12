@@ -39,13 +39,22 @@ public class ClientEventHandler {
     }
     
     private static EventResult onMouseScrolled(Minecraft mc, double amount, double amount2) {
+        System.out.println("[Catalyst] onMouseScrolled event: amount=" + amount + ", amount2=" + amount2 + ", screen=" + (mc.screen != null ? mc.screen.getClass().getSimpleName() : "null"));
         if (mc.screen instanceof CatalystConfigScreen) {
-            return EventResult.pass();
+            CatalystConfig config = CatalystConfig.getInstance();
+            float oldScale = config.guiScale;
+            config.guiScale += (float) amount * 0.1f;
+            config.guiScale = Math.max(0.5f, Math.min(2.0f, config.guiScale));
+            
+            if (oldScale != config.guiScale) {
+                System.out.println("[Catalyst] GUI scale changed via event: " + oldScale + " -> " + config.guiScale);
+                config.save();
+                mc.setScreen(new CatalystConfigScreen(null));
+            }
+            return EventResult.interruptDefault();
         }
         return MouseTweaks.onMouseScrolled(mc, amount);
     }
-    
-
     
     private static void onClientTick(Minecraft mc) {
         handleKeyInputs(mc);

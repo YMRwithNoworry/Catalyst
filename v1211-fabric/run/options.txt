@@ -14,7 +14,7 @@ glintStrength:0.75
 prioritizeChunkUpdates:0
 fullscreen:false
 gamma:0.5
-graphicsMode:1
+graphicsMode:0
 guiScale:0
 maxFps:120
 mipmapLevels:4
@@ -44,7 +44,7 @@ toggleSprint:false
 darkMojangStudiosBackground:false
 hideLightningFlashes:false
 hideSplashTexts:false
-mouseSensitivity:0.5
+mouseSensitivity:0.5845070422535211
 damageTiltStrength:1.0
 highContrast:false
 narratorHotkey:true
@@ -86,7 +86,7 @@ onlyShowSecureChat:false
 panoramaScrollSpeed:1.0
 telemetryOptInExtra:false
 onboardAccessibility:false
-menuBackgroundBlurriness:5
+menuBackgroundBlurriness:10
 key_key.attack:key.mouse.left
 key_key.use:key.mouse.right
 key_key.forward:key.keyboard.w
@@ -126,7 +126,7 @@ key_key.catalyst.toggle_auto_swim:key.keyboard.unknown
 key_key.catalyst.toggle_gamma_override:key.keyboard.unknown
 key_key.catalyst.toggle_auto_tool:key.keyboard.unknown
 key_key.catalyst.toggle_auto_weapon:key.keyboard.unknown
-key_key.catalyst.open_config:key.keyboard.j
+key_key.catalyst.open_config:key.keyboard.o
 key_key.catalyst.sort_inventory:key.keyboard.r
 soundCategory_master:0.1672185430463576
 soundCategory_music:0.0

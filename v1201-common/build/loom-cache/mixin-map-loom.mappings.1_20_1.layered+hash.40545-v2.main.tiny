@@ -1,0 +1,9 @@
+v1	named	intermediary
+FIELD	org/alku/catalyst/mixin/ContainerScreenMixin	I	leftPos	field_2776
+FIELD	org/alku/catalyst/mixin/ContainerScreenMixin	I	topPos	field_2800
+FIELD	org/alku/catalyst/mixin/ContainerScreenMixin	Lnet/minecraft/world/inventory/AbstractContainerMenu;	menu	field_2797
+FIELD	org/alku/catalyst/mixin/ContainerScreenMixin	I	imageWidth	field_2792
+FIELD	org/alku/catalyst/mixin/ContainerScreenMixin	I	imageHeight	field_2779
+FIELD	org/alku/catalyst/mixin/LightTextureMixin	Lcom/mojang/blaze3d/platform/NativeImage;	lightPixels	field_4133
+FIELD	org/alku/catalyst/mixin/LightTextureMixin	Lnet/minecraft/client/renderer/texture/DynamicTexture;	lightTexture	field_4138
+FIELD	org/alku/catalyst/mixin/LightTextureMixin	Z	updateLightTexture	field_4135

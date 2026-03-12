@@ -212,12 +212,14 @@ public class CatalystConfigScreen extends Screen {
     
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double delta, double delta2) {
+        System.out.println("[Catalyst] CatalystConfigScreen.mouseScrolled called: delta=" + delta + ", delta2=" + delta2);
         CatalystConfig config = CatalystConfig.getInstance();
         float oldScale = config.guiScale;
         config.guiScale += (float) delta * 0.1f;
         config.guiScale = Math.max(0.5f, Math.min(2.0f, config.guiScale));
         
         if (oldScale != config.guiScale) {
+            System.out.println("[Catalyst] GUI scale changed: " + oldScale + " -> " + config.guiScale);
             config.save();
             init();
         }

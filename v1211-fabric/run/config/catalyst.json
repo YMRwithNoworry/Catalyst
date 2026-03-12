@@ -27,23 +27,23 @@
   "wheelTweak": true,
   "wheelSearchOrder": 1,
   "wheelScrollDirection": 0,
-  "guiScale": 1.0,
+  "guiScale": 0.5,
   "panelPositions": {
     "Movement": {
-      "x": 10,
-      "y": 10
+      "x": -27,
+      "y": 77
     },
     "Combat": {
-      "x": 167,
-      "y": 6
+      "x": 144,
+      "y": -19
     },
     "Player": {
-      "x": 124,
-      "y": 92
+      "x": 412,
+      "y": -52
     },
     "Tools": {
-      "x": 292,
-      "y": 65
+      "x": 264,
+      "y": 105
     }
   }
 }
