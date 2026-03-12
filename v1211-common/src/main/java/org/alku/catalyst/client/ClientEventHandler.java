@@ -39,6 +39,9 @@ public class ClientEventHandler {
     }
     
     private static EventResult onMouseScrolled(Minecraft mc, double amount, double amount2) {
+        if (mc.screen instanceof CatalystConfigScreen) {
+            return EventResult.pass();
+        }
         return MouseTweaks.onMouseScrolled(mc, amount);
     }
     
