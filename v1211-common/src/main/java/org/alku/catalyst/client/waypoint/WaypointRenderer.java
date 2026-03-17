@@ -12,7 +12,7 @@ import org.joml.Matrix4f;
 
 public class WaypointRenderer {
     
-    public static void renderWaypoints(PoseStack poseStack, float partialTick) {
+    public static void renderWaypoints(float partialTick) {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player == null || mc.level == null) {
             return;
@@ -22,6 +22,8 @@ public class WaypointRenderer {
         Vec3 cameraPos = mc.gameRenderer.getMainCamera().getPosition();
         
         MultiBufferSource.BufferSource bufferSource = mc.renderBuffers().bufferSource();
+        
+        PoseStack poseStack = new PoseStack();
         
         for (Waypoint wp : WaypointManager.getInstance().getWaypointsForDimension(currentDimension)) {
             renderWaypointLabel(poseStack, wp, cameraPos, bufferSource);

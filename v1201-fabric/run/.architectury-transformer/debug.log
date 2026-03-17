@@ -1,5 +1,5 @@
 [Architectury Transformer] Architectury Runtime 5.2.87
-[Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\v1201-common\build\devlibs\v1201-common-1.0-SNAPSHOT-dev.jar
+[Architectury Transformer DEBUG] Closed File Systems for E:\浠ｇ爜\MC妯＄粍\Catalyst\v1201-common\build\devlibs\v1201-common-1.0-SNAPSHOT-dev.jar
 [Architectury Transformer DEBUG] Preparing tiny remapper prepared transformer: dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Provided 111 classpath jar(s):
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\dev.architectury\architectury-injectables\1.0.10\62db2a366d662606d1b23ad02ccc3212ed37ec3\architectury-injectables-1.0.10.jar
@@ -55,73 +55,73 @@
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\ff1914111ef2e3e0110ef2dabc8d8cdaad82347\lwjgl-tinyfd-3.3.1.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\ae58664f88e18a9bb2c77b063833ca7aaec484cb\lwjgl-3.3.1.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\2.0.1\f48d81adce2abf5ad3cfe463df517952749e03bc\slf4j-api-2.0.1.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\minecraftMaven\net\minecraft\minecraft-merged-9b38c06a74\1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2\minecraft-merged-9b38c06a74-1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\minecraftMaven\net\minecraft\minecraft-merged-9b38c06a74\1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2\minecraft-merged-9b38c06a74-1.20.1-loom.mappings.1_20_1.layered+hash.40545-v2.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\c7350a71920f3ae9142945e25fed4846cce53374\netty-transport-native-epoll-4.1.82.Final-linux-x86_64.jar
 [Architectury Transformer DEBUG]  - C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\476409d6255001ca53a55f65b01c13822f8dc93a\netty-transport-native-epoll-4.1.82.Final-linux-aarch_64.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-api\0.92.7+1.20.1\fabric-api-0.92.7+1.20.1.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\dev\architectury\architectury-fabric\9.2.14\architectury-fabric-9.2.14.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-transfer-api-v1\3.3.6+8dd72ea377\fabric-transfer-api-v1-3.3.6+8dd72ea377.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-api-lookup-api-v1\1.6.37+1802ada577\fabric-api-lookup-api-v1-1.6.37+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-blockrenderlayer-v1\1.1.42+1802ada577\fabric-blockrenderlayer-v1-1.1.42+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-client-tags-api-v1\1.1.3+1802ada577\fabric-client-tags-api-v1-1.1.3+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-command-api-v1\1.2.35+f71b366f77\fabric-command-api-v1-1.2.35+f71b366f77.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-commands-v0\0.2.52+df3654b377\fabric-commands-v0-0.2.52+df3654b377.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-command-api-v2\2.2.14+1802ada577\fabric-command-api-v2-2.2.14+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-content-registries-v0\4.0.13+1802ada577\fabric-content-registries-v0-4.0.13+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-convention-tags-v1\1.5.6+1802ada577\fabric-convention-tags-v1-1.5.6+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-data-attachment-api-v1\1.0.2+de0fd6d177\fabric-data-attachment-api-v1-1.0.2+de0fd6d177.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-data-generation-api-v1\12.3.7+1802ada577\fabric-data-generation-api-v1-12.3.7+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-dimensions-v1\2.1.55+1802ada577\fabric-dimensions-v1-2.1.55+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-entity-events-v1\1.6.1+1c78457f77\fabric-entity-events-v1-1.6.1+1c78457f77.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-events-interaction-v0\0.6.5+13a40c6677\fabric-events-interaction-v0-0.6.5+13a40c6677.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-gametest-api-v1\1.2.15+1802ada577\fabric-gametest-api-v1-1.2.15+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-events-lifecycle-v0\0.2.64+df3654b377\fabric-events-lifecycle-v0-0.2.64+df3654b377.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-item-api-v1\2.1.29+1802ada577\fabric-item-api-v1-2.1.29+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-item-group-api-v1\4.0.14+1802ada577\fabric-item-group-api-v1-4.0.14+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-mining-level-api-v1\2.1.52+1802ada577\fabric-mining-level-api-v1-2.1.52+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-lifecycle-events-v1\2.2.23+1802ada577\fabric-lifecycle-events-v1-2.2.23+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-loot-tables-v1\1.1.47+9e7660c677\fabric-loot-tables-v1-1.1.47+9e7660c677.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-loot-api-v2\1.2.3+1802ada577\fabric-loot-api-v2-1.2.3+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-message-api-v1\5.1.10+1802ada577\fabric-message-api-v1-5.1.10+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-models-v0\0.4.3+9386d8a777\fabric-models-v0-0.4.3+9386d8a777.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-model-loading-api-v1\1.0.4+1802ada577\fabric-model-loading-api-v1-1.0.4+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-recipe-api-v1\1.0.24+1802ada577\fabric-recipe-api-v1-1.0.24+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-registry-sync-v0\2.3.6+1802ada577\fabric-registry-sync-v0-2.3.6+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-screen-handler-api-v1\1.3.33+1802ada577\fabric-screen-handler-api-v1-1.3.33+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-containers-v0\0.1.67+df3654b377\fabric-containers-v0-0.1.67+df3654b377.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-networking-v0\0.3.54+df3654b377\fabric-networking-v0-0.3.54+df3654b377.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-networking-api-v1\1.3.14+a158aa0477\fabric-networking-api-v1-1.3.14+a158aa0477.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-object-builder-api-v1\11.1.5+e35120df77\fabric-object-builder-api-v1-11.1.5+e35120df77.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-particles-v1\1.1.3+1802ada577\fabric-particles-v1-1.1.3+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-renderer-indigo\1.5.3+85287f9f77\fabric-renderer-indigo-1.5.3+85287f9f77.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-renderer-api-v1\3.2.2+1802ada577\fabric-renderer-api-v1-3.2.2+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-rendering-fluids-v1\3.0.29+1802ada577\fabric-rendering-fluids-v1-3.0.29+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-renderer-registries-v1\3.2.47+df3654b377\fabric-renderer-registries-v1-3.2.47+df3654b377.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-rendering-v0\1.1.50+df3654b377\fabric-rendering-v0-1.1.50+df3654b377.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-rendering-v1\3.0.9+1802ada577\fabric-rendering-v1-3.0.9+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-screen-api-v1\2.0.9+1802ada577\fabric-screen-api-v1-2.0.9+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-api-base\0.4.32+1802ada577\fabric-api-base-0.4.32+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-biome-api-v1\13.0.15+93aa238b77\fabric-biome-api-v1-13.0.15+93aa238b77.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-block-api-v1\1.0.12+1802ada577\fabric-block-api-v1-1.0.12+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-rendering-data-attachment-v1\0.3.39+92a0d36777\fabric-rendering-data-attachment-v1-0.3.39+92a0d36777.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-block-view-api-v2\1.0.3+924f046a77\fabric-block-view-api-v2-1.0.3+924f046a77.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-crash-report-info-v1\0.2.20+1802ada577\fabric-crash-report-info-v1-0.2.20+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-game-rule-api-v1\1.0.41+1802ada577\fabric-game-rule-api-v1-1.0.41+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-keybindings-v0\0.2.36+df3654b377\fabric-keybindings-v0-0.2.36+df3654b377.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-key-binding-api-v1\1.0.38+1802ada577\fabric-key-binding-api-v1-1.0.38+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-resource-conditions-api-v1\2.3.9+1802ada577\fabric-resource-conditions-api-v1-2.3.9+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-resource-loader-v0\0.11.12+fb82e9d777\fabric-resource-loader-v0-0.11.12+fb82e9d777.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-sound-api-v1\1.0.14+1802ada577\fabric-sound-api-v1-1.0.14+1802ada577.jar
-[Architectury Transformer DEBUG]  - E:\代码\MC模组\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-transitive-access-wideners-v1\4.3.2+1802ada577\fabric-transitive-access-wideners-v1-4.3.2+1802ada577.jar
-[Architectury Transformer] Read classpath in 6.371 s
-[Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\v1201-common\build\devlibs\v1201-common-1.0-SNAPSHOT-dev.jar
-[Architectury Transformer DEBUG] Transforming 5 transformer(s) from E:\代码\MC模组\Catalyst\v1201-common\build\devlibs\v1201-common-1.0-SNAPSHOT-dev.jar to C:\Users\ADMINI~1\AppData\Local\Temp\17061547488746903104.jar: 
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@24a35978
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeFabricMod@16f7c8c1
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@2f0a87b3
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@319b92f3
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@fcd6521
-[Architectury Transformer DEBUG] Transforming from E:\代码\MC模组\Catalyst\v1201-common\build\devlibs\v1201-common-1.0-SNAPSHOT-dev.jar to C:\Users\ADMINI~1\AppData\Local\Temp\17061547488746903104.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-api\0.92.7+1.20.1\fabric-api-0.92.7+1.20.1.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\dev\architectury\architectury-fabric\9.2.14\architectury-fabric-9.2.14.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-transfer-api-v1\3.3.6+8dd72ea377\fabric-transfer-api-v1-3.3.6+8dd72ea377.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-api-lookup-api-v1\1.6.37+1802ada577\fabric-api-lookup-api-v1-1.6.37+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-blockrenderlayer-v1\1.1.42+1802ada577\fabric-blockrenderlayer-v1-1.1.42+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-client-tags-api-v1\1.1.3+1802ada577\fabric-client-tags-api-v1-1.1.3+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-command-api-v1\1.2.35+f71b366f77\fabric-command-api-v1-1.2.35+f71b366f77.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-commands-v0\0.2.52+df3654b377\fabric-commands-v0-0.2.52+df3654b377.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-command-api-v2\2.2.14+1802ada577\fabric-command-api-v2-2.2.14+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-content-registries-v0\4.0.13+1802ada577\fabric-content-registries-v0-4.0.13+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-convention-tags-v1\1.5.6+1802ada577\fabric-convention-tags-v1-1.5.6+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-data-attachment-api-v1\1.0.2+de0fd6d177\fabric-data-attachment-api-v1-1.0.2+de0fd6d177.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-data-generation-api-v1\12.3.7+1802ada577\fabric-data-generation-api-v1-12.3.7+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-dimensions-v1\2.1.55+1802ada577\fabric-dimensions-v1-2.1.55+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-entity-events-v1\1.6.1+1c78457f77\fabric-entity-events-v1-1.6.1+1c78457f77.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-events-interaction-v0\0.6.5+13a40c6677\fabric-events-interaction-v0-0.6.5+13a40c6677.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-gametest-api-v1\1.2.15+1802ada577\fabric-gametest-api-v1-1.2.15+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-events-lifecycle-v0\0.2.64+df3654b377\fabric-events-lifecycle-v0-0.2.64+df3654b377.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-item-api-v1\2.1.29+1802ada577\fabric-item-api-v1-2.1.29+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-item-group-api-v1\4.0.14+1802ada577\fabric-item-group-api-v1-4.0.14+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-mining-level-api-v1\2.1.52+1802ada577\fabric-mining-level-api-v1-2.1.52+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-lifecycle-events-v1\2.2.23+1802ada577\fabric-lifecycle-events-v1-2.2.23+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-loot-tables-v1\1.1.47+9e7660c677\fabric-loot-tables-v1-1.1.47+9e7660c677.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-loot-api-v2\1.2.3+1802ada577\fabric-loot-api-v2-1.2.3+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-message-api-v1\5.1.10+1802ada577\fabric-message-api-v1-5.1.10+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-models-v0\0.4.3+9386d8a777\fabric-models-v0-0.4.3+9386d8a777.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-model-loading-api-v1\1.0.4+1802ada577\fabric-model-loading-api-v1-1.0.4+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-recipe-api-v1\1.0.24+1802ada577\fabric-recipe-api-v1-1.0.24+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-registry-sync-v0\2.3.6+1802ada577\fabric-registry-sync-v0-2.3.6+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-screen-handler-api-v1\1.3.33+1802ada577\fabric-screen-handler-api-v1-1.3.33+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-containers-v0\0.1.67+df3654b377\fabric-containers-v0-0.1.67+df3654b377.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-networking-v0\0.3.54+df3654b377\fabric-networking-v0-0.3.54+df3654b377.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-networking-api-v1\1.3.14+a158aa0477\fabric-networking-api-v1-1.3.14+a158aa0477.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-object-builder-api-v1\11.1.5+e35120df77\fabric-object-builder-api-v1-11.1.5+e35120df77.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-particles-v1\1.1.3+1802ada577\fabric-particles-v1-1.1.3+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-renderer-indigo\1.5.3+85287f9f77\fabric-renderer-indigo-1.5.3+85287f9f77.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-renderer-api-v1\3.2.2+1802ada577\fabric-renderer-api-v1-3.2.2+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-rendering-fluids-v1\3.0.29+1802ada577\fabric-rendering-fluids-v1-3.0.29+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-renderer-registries-v1\3.2.47+df3654b377\fabric-renderer-registries-v1-3.2.47+df3654b377.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-rendering-v0\1.1.50+df3654b377\fabric-rendering-v0-1.1.50+df3654b377.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-rendering-v1\3.0.9+1802ada577\fabric-rendering-v1-3.0.9+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-screen-api-v1\2.0.9+1802ada577\fabric-screen-api-v1-2.0.9+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-api-base\0.4.32+1802ada577\fabric-api-base-0.4.32+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-biome-api-v1\13.0.15+93aa238b77\fabric-biome-api-v1-13.0.15+93aa238b77.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-block-api-v1\1.0.12+1802ada577\fabric-block-api-v1-1.0.12+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-rendering-data-attachment-v1\0.3.39+92a0d36777\fabric-rendering-data-attachment-v1-0.3.39+92a0d36777.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-block-view-api-v2\1.0.3+924f046a77\fabric-block-view-api-v2-1.0.3+924f046a77.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-crash-report-info-v1\0.2.20+1802ada577\fabric-crash-report-info-v1-0.2.20+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-game-rule-api-v1\1.0.41+1802ada577\fabric-game-rule-api-v1-1.0.41+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-keybindings-v0\0.2.36+df3654b377\fabric-keybindings-v0-0.2.36+df3654b377.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-key-binding-api-v1\1.0.38+1802ada577\fabric-key-binding-api-v1-1.0.38+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-resource-conditions-api-v1\2.3.9+1802ada577\fabric-resource-conditions-api-v1-2.3.9+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-resource-loader-v0\0.11.12+fb82e9d777\fabric-resource-loader-v0-0.11.12+fb82e9d777.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-sound-api-v1\1.0.14+1802ada577\fabric-sound-api-v1-1.0.14+1802ada577.jar
+[Architectury Transformer DEBUG]  - E:\浠ｇ爜\MC妯＄粍\Catalyst\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_40545_v2\net\fabricmc\fabric-api\fabric-transitive-access-wideners-v1\4.3.2+1802ada577\fabric-transitive-access-wideners-v1-4.3.2+1802ada577.jar
+[Architectury Transformer] Read classpath in 1.444 s
+[Architectury Transformer DEBUG] Closed File Systems for E:\浠ｇ爜\MC妯＄粍\Catalyst\v1201-common\build\devlibs\v1201-common-1.0-SNAPSHOT-dev.jar
+[Architectury Transformer DEBUG] Transforming 5 transformer(s) from E:\浠ｇ爜\MC妯＄粍\Catalyst\v1201-common\build\devlibs\v1201-common-1.0-SNAPSHOT-dev.jar to C:\Users\ADMINI~1\AppData\Local\Temp\15021446573190302551.jar: 
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@5fdba6f9
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeFabricMod@10d59286
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@fe18270
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@6fb0d3ed
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@6dde5c8c
+[Architectury Transformer DEBUG] Transforming from E:\浠ｇ爜\MC妯＄粍\Catalyst\v1201-common\build\devlibs\v1201-common-1.0-SNAPSHOT-dev.jar to C:\Users\ADMINI~1\AppData\Local\Temp\15021446573190302551.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/Catalyst with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/client/CatalystKeys with maxs=true frames=true
@@ -160,8 +160,76 @@
 [Architectury Transformer DEBUG] Writing org/alku/catalyst/mixin/WaypointRenderMixin with maxs=true frames=true
 [Architectury Transformer DEBUG] Checking whether /v1201-common-v1201-common-refmap.json is a mixin config.
 [Architectury Transformer DEBUG] Checking whether /catalyst.mixins.json is a mixin config.
-[Architectury Transformer DEBUG] Closed File Systems for C:\Users\ADMINI~1\AppData\Local\Temp\17061547488746903104.jar
-[Architectury Transformer DEBUG] Temporary jar [C:\Users\ADMINI~1\AppData\Local\Temp\17061547488746903104.jar] contains packages: org.alku.catalyst.client.waypoint, org.alku.catalyst.config, org.alku.catalyst.mixin, org.alku.catalyst.client.feature, org.alku.catalyst.client.gui, org.alku.catalyst, org.alku.catalyst.client
-[Architectury Transformer DEBUG] Closed File Systems for E:\代码\MC模组\Catalyst\v1201-common\build\devlibs\v1201-common-1.0-SNAPSHOT-dev.jar
-[Architectury Transformer DEBUG] Classpath entry [E:\代码\MC模组\Catalyst\v1201-fabric\build\resources\main] contains packages: 
-[Architectury Transformer] Listening at E:\代码\MC模组\Catalyst\v1201-common\build\devlibs\v1201-common-1.0-SNAPSHOT-dev.jar
+[Architectury Transformer DEBUG] Closed File Systems for C:\Users\ADMINI~1\AppData\Local\Temp\15021446573190302551.jar
+[Architectury Transformer] Listening at E:\浠ｇ爜\MC妯＄粍\Catalyst\v1201-common\build\devlibs\v1201-common-1.0-SNAPSHOT-dev.jar
+[Architectury Transformer DEBUG] Temporary jar [C:\Users\ADMINI~1\AppData\Local\Temp\15021446573190302551.jar] contains packages: org.alku.catalyst.client.waypoint, org.alku.catalyst.config, org.alku.catalyst.mixin, org.alku.catalyst.client.feature, org.alku.catalyst.client.gui, org.alku.catalyst, org.alku.catalyst.client
+[Architectury Transformer DEBUG] Closed File Systems for E:\浠ｇ爜\MC妯＄粍\Catalyst\v1201-common\build\devlibs\v1201-common-1.0-SNAPSHOT-dev.jar
+[Architectury Transformer DEBUG] Classpath entry [E:\浠ｇ爜\MC妯＄粍\Catalyst\v1201-fabric\build\resources\main] contains packages: 
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/Catalyst.class to org/alku/catalyst/Catalyst.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/Catalyst with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/Catalyst in 1.656 ms
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/config/CatalystConfig.class to org/alku/catalyst/config/CatalystConfig.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/config/CatalystConfig with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/config/CatalystConfig in 1.903 ms
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/ClientEventHandler.class to org/alku/catalyst/client/ClientEventHandler.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/ClientEventHandler with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/ClientEventHandler in 2.454 ms
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/gui/CatalystConfigScreen.class to org/alku/catalyst/client/gui/CatalystConfigScreen.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/gui/CatalystConfigScreen with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/gui/CatalystConfigScreen in 2.029 ms
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/CatalystKeys.class to org/alku/catalyst/client/CatalystKeys.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/CatalystKeys with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/CatalystKeys in 501.4 渭s
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoSprint.class to org/alku/catalyst/client/feature/AutoSprint.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSprint with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoSprint in 1.110 ms
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoSwim.class to org/alku/catalyst/client/feature/AutoSwim.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoSwim with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoSwim in 581.8 渭s
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/GammaOverride.class to org/alku/catalyst/client/feature/GammaOverride.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/GammaOverride with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/GammaOverride in 682.7 渭s
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoTool.class to org/alku/catalyst/client/feature/AutoTool.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoTool with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoTool in 978.1 渭s
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoWeapon.class to org/alku/catalyst/client/feature/AutoWeapon.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWeapon with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoWeapon in 1.084 ms
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoDoor.class to org/alku/catalyst/client/feature/AutoDoor.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoDoor with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoDoor in 796.9 渭s
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoWaterBucket.class to org/alku/catalyst/client/feature/AutoWaterBucket.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoWaterBucket in 1.923 ms
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/AutoWaterBucket$State.class to org/alku/catalyst/client/feature/AutoWaterBucket$State.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/AutoWaterBucket$State with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/AutoWaterBucket$State in 892.8 渭s
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/InventorySorter.class to org/alku/catalyst/client/feature/InventorySorter.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/InventorySorter with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/InventorySorter in 12.10 ms
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/feature/MouseTweaks.class to org/alku/catalyst/client/feature/MouseTweaks.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/feature/MouseTweaks with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/feature/MouseTweaks in 3.947 ms
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/waypoint/WaypointRenderer.class to org/alku/catalyst/client/waypoint/WaypointRenderer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/waypoint/WaypointRenderer with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/waypoint/WaypointRenderer in 1.518 ms
+[Architectury Transformer DEBUG] Transforming from org/alku/catalyst/client/waypoint/WaypointManager.class to org/alku/catalyst/client/waypoint/WaypointManager.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing org/alku/catalyst/client/waypoint/WaypointManager with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed org/alku/catalyst/client/waypoint/WaypointManager in 1.688 ms

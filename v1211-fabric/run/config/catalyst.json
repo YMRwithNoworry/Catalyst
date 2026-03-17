@@ -12,7 +12,7 @@
   "autoWeaponLockedSlot": -1,
   "autoDoorEnabled": true,
   "autoWaterBucketEnabled": true,
-  "chamsEnabled": false,
+  "chamsEnabled": true,
   "chamsPlayers": true,
   "chamsAnimals": true,
   "chamsMonsters": true,
@@ -27,7 +27,7 @@
   "wheelTweak": true,
   "wheelSearchOrder": 1,
   "wheelScrollDirection": 0,
-  "guiScale": 0.5,
+  "guiScale": 0.8000001,
   "panelPositions": {
     "Movement": {
       "x": -27,

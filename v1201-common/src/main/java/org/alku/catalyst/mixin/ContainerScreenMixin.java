@@ -5,6 +5,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import org.alku.catalyst.client.CatalystKeys;
@@ -35,9 +36,13 @@ public abstract class ContainerScreenMixin extends Screen {
         super(title);
     }
     
-    @Inject(method = "init", at = @At("TAIL"))
+    @Inject(method = {"init", "m_7856_"}, at = @At("TAIL"), remap = false)
     protected void onInit(CallbackInfo ci) {
         if (!CatalystConfig.getInstance().inventorySorterEnabled) {
+            return;
+        }
+        
+        if ((Object)this instanceof CreativeModeInventoryScreen) {
             return;
         }
         
@@ -62,7 +67,7 @@ public abstract class ContainerScreenMixin extends Screen {
         }
     }
     
-    @Inject(method = "render", at = @At("HEAD"))
+    @Inject(method = {"render", "m_88315_"}, at = @At("HEAD"), remap = false)
     protected void onRender(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
         if (catalyst$sortButton != null) {
             catalyst$sortButton.setX(leftPos + imageWidth - 40);
@@ -70,7 +75,7 @@ public abstract class ContainerScreenMixin extends Screen {
         }
     }
     
-    @Inject(method = "keyPressed", at = @At("HEAD"), cancellable = true)
+    @Inject(method = {"keyPressed", "m_7933_"}, at = @At("HEAD"), cancellable = true, remap = false)
     protected void onKeyPressed(int keyCode, int scanCode, int modifiers, CallbackInfoReturnable<Boolean> cir) {
         if (!CatalystConfig.getInstance().inventorySorterEnabled) {
             return;

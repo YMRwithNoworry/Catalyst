@@ -36,7 +36,7 @@ public abstract class ContainerScreenMixin extends Screen {
         super(title);
     }
     
-    @Inject(method = "init", at = @At("TAIL"))
+    @Inject(method = {"init", "m_7856_"}, at = @At("TAIL"), remap = false)
     protected void onInit(CallbackInfo ci) {
         if (!CatalystConfig.getInstance().inventorySorterEnabled) {
             return;
@@ -59,6 +59,7 @@ public abstract class ContainerScreenMixin extends Screen {
         this.addRenderableWidget(catalyst$sortButton);
         
         if (CatalystConfig.getInstance().autoSortOnOpen && !InventorySorter.isSorting()) {
+            System.out.println("[Catalyst] autoSortOnOpen triggered for container screen");
             Minecraft mc = Minecraft.getInstance();
             if (mc.player != null) {
                 InventorySorter.sortCurrentContainer(mc);
@@ -66,7 +67,7 @@ public abstract class ContainerScreenMixin extends Screen {
         }
     }
     
-    @Inject(method = "render", at = @At("HEAD"))
+    @Inject(method = {"render", "m_88315_"}, at = @At("HEAD"), remap = false)
     protected void onRender(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
         if (catalyst$sortButton != null) {
             catalyst$sortButton.setX(leftPos + imageWidth - 40);
@@ -74,7 +75,7 @@ public abstract class ContainerScreenMixin extends Screen {
         }
     }
     
-    @Inject(method = "keyPressed", at = @At("HEAD"), cancellable = true)
+    @Inject(method = {"keyPressed", "m_7933_"}, at = @At("HEAD"), cancellable = true, remap = false)
     protected void onKeyPressed(int keyCode, int scanCode, int modifiers, CallbackInfoReturnable<Boolean> cir) {
         if (!CatalystConfig.getInstance().inventorySorterEnabled) {
             return;

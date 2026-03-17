@@ -3,6 +3,7 @@ package org.alku.catalyst.client.feature;
 import dev.architectury.event.EventResult;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
@@ -102,6 +103,10 @@ public class MouseTweaks {
             return EventResult.pass();
         }
         
+        if (mc.screen instanceof CreativeModeInventoryScreen) {
+            return EventResult.pass();
+        }
+        
         double guiScale = mc.getWindow().getGuiScale();
         int currentMouseX = (int) (mc.mouseHandler.xpos() / guiScale);
         int currentMouseY = (int) (mc.mouseHandler.ypos() / guiScale);
@@ -156,6 +161,10 @@ public class MouseTweaks {
             return EventResult.pass();
         }
         
+        if (mc.screen instanceof CreativeModeInventoryScreen) {
+            return EventResult.pass();
+        }
+        
         return handleWheelScroll(mc, scrollDelta);
     }
     
@@ -164,6 +173,12 @@ public class MouseTweaks {
         int currentMouseY = (int) mouseY;
         
         if (!(mc.screen instanceof AbstractContainerScreen)) {
+            lastMouseX = currentMouseX;
+            lastMouseY = currentMouseY;
+            return;
+        }
+        
+        if (mc.screen instanceof CreativeModeInventoryScreen) {
             lastMouseX = currentMouseX;
             lastMouseY = currentMouseY;
             return;

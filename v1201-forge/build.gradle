@@ -14,6 +14,9 @@ loom {
     forge {
         mixinConfig "catalyst.mixins.json"
     }
+    mixin {
+        defaultRefmapName = "catalyst-forge-refmap.json"
+    }
 }
 
 configurations {
