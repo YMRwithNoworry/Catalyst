@@ -15,5 +15,5 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "catalyst-forge-refmap.json"
+  "refmap": "v1201-common-v1201-common-refmap.json"
 }

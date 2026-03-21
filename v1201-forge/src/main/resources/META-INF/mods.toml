@@ -15,6 +15,7 @@ description = '''
 
 [[mixins]]
 config = "catalyst.mixins.json"
+refmap = "v1201-common-v1201-common-refmap.json"
 
 [[dependencies.catalyst]]
 modId = "forge"
