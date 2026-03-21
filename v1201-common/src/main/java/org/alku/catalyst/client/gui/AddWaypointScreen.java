@@ -13,6 +13,7 @@ import org.alku.catalyst.client.waypoint.Waypoint;
 import org.alku.catalyst.client.waypoint.WaypointManager;
 
 public class AddWaypointScreen extends Screen {
+    
     private static final int BUTTON_WIDTH = 200;
     private static final int BUTTON_HEIGHT = 20;
     
@@ -39,17 +40,21 @@ public class AddWaypointScreen extends Screen {
         nameBox = new EditBox(this.font, centerX - 100, startY, 200, 20, Component.translatable("catalyst.gui.waypoints.name"));
         nameBox.setMaxLength(50);
         nameBox.setValue("Waypoint");
-        addWidget(nameBox);
+        nameBox.setBordered(false);
+        nameBox.setTextColor(0xFFFFFF);
+        nameBox.setFocused(true);
+        addRenderableWidget(nameBox);
+        setInitialFocus(nameBox);
         
         addRenderableWidget(Button.builder(
             Component.translatable("catalyst.gui.waypoints.create"),
             button -> createWaypoint()
-        ).bounds(centerX - BUTTON_WIDTH / 2, startY + 50, BUTTON_WIDTH, BUTTON_HEIGHT).build());
+        ).bounds(centerX - BUTTON_WIDTH / 2, startY + 30, BUTTON_WIDTH, BUTTON_HEIGHT).build());
         
         addRenderableWidget(Button.builder(
-            Component.translatable("gui.cancel"),
+            Component.translatable("gui.back"),
             button -> this.onClose()
-        ).bounds(centerX - BUTTON_WIDTH / 2, startY + 80, BUTTON_WIDTH, BUTTON_HEIGHT).build());
+        ).bounds(centerX - BUTTON_WIDTH / 2, startY + 58, BUTTON_WIDTH, BUTTON_HEIGHT).build());
     }
     
     private void createWaypoint() {
@@ -66,14 +71,17 @@ public class AddWaypointScreen extends Screen {
     
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        renderBackground(guiGraphics);
+        guiGraphics.fill(0, 0, this.width, this.height, 0xCC000000);
         
         guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, 20, 0xFFFFFF);
         
-        String posText = String.format("Position: %d, %d, %d", pos.getX(), pos.getY(), pos.getZ());
-        guiGraphics.drawString(this.font, posText, this.width / 2 - 100, 45, 0xAAAAAA);
+        String posText = String.format("X: %d, Y: %d, Z: %d", pos.getX(), pos.getY(), pos.getZ());
+        guiGraphics.drawCenteredString(this.font, posText, this.width / 2, 45, 0xAAAAAA);
         
-        nameBox.render(guiGraphics, mouseX, mouseY, partialTick);
+        int boxX = this.width / 2 - 100;
+        int boxY = 60;
+        guiGraphics.fill(boxX - 1, boxY - 1, boxX + 201, boxY + 21, 0xFF555555);
+        guiGraphics.fill(boxX, boxY, boxX + 200, boxY + 20, 0xFF000000);
         
         super.render(guiGraphics, mouseX, mouseY, partialTick);
     }
@@ -86,7 +94,7 @@ public class AddWaypointScreen extends Screen {
     @Override
     public void onClose() {
         if (minecraft != null) {
-            minecraft.setScreen(new WaypointScreen());
+            minecraft.setScreen(null);
         }
     }
 }

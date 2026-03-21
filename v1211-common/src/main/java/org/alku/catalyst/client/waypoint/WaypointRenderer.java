@@ -1,10 +1,14 @@
 package org.alku.catalyst.client.waypoint;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -25,38 +29,74 @@ public class WaypointRenderer {
         
         PoseStack poseStack = new PoseStack();
         
+        RenderSystem.disableDepthTest();
+        RenderSystem.disableCull();
+        RenderSystem.lineWidth(3.0f);
+        
+        VertexConsumer consumer = bufferSource.getBuffer(RenderType.lines());
+        
         for (Waypoint wp : WaypointManager.getInstance().getWaypointsForDimension(currentDimension)) {
-            renderWaypointLabel(poseStack, wp, cameraPos, bufferSource);
+            renderWaypointBeam(poseStack, wp, cameraPos, consumer);
         }
+        
+        bufferSource.endBatch(RenderType.lines());
+        
+        for (Waypoint wp : WaypointManager.getInstance().getWaypointsForDimension(currentDimension)) {
+            renderWaypointLabel(poseStack, wp, cameraPos, mc, bufferSource);
+        }
+        
+        bufferSource.endBatch();
+        
+        RenderSystem.enableCull();
+        RenderSystem.enableDepthTest();
     }
     
-    private static void renderWaypointLabel(PoseStack poseStack, Waypoint waypoint, Vec3 cameraPos, MultiBufferSource bufferSource) {
-        Minecraft mc = Minecraft.getInstance();
-        Font font = mc.font;
-        
+    private static void renderWaypointBeam(PoseStack poseStack, Waypoint waypoint, Vec3 cameraPos, VertexConsumer consumer) {
         BlockPos pos = waypoint.getPos();
-        double x = pos.getX() - cameraPos.x;
-        double z = pos.getZ() - cameraPos.z;
-        
-        String initial = WaypointManager.getInstance().getDisplayInitial(waypoint);
-        
-        poseStack.pushPose();
-        poseStack.translate(x, 260, z);
-        poseStack.mulPose(mc.gameRenderer.getMainCamera().rotation());
-        poseStack.scale(-0.025f, -0.025f, 0.025f);
+        double wpX = pos.getX() + 0.5;
+        double wpZ = pos.getZ() + 0.5;
         
         float r = ((waypoint.getColor() >> 16) & 0xFF) / 255.0f;
         float g = ((waypoint.getColor() >> 8) & 0xFF) / 255.0f;
         float b = (waypoint.getColor() & 0xFF) / 255.0f;
         
-        int textColor = ((int)(r * 255) << 16) | ((int)(g * 255) << 8) | (int)(b * 255) | 0xFF000000;
-        
-        int textWidth = font.width(initial);
-        int textHeight = font.lineHeight;
+        poseStack.pushPose();
+        poseStack.translate(wpX - cameraPos.x, -cameraPos.y, wpZ - cameraPos.z);
         
         Matrix4f matrix = poseStack.last().pose();
         
-        font.drawInBatch(initial, -textWidth / 2.0f, -textHeight / 2.0f, textColor, false, matrix, bufferSource, Font.DisplayMode.NORMAL, 0, 15728880);
+        float minY = -64;
+        float maxY = 320;
+        
+        consumer.addVertex(matrix, 0.0f, minY, 0.0f).setColor(r, g, b, 0.8f).setNormal(poseStack.last(), 0, 1, 0);
+        consumer.addVertex(matrix, 0.0f, maxY, 0.0f).setColor(r, g, b, 0.8f).setNormal(poseStack.last(), 0, 1, 0);
+        
+        poseStack.popPose();
+    }
+    
+    private static void renderWaypointLabel(PoseStack poseStack, Waypoint waypoint, Vec3 cameraPos, Minecraft mc, MultiBufferSource bufferSource) {
+        Font font = mc.font;
+        
+        BlockPos pos = waypoint.getPos();
+        double wpX = pos.getX() + 0.5;
+        double wpY = pos.getY() + 2.0;
+        double wpZ = pos.getZ() + 0.5;
+        
+        Component name = Component.literal(waypoint.getName());
+        
+        int textColor = 0xFFFFFF;
+        
+        poseStack.pushPose();
+        poseStack.translate(wpX - cameraPos.x, wpY - cameraPos.y, wpZ - cameraPos.z);
+        poseStack.mulPose(mc.gameRenderer.getMainCamera().rotation());
+        poseStack.scale(-0.025f, -0.025f, 0.025f);
+        
+        Matrix4f matrix4f = poseStack.last().pose();
+        int width = font.width(name);
+        float backgroundOpacity = mc.options.getBackgroundOpacity(0.25F);
+        int bgColor = (int)(backgroundOpacity * 255.0F) << 24;
+        
+        font.drawInBatch(name, -width / 2.0f, 0, textColor, false, matrix4f, bufferSource, Font.DisplayMode.SEE_THROUGH, bgColor, 15728880);
         
         poseStack.popPose();
     }

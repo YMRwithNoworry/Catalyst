@@ -10,8 +10,7 @@ import net.minecraft.network.chat.Component;
 import org.alku.catalyst.client.feature.*;
 import org.alku.catalyst.client.gui.CatalystConfigScreen;
 import org.alku.catalyst.client.gui.WaypointScreen;
-import org.alku.catalyst.client.waypoint.Waypoint;
-import org.alku.catalyst.client.waypoint.WaypointManager;
+import org.alku.catalyst.client.gui.AddWaypointScreen;
 import org.alku.catalyst.config.CatalystConfig;
 import org.lwjgl.glfw.GLFW;
 
@@ -39,10 +38,20 @@ public class ClientEventHandler {
     }
     
     private static EventResult onMouseScrolled(Minecraft mc, double amount) {
+        if (mc.screen instanceof CatalystConfigScreen) {
+            CatalystConfig config = CatalystConfig.getInstance();
+            float oldScale = config.guiScale;
+            config.guiScale += (float) amount * 0.1f;
+            config.guiScale = Math.max(0.5f, Math.min(2.0f, config.guiScale));
+            
+            if (oldScale != config.guiScale) {
+                config.save();
+                mc.setScreen(new CatalystConfigScreen(null));
+            }
+            return EventResult.interruptDefault();
+        }
         return MouseTweaks.onMouseScrolled(mc, amount);
     }
-    
-
     
     private static void onClientTick(Minecraft mc) {
         handleKeyInputs(mc);
@@ -100,6 +109,30 @@ public class ClientEventHandler {
         
         if (CatalystKeys.SORT_INVENTORY.consumeClick()) {
             InventorySorter.sortCurrentContainer(mc);
+        }
+        
+        if (CatalystKeys.TOGGLE_ENTITY_XRAY.consumeClick()) {
+            config.entityXrayEnabled = !config.entityXrayEnabled;
+            config.save();
+            sendFeedback(mc, "entity_xray", config.entityXrayEnabled);
+        }
+        
+        if (CatalystKeys.TOGGLE_MINI_HUD.consumeClick()) {
+            config.miniHudEnabled = !config.miniHudEnabled;
+            config.save();
+            sendFeedback(mc, "mini_hud", config.miniHudEnabled);
+        }
+
+        if (CatalystKeys.OPEN_WAYPOINTS.consumeClick()) {
+            mc.setScreen(new WaypointScreen());
+        }
+
+        if (CatalystKeys.ADD_WAYPOINT.consumeClick()) {
+            if (mc.player != null && mc.level != null) {
+                BlockPos pos = mc.player.blockPosition();
+                int color = (int)(Math.random() * 0xFFFFFF);
+                mc.setScreen(new AddWaypointScreen(pos, mc.level.dimension(), color));
+            }
         }
     }
     

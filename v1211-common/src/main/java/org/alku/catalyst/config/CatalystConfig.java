@@ -29,11 +29,15 @@ public class CatalystConfig {
     public int autoWeaponLockedSlot = -1;
     public boolean autoDoorEnabled = true;
     public boolean autoWaterBucketEnabled = true;
-    public boolean chamsEnabled = false;
-    public boolean chamsPlayers = true;
-    public boolean chamsAnimals = true;
-    public boolean chamsMonsters = true;
-    
+    public boolean entityXrayEnabled = false;
+
+    public boolean miniHudEnabled = false;
+    public boolean miniHudShowCoords = true;
+    public boolean miniHudShowBiome = true;
+    public boolean miniHudShowTime = true;
+    public boolean miniHudShowDayCount = true;
+    public boolean miniHudShowEntityCount = true;
+
     public boolean inventorySorterEnabled = true;
     public boolean autoSortOnOpen = true;
     public boolean sortHotbar = false;
@@ -103,17 +107,26 @@ public class CatalystConfig {
                 if (obj.has("autoWaterBucketEnabled")) {
                     autoWaterBucketEnabled = obj.get("autoWaterBucketEnabled").getAsBoolean();
                 }
-                if (obj.has("chamsEnabled")) {
-                    chamsEnabled = obj.get("chamsEnabled").getAsBoolean();
+                if (obj.has("entityXrayEnabled")) {
+                    entityXrayEnabled = obj.get("entityXrayEnabled").getAsBoolean();
                 }
-                if (obj.has("chamsPlayers")) {
-                    chamsPlayers = obj.get("chamsPlayers").getAsBoolean();
+                if (obj.has("miniHudEnabled")) {
+                    miniHudEnabled = obj.get("miniHudEnabled").getAsBoolean();
                 }
-                if (obj.has("chamsAnimals")) {
-                    chamsAnimals = obj.get("chamsAnimals").getAsBoolean();
+                if (obj.has("miniHudShowCoords")) {
+                    miniHudShowCoords = obj.get("miniHudShowCoords").getAsBoolean();
                 }
-                if (obj.has("chamsMonsters")) {
-                    chamsMonsters = obj.get("chamsMonsters").getAsBoolean();
+                if (obj.has("miniHudShowBiome")) {
+                    miniHudShowBiome = obj.get("miniHudShowBiome").getAsBoolean();
+                }
+                if (obj.has("miniHudShowTime")) {
+                    miniHudShowTime = obj.get("miniHudShowTime").getAsBoolean();
+                }
+                if (obj.has("miniHudShowDayCount")) {
+                    miniHudShowDayCount = obj.get("miniHudShowDayCount").getAsBoolean();
+                }
+                if (obj.has("miniHudShowEntityCount")) {
+                    miniHudShowEntityCount = obj.get("miniHudShowEntityCount").getAsBoolean();
                 }
                 if (obj.has("inventorySorterEnabled")) {
                     inventorySorterEnabled = obj.get("inventorySorterEnabled").getAsBoolean();
@@ -177,10 +190,13 @@ public class CatalystConfig {
         obj.addProperty("autoWeaponLockedSlot", autoWeaponLockedSlot);
         obj.addProperty("autoDoorEnabled", autoDoorEnabled);
         obj.addProperty("autoWaterBucketEnabled", autoWaterBucketEnabled);
-        obj.addProperty("chamsEnabled", chamsEnabled);
-        obj.addProperty("chamsPlayers", chamsPlayers);
-        obj.addProperty("chamsAnimals", chamsAnimals);
-        obj.addProperty("chamsMonsters", chamsMonsters);
+        obj.addProperty("entityXrayEnabled", entityXrayEnabled);
+        obj.addProperty("miniHudEnabled", miniHudEnabled);
+        obj.addProperty("miniHudShowCoords", miniHudShowCoords);
+        obj.addProperty("miniHudShowBiome", miniHudShowBiome);
+        obj.addProperty("miniHudShowTime", miniHudShowTime);
+        obj.addProperty("miniHudShowDayCount", miniHudShowDayCount);
+        obj.addProperty("miniHudShowEntityCount", miniHudShowEntityCount);
         obj.addProperty("inventorySorterEnabled", inventorySorterEnabled);
         obj.addProperty("autoSortOnOpen", autoSortOnOpen);
         obj.addProperty("sortHotbar", sortHotbar);

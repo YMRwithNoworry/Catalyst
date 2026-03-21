@@ -73,7 +73,8 @@ public class CatalystConfigScreen extends Screen {
         playerPanel.addModule("gamma_override", "toggle_gamma_override", true);
         playerPanel.addModule("auto_door", "toggle_auto_door", false);
         playerPanel.addModule("auto_water_bucket", "toggle_auto_water_bucket", false);
-        playerPanel.addModule("chams", "toggle_chams", true);
+        playerPanel.addModule("entity_xray", "toggle_entity_xray", true);
+        playerPanel.addModule("mini_hud", "toggle_mini_hud", true);
         panels.add(playerPanel);
         
         ModulePanel toolsPanel = new ModulePanel(
@@ -362,8 +363,11 @@ public class CatalystConfigScreen extends Screen {
             if (featureKey.equals("auto_tool")) {
                 return 70;
             }
-            if (featureKey.equals("chams")) {
-                return 50;
+            if (featureKey.equals("entity_xray")) {
+                return 0;
+            }
+            if (featureKey.equals("mini_hud")) {
+                return 80;
             }
             if (featureKey.equals("inventory_sorter")) {
                 return 90;
@@ -493,24 +497,35 @@ public class CatalystConfigScreen extends Screen {
                 String hint = Component.translatable("catalyst.gui.click_to_lock").getString();
                 graphics.drawString(panel.getParentScreen().minecraft.font, hint, x + 8, configY + 52, 0xFF888888);
             }
-            
-            if (isExpanded && featureKey.equals("chams")) {
+
+            if (isExpanded && featureKey.equals("mini_hud")) {
                 int configY = y + BUTTON_HEIGHT;
-                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 50, CatalystConfigScreen.COLOR_BG_CONFIG);
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 80, CatalystConfigScreen.COLOR_BG_CONFIG);
                 
-                String playersText = Component.translatable("catalyst.gui.chams_players").getString();
-                int playersColor = config.chamsPlayers ? 0xFF55FF55 : 0xFF555555;
-                graphics.drawString(panel.getParentScreen().minecraft.font, playersText, x + 8, configY + 6, playersColor);
+                String onText = Component.translatable("catalyst.gui.on").getString();
+                String offText = Component.translatable("catalyst.gui.off").getString();
                 
-                String animalsText = Component.translatable("catalyst.gui.chams_animals").getString();
-                int animalsColor = config.chamsAnimals ? 0xFF55FF55 : 0xFF555555;
-                graphics.drawString(panel.getParentScreen().minecraft.font, animalsText, x + 8, configY + 20, animalsColor);
+                String coordsText = Component.translatable("catalyst.gui.mini_hud_coords").getString() + ": " + (config.miniHudShowCoords ? onText : offText);
+                int coordsColor = config.miniHudShowCoords ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, coordsText, x + 8, configY + 6, coordsColor);
                 
-                String monstersText = Component.translatable("catalyst.gui.chams_monsters").getString();
-                int monstersColor = config.chamsMonsters ? 0xFF55FF55 : 0xFF555555;
-                graphics.drawString(panel.getParentScreen().minecraft.font, monstersText, x + 8, configY + 34, monstersColor);
+                String biomeText = Component.translatable("catalyst.gui.mini_hud_biome").getString() + ": " + (config.miniHudShowBiome ? onText : offText);
+                int biomeColor = config.miniHudShowBiome ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, biomeText, x + 8, configY + 20, biomeColor);
+                
+                String timeText = Component.translatable("catalyst.gui.mini_hud_time").getString() + ": " + (config.miniHudShowTime ? onText : offText);
+                int timeColor = config.miniHudShowTime ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, timeText, x + 8, configY + 34, timeColor);
+                
+                String dayText = Component.translatable("catalyst.gui.mini_hud_day").getString() + ": " + (config.miniHudShowDayCount ? onText : offText);
+                int dayColor = config.miniHudShowDayCount ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, dayText, x + 8, configY + 48, dayColor);
+                
+                String entityText = Component.translatable("catalyst.gui.mini_hud_entities").getString() + ": " + (config.miniHudShowEntityCount ? onText : offText);
+                int entityColor = config.miniHudShowEntityCount ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, entityText, x + 8, configY + 62, entityColor);
             }
-            
+
             if (isExpanded && featureKey.equals("inventory_sorter")) {
                 int configY = y + BUTTON_HEIGHT;
                 graphics.fill(x, configY, x + PANEL_WIDTH, configY + 90, CatalystConfigScreen.COLOR_BG_CONFIG);
@@ -606,7 +621,8 @@ public class CatalystConfigScreen extends Screen {
             if (featureKey.equals("auto_weapon")) return config.autoWeaponEnabled;
             if (featureKey.equals("auto_door")) return config.autoDoorEnabled;
             if (featureKey.equals("auto_water_bucket")) return config.autoWaterBucketEnabled;
-            if (featureKey.equals("chams")) return config.chamsEnabled;
+            if (featureKey.equals("entity_xray")) return config.entityXrayEnabled;
+            if (featureKey.equals("mini_hud")) return config.miniHudEnabled;
             if (featureKey.equals("inventory_sorter")) return config.inventorySorterEnabled;
             if (featureKey.equals("mouse_gestures")) return config.rmbTweak;
             return false;
@@ -712,29 +728,41 @@ public class CatalystConfigScreen extends Screen {
                         }
                     }
                 }
-                
-                if (featureKey.equals("chams") && panel.getExpandedButton() >= 0) {
+
+                if (featureKey.equals("mini_hud") && panel.getExpandedButton() >= 0) {
                     int configY = buttonY + BUTTON_HEIGHT;
                     
                     if (mouseY >= configY + 4 && mouseY <= configY + 16) {
-                        CatalystConfig.getInstance().chamsPlayers = !CatalystConfig.getInstance().chamsPlayers;
+                        CatalystConfig.getInstance().miniHudShowCoords = !CatalystConfig.getInstance().miniHudShowCoords;
                         CatalystConfig.getInstance().save();
                         return true;
                     }
                     
                     if (mouseY >= configY + 18 && mouseY <= configY + 30) {
-                        CatalystConfig.getInstance().chamsAnimals = !CatalystConfig.getInstance().chamsAnimals;
+                        CatalystConfig.getInstance().miniHudShowBiome = !CatalystConfig.getInstance().miniHudShowBiome;
                         CatalystConfig.getInstance().save();
                         return true;
                     }
                     
                     if (mouseY >= configY + 32 && mouseY <= configY + 44) {
-                        CatalystConfig.getInstance().chamsMonsters = !CatalystConfig.getInstance().chamsMonsters;
+                        CatalystConfig.getInstance().miniHudShowTime = !CatalystConfig.getInstance().miniHudShowTime;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    if (mouseY >= configY + 46 && mouseY <= configY + 58) {
+                        CatalystConfig.getInstance().miniHudShowDayCount = !CatalystConfig.getInstance().miniHudShowDayCount;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    if (mouseY >= configY + 60 && mouseY <= configY + 72) {
+                        CatalystConfig.getInstance().miniHudShowEntityCount = !CatalystConfig.getInstance().miniHudShowEntityCount;
                         CatalystConfig.getInstance().save();
                         return true;
                     }
                 }
-                
+
                 if (featureKey.equals("inventory_sorter") && panel.getExpandedButton() >= 0) {
                     int configY = buttonY + BUTTON_HEIGHT;
                     
@@ -842,7 +870,8 @@ public class CatalystConfigScreen extends Screen {
             else if (featureKey.equals("auto_weapon")) config.autoWeaponEnabled = !config.autoWeaponEnabled;
             else if (featureKey.equals("auto_door")) config.autoDoorEnabled = !config.autoDoorEnabled;
             else if (featureKey.equals("auto_water_bucket")) config.autoWaterBucketEnabled = !config.autoWaterBucketEnabled;
-            else if (featureKey.equals("chams")) config.chamsEnabled = !config.chamsEnabled;
+            else if (featureKey.equals("entity_xray")) config.entityXrayEnabled = !config.entityXrayEnabled;
+            else if (featureKey.equals("mini_hud")) config.miniHudEnabled = !config.miniHudEnabled;
             else if (featureKey.equals("inventory_sorter")) config.inventorySorterEnabled = !config.inventorySorterEnabled;
             else if (featureKey.equals("mouse_gestures")) config.rmbTweak = !config.rmbTweak;
             

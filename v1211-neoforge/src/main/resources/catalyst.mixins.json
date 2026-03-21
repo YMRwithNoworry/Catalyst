@@ -5,9 +5,11 @@
   "minVersion": "0.8",
   "client": [
     "LightTextureMixin",
-    "ChamsMixin",
+    "EntityXrayMixin",
+    "MiniHudMixin",
     "WaypointRenderMixin",
-    "ContainerScreenMixin"
+    "ContainerScreenMixin",
+    "MouseHandlerMixin"
   ],
   "mixins": [
   ],

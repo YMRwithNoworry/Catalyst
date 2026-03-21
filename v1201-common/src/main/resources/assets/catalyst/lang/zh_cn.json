@@ -8,6 +8,8 @@
   "key.catalyst.toggle_auto_door": "切换自动门",
   "key.catalyst.toggle_auto_water_bucket": "切换自动水桶",
   "key.catalyst.toggle_chams": "切换透视",
+  "key.catalyst.toggle_entity_xray": "切换实体透视",
+  "key.catalyst.toggle_mini_hud": "切换迷你HUD",
   "key.catalyst.open_config": "打开配置界面",
   "key.catalyst.open_waypoints": "打开路径点界面",
   "key.catalyst.add_waypoint": "添加路径点",
@@ -21,6 +23,8 @@
   "catalyst.feature.auto_door": "自动门",
   "catalyst.feature.auto_water_bucket": "自动水桶",
   "catalyst.feature.chams": "透视",
+  "catalyst.feature.entity_xray": "实体透视",
+  "catalyst.feature.mini_hud": "迷你HUD",
   "catalyst.feature.waypoint_added": "路径点已添加",
   "catalyst.feature.inventory_sorter": "背包整理",
   "catalyst.feature.mouse_gestures": "鼠标手势",
@@ -52,6 +56,7 @@
   "catalyst.gui.waypoints.create": "创建",
   "catalyst.gui.waypoints.teleport": "传送",
   "catalyst.gui.waypoints.delete": "删除",
+  "catalyst.gui.waypoints.no_permission": "需要权限等级2或创造模式才能传送",
   
   "catalyst.gui.auto_sort_on_open": "打开容器自动整理: %s",
   "catalyst.gui.sort_hotbar": "整理快捷栏: %s",
@@ -66,5 +71,17 @@
   "catalyst.gui.scroll_direction": "滚动方向: %s",
   "catalyst.gui.scroll_normal": "正常",
   "catalyst.gui.scroll_inverted": "反转",
-  "catalyst.gui.scroll_inventory": "背包优先"
+  "catalyst.gui.scroll_inventory": "背包优先",
+  
+  "catalyst.gui.mini_hud_coords": "坐标",
+  "catalyst.gui.mini_hud_biome": "群系",
+  "catalyst.gui.mini_hud_time": "时间",
+  "catalyst.gui.mini_hud_day": "天数",
+  "catalyst.gui.mini_hud_entities": "生物数",
+  
+  "catalyst.hud.coords": "坐标: %d, %d, %d",
+  "catalyst.hud.biome": "群系: %s",
+  "catalyst.hud.time": "时间: %s",
+  "catalyst.hud.day": "天数: %d",
+  "catalyst.hud.entities": "生物: %d"
 }

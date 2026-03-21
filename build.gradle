@@ -9,6 +9,18 @@ allprojects {
     version = rootProject.mod_version
 }
 
+subprojects {
+    repositories {
+        maven { url "https://maven.aliyun.com/repository/public" }
+        maven { url "https://maven.fabricmc.net/" }
+        maven { url "https://maven.architectury.dev/" }
+        maven { url "https://files.minecraftforge.net/maven/" }
+        maven { url "https://maven.neoforged.net/releases/" }
+        maven { url "https://libraries.minecraft.net/" }
+        mavenCentral()
+    }
+}
+
 tasks.register('build1201Fabric', DefaultTask) {
     group = 'catalyst build'
     description = 'Build 1.20.1 Fabric version'

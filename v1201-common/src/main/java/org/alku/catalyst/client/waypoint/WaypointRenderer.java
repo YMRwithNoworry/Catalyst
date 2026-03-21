@@ -1,16 +1,14 @@
 package org.alku.catalyst.client.waypoint;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.Tesselator;
-import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -29,100 +27,77 @@ public class WaypointRenderer {
         
         MultiBufferSource.BufferSource bufferSource = mc.renderBuffers().bufferSource();
         
+        RenderSystem.disableDepthTest();
+        RenderSystem.disableCull();
+        RenderSystem.lineWidth(3.0f);
+        
+        VertexConsumer consumer = bufferSource.getBuffer(RenderType.lines());
+        
         for (Waypoint wp : WaypointManager.getInstance().getWaypointsForDimension(currentDimension)) {
-            renderWaypointBeam(poseStack, wp, cameraPos, partialTick, bufferSource);
+            renderWaypointBeam(poseStack, wp, cameraPos, consumer);
         }
+        
+        bufferSource.endBatch(RenderType.lines());
+        
+        for (Waypoint wp : WaypointManager.getInstance().getWaypointsForDimension(currentDimension)) {
+            renderWaypointLabel(poseStack, wp, cameraPos, mc, bufferSource);
+        }
+        
+        bufferSource.endBatch();
+        
+        RenderSystem.enableCull();
+        RenderSystem.enableDepthTest();
     }
     
-    private static void renderWaypointBeam(PoseStack poseStack, Waypoint waypoint, Vec3 cameraPos, float partialTick, MultiBufferSource bufferSource) {
+    private static void renderWaypointBeam(PoseStack poseStack, Waypoint waypoint, Vec3 cameraPos, VertexConsumer consumer) {
         BlockPos pos = waypoint.getPos();
-        double x = pos.getX() - cameraPos.x;
-        double z = pos.getZ() - cameraPos.z;
+        double wpX = pos.getX() + 0.5;
+        double wpZ = pos.getZ() + 0.5;
         
-        float r = ((waypoint.getColor() >> 16) & 0xFF) / 255.0f;
-        float g = ((waypoint.getColor() >> 8) & 0xFF) / 255.0f;
-        float b = (waypoint.getColor() & 0xFF) / 255.0f;
+        int color = waypoint.getColor();
+        int r = (color >> 16) & 0xFF;
+        int g = (color >> 8) & 0xFF;
+        int b = color & 0xFF;
+        int a = (int)(0.8f * 255);
         
         poseStack.pushPose();
-        poseStack.translate(x, 0, z);
-        
-        RenderSystem.enableBlend();
-        RenderSystem.defaultBlendFunc();
-        RenderSystem.disableDepthTest();
-        
-        Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder buffer = tesselator.getBuilder();
-        
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
-        
-        double beamWidth = 0.2;
-        int height = 256;
-        
-        buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+        poseStack.translate(wpX - cameraPos.x, -cameraPos.y, wpZ - cameraPos.z);
         
         Matrix4f matrix = poseStack.last().pose();
+        var normal = poseStack.last().normal();
         
-        float alpha = 0.5f;
+        float minY = -64;
+        float maxY = 320;
         
-        buffer.vertex(matrix, (float)-beamWidth, height, (float)-beamWidth).color(r, g, b, alpha).endVertex();
-        buffer.vertex(matrix, (float)beamWidth, height, (float)-beamWidth).color(r, g, b, alpha).endVertex();
-        buffer.vertex(matrix, (float)beamWidth, height, (float)beamWidth).color(r, g, b, alpha).endVertex();
-        buffer.vertex(matrix, (float)-beamWidth, height, (float)beamWidth).color(r, g, b, alpha).endVertex();
-        
-        buffer.vertex(matrix, (float)-beamWidth, 0, (float)-beamWidth).color(r, g, b, 0.1f).endVertex();
-        buffer.vertex(matrix, (float)-beamWidth, 0, (float)beamWidth).color(r, g, b, 0.1f).endVertex();
-        buffer.vertex(matrix, (float)beamWidth, 0, (float)beamWidth).color(r, g, b, 0.1f).endVertex();
-        buffer.vertex(matrix, (float)beamWidth, 0, (float)-beamWidth).color(r, g, b, 0.1f).endVertex();
-        
-        tesselator.end();
+        consumer.vertex(matrix, 0.0f, minY, 0.0f).color(r, g, b, a).normal(normal, 0, 1, 0);
+        consumer.vertex(matrix, 0.0f, maxY, 0.0f).color(r, g, b, a).normal(normal, 0, 1, 0);
         
         poseStack.popPose();
-        
-        renderWaypointLabel(poseStack, waypoint, x, z, bufferSource);
     }
     
-    private static void renderWaypointLabel(PoseStack poseStack, Waypoint waypoint, double x, double z, MultiBufferSource bufferSource) {
-        Minecraft mc = Minecraft.getInstance();
+    private static void renderWaypointLabel(PoseStack poseStack, Waypoint waypoint, Vec3 cameraPos, Minecraft mc, MultiBufferSource bufferSource) {
         Font font = mc.font;
         
-        String initial = WaypointManager.getInstance().getDisplayInitial(waypoint);
+        BlockPos pos = waypoint.getPos();
+        double wpX = pos.getX() + 0.5;
+        double wpY = pos.getY() + 2.0;
+        double wpZ = pos.getZ() + 0.5;
+        
+        Component name = Component.literal(waypoint.getName());
+        
+        int textColor = 0xFFFFFF;
         
         poseStack.pushPose();
-        poseStack.translate(x, 260, z);
+        poseStack.translate(wpX - cameraPos.x, wpY - cameraPos.y, wpZ - cameraPos.z);
         poseStack.mulPose(mc.gameRenderer.getMainCamera().rotation());
         poseStack.scale(-0.025f, -0.025f, 0.025f);
         
-        float r = ((waypoint.getColor() >> 16) & 0xFF) / 255.0f;
-        float g = ((waypoint.getColor() >> 8) & 0xFF) / 255.0f;
-        float b = (waypoint.getColor() & 0xFF) / 255.0f;
+        Matrix4f matrix4f = poseStack.last().pose();
+        int width = font.width(name);
+        float backgroundOpacity = mc.options.getBackgroundOpacity(0.25F);
+        int bgColor = (int)(backgroundOpacity * 255.0F) << 24;
         
-        int textColor = ((int)(r * 255) << 16) | ((int)(g * 255) << 8) | (int)(b * 255) | 0xFF000000;
-        
-        int textWidth = font.width(initial);
-        int textHeight = font.lineHeight;
-        int padding = 4;
-        
-        RenderSystem.enableBlend();
-        RenderSystem.defaultBlendFunc();
-        RenderSystem.disableDepthTest();
-        
-        Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder buffer = tesselator.getBuilder();
-        
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
-        buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-        
-        Matrix4f matrix = poseStack.last().pose();
-        
-        float bgAlpha = 0.5f;
-        buffer.vertex(matrix, -textWidth / 2 - padding, -textHeight / 2 - padding, 0).color(0, 0, 0, bgAlpha).endVertex();
-        buffer.vertex(matrix, textWidth / 2 + padding, -textHeight / 2 - padding, 0).color(0, 0, 0, bgAlpha).endVertex();
-        buffer.vertex(matrix, textWidth / 2 + padding, textHeight / 2 + padding, 0).color(0, 0, 0, bgAlpha).endVertex();
-        buffer.vertex(matrix, -textWidth / 2 - padding, textHeight / 2 + padding, 0).color(0, 0, 0, bgAlpha).endVertex();
-        
-        tesselator.end();
-        
-        font.drawInBatch(initial, -textWidth / 2.0f, -textHeight / 2.0f, textColor, false, matrix, bufferSource, Font.DisplayMode.NORMAL, 0, 15728880);
+        font.drawInBatch(name, -width / 2.0f, 0, textColor, false, matrix4f, bufferSource, Font.DisplayMode.NORMAL, bgColor, 15728880);
         
         poseStack.popPose();
     }
