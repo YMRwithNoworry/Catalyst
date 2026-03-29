@@ -27,8 +27,20 @@ public class CatalystConfig {
     public boolean autoWeaponEnabled = true;
     public boolean autoWeaponRestore = true;
     public int autoWeaponLockedSlot = -1;
+    public boolean triggerBotEnabled = false;
+    public int triggerBotMode = 0;
+    public boolean triggerBotAttackAnimals = false;
+    public boolean triggerBotAttackMonsters = true;
+    public boolean triggerBotAttackPlayers = true;
+    public boolean triggerBotAttackArmorStands = false;
+    public boolean triggerBotAttackInvisible = false;
+    
+    public boolean shieldBreakerEnabled = true;
+    public boolean shieldBreakerOnlyOnTarget = true;
+    public int shieldBreakerDelay = 5;
     public boolean autoDoorEnabled = true;
     public boolean autoWaterBucketEnabled = true;
+    public boolean fastShieldEnabled = false;
     public boolean entityXrayEnabled = false;
 
     public boolean miniHudEnabled = false;
@@ -101,11 +113,44 @@ public class CatalystConfig {
                 if (obj.has("autoWeaponLockedSlot")) {
                     autoWeaponLockedSlot = obj.get("autoWeaponLockedSlot").getAsInt();
                 }
+                if (obj.has("triggerBotEnabled")) {
+                    triggerBotEnabled = obj.get("triggerBotEnabled").getAsBoolean();
+                }
+                if (obj.has("triggerBotMode")) {
+                    triggerBotMode = Math.max(0, Math.min(1, obj.get("triggerBotMode").getAsInt()));
+                }
+                if (obj.has("triggerBotAttackAnimals")) {
+                    triggerBotAttackAnimals = obj.get("triggerBotAttackAnimals").getAsBoolean();
+                }
+                if (obj.has("triggerBotAttackMonsters")) {
+                    triggerBotAttackMonsters = obj.get("triggerBotAttackMonsters").getAsBoolean();
+                }
+                if (obj.has("triggerBotAttackPlayers")) {
+                    triggerBotAttackPlayers = obj.get("triggerBotAttackPlayers").getAsBoolean();
+                }
+                if (obj.has("triggerBotAttackArmorStands")) {
+                    triggerBotAttackArmorStands = obj.get("triggerBotAttackArmorStands").getAsBoolean();
+                }
+                if (obj.has("triggerBotAttackInvisible")) {
+                    triggerBotAttackInvisible = obj.get("triggerBotAttackInvisible").getAsBoolean();
+                }
+                if (obj.has("shieldBreakerEnabled")) {
+                    shieldBreakerEnabled = obj.get("shieldBreakerEnabled").getAsBoolean();
+                }
+                if (obj.has("shieldBreakerOnlyOnTarget")) {
+                    shieldBreakerOnlyOnTarget = obj.get("shieldBreakerOnlyOnTarget").getAsBoolean();
+                }
+                if (obj.has("shieldBreakerDelay")) {
+                    shieldBreakerDelay = Math.max(0, Math.min(20, obj.get("shieldBreakerDelay").getAsInt()));
+                }
                 if (obj.has("autoDoorEnabled")) {
                     autoDoorEnabled = obj.get("autoDoorEnabled").getAsBoolean();
                 }
                 if (obj.has("autoWaterBucketEnabled")) {
                     autoWaterBucketEnabled = obj.get("autoWaterBucketEnabled").getAsBoolean();
+                }
+                if (obj.has("fastShieldEnabled")) {
+                    fastShieldEnabled = obj.get("fastShieldEnabled").getAsBoolean();
                 }
                 if (obj.has("entityXrayEnabled")) {
                     entityXrayEnabled = obj.get("entityXrayEnabled").getAsBoolean();
@@ -188,8 +233,19 @@ public class CatalystConfig {
         obj.addProperty("autoWeaponEnabled", autoWeaponEnabled);
         obj.addProperty("autoWeaponRestore", autoWeaponRestore);
         obj.addProperty("autoWeaponLockedSlot", autoWeaponLockedSlot);
+        obj.addProperty("triggerBotEnabled", triggerBotEnabled);
+        obj.addProperty("triggerBotMode", triggerBotMode);
+        obj.addProperty("triggerBotAttackAnimals", triggerBotAttackAnimals);
+        obj.addProperty("triggerBotAttackMonsters", triggerBotAttackMonsters);
+        obj.addProperty("triggerBotAttackPlayers", triggerBotAttackPlayers);
+        obj.addProperty("triggerBotAttackArmorStands", triggerBotAttackArmorStands);
+        obj.addProperty("triggerBotAttackInvisible", triggerBotAttackInvisible);
+        obj.addProperty("shieldBreakerEnabled", shieldBreakerEnabled);
+        obj.addProperty("shieldBreakerOnlyOnTarget", shieldBreakerOnlyOnTarget);
+        obj.addProperty("shieldBreakerDelay", shieldBreakerDelay);
         obj.addProperty("autoDoorEnabled", autoDoorEnabled);
         obj.addProperty("autoWaterBucketEnabled", autoWaterBucketEnabled);
+        obj.addProperty("fastShieldEnabled", fastShieldEnabled);
         obj.addProperty("entityXrayEnabled", entityXrayEnabled);
         obj.addProperty("miniHudEnabled", miniHudEnabled);
         obj.addProperty("miniHudShowCoords", miniHudShowCoords);

@@ -13,6 +13,8 @@ public class CatalystKeys {
     public static KeyMapping TOGGLE_GAMMA_OVERRIDE;
     public static KeyMapping TOGGLE_AUTO_TOOL;
     public static KeyMapping TOGGLE_AUTO_WEAPON;
+    public static KeyMapping TOGGLE_TRIGGER_BOT;
+    public static KeyMapping TOGGLE_FAST_SHIELD;
     public static KeyMapping TOGGLE_ENTITY_XRAY;
     public static KeyMapping TOGGLE_MINI_HUD;
     public static KeyMapping OPEN_CONFIG;
@@ -51,6 +53,20 @@ public class CatalystKeys {
 
         TOGGLE_AUTO_WEAPON = new KeyMapping(
             "key.catalyst.toggle_auto_weapon",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_UNKNOWN,
+            KEY_CATEGORY
+        );
+
+        TOGGLE_TRIGGER_BOT = new KeyMapping(
+            "key.catalyst.toggle_trigger_bot",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_UNKNOWN,
+            KEY_CATEGORY
+        );
+
+        TOGGLE_FAST_SHIELD = new KeyMapping(
+            "key.catalyst.toggle_fast_shield",
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_UNKNOWN,
             KEY_CATEGORY
@@ -103,6 +119,8 @@ public class CatalystKeys {
         KeyMappingRegistry.register(TOGGLE_GAMMA_OVERRIDE);
         KeyMappingRegistry.register(TOGGLE_AUTO_TOOL);
         KeyMappingRegistry.register(TOGGLE_AUTO_WEAPON);
+        KeyMappingRegistry.register(TOGGLE_TRIGGER_BOT);
+        KeyMappingRegistry.register(TOGGLE_FAST_SHIELD);
         KeyMappingRegistry.register(TOGGLE_ENTITY_XRAY);
         KeyMappingRegistry.register(TOGGLE_MINI_HUD);
         KeyMappingRegistry.register(OPEN_CONFIG);

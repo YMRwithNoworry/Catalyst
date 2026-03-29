@@ -64,6 +64,9 @@ public class CatalystConfigScreen extends Screen {
             config.getPanelY("Combat", startY),
             "Combat", this);
         combatPanel.addModule("auto_weapon", "toggle_auto_weapon", true);
+        combatPanel.addModule("trigger_bot", "toggle_trigger_bot", true);
+        combatPanel.addModule("shield_breaker", "toggle_shield_breaker", true);
+        combatPanel.addModule("fast_shield", "toggle_fast_shield", false);
         panels.add(combatPanel);
         
         ModulePanel playerPanel = new ModulePanel(
@@ -212,15 +215,13 @@ public class CatalystConfigScreen extends Screen {
     }
     
     @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double delta, double delta2) {
-        System.out.println("[Catalyst] CatalystConfigScreen.mouseScrolled called: delta=" + delta + ", delta2=" + delta2);
+    public boolean mouseScrolled(double mouseX, double mouseY, double scrollDeltaX, double scrollDeltaY) {
         CatalystConfig config = CatalystConfig.getInstance();
         float oldScale = config.guiScale;
-        config.guiScale += (float) delta * 0.1f;
+        config.guiScale += (float) scrollDeltaY * 0.1f;
         config.guiScale = Math.max(0.5f, Math.min(2.0f, config.guiScale));
         
         if (oldScale != config.guiScale) {
-            System.out.println("[Catalyst] GUI scale changed: " + oldScale + " -> " + config.guiScale);
             config.save();
             init();
         }
@@ -360,6 +361,12 @@ public class CatalystConfigScreen extends Screen {
             if (featureKey.equals("auto_weapon")) {
                 return 70;
             }
+            if (featureKey.equals("trigger_bot")) {
+                return 120;
+            }
+            if (featureKey.equals("shield_breaker")) {
+                return 50;
+            }
             if (featureKey.equals("auto_tool")) {
                 return 70;
             }
@@ -459,6 +466,83 @@ public class CatalystConfigScreen extends Screen {
                 
                 String hint = Component.translatable("catalyst.gui.click_to_lock").getString();
                 graphics.drawString(panel.getParentScreen().minecraft.font, hint, x + 8, configY + 52, 0xFF888888);
+            }
+
+            if (isExpanded && featureKey.equals("trigger_bot")) {
+                int configY = y + BUTTON_HEIGHT;
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 120, CatalystConfigScreen.COLOR_BG_CONFIG);
+                
+                String[] modes = {
+                    Component.translatable("catalyst.gui.trigger_mode_cooldown").getString(),
+                    Component.translatable("catalyst.gui.trigger_mode_critical").getString()
+                };
+                String modeText = Component.translatable("catalyst.gui.trigger_mode", modes[config.triggerBotMode]).getString();
+                graphics.drawString(panel.getParentScreen().minecraft.font, modeText, x + 8, configY + 6, 0xFFCCCCCC);
+                
+                int modeBtnX = x + 8;
+                int modeBtnY = configY + 20;
+                int modeBtnWidth = (PANEL_WIDTH - 20) / 2;
+                for (int i = 0; i < 2; i++) {
+                    int btnX = modeBtnX + i * (modeBtnWidth + 4);
+                    boolean isSelected = (config.triggerBotMode == i);
+                    int btnColor = isSelected ? 0xFF44AA44 : 0xFF333333;
+                    int borderColor = isSelected ? 0xFF55FF55 : 0xFF555555;
+                    
+                    graphics.fill(btnX - 1, modeBtnY - 1, btnX + modeBtnWidth + 1, modeBtnY + 18, borderColor);
+                    graphics.fill(btnX, modeBtnY, btnX + modeBtnWidth, modeBtnY + 17, btnColor);
+                    
+                    graphics.drawCenteredString(panel.getParentScreen().minecraft.font, modes[i], btnX + modeBtnWidth / 2, modeBtnY + 4, 0xFFFFFFFF);
+                }
+
+                String onText = Component.translatable("catalyst.gui.on").getString();
+                String offText = Component.translatable("catalyst.gui.off").getString();
+                
+                String animalsText = Component.translatable("catalyst.gui.target_animals").getString() + ": " + (config.triggerBotAttackAnimals ? onText : offText);
+                int animalsColor = config.triggerBotAttackAnimals ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, animalsText, x + 8, configY + 42, animalsColor);
+                
+                String monstersText = Component.translatable("catalyst.gui.target_monsters").getString() + ": " + (config.triggerBotAttackMonsters ? onText : offText);
+                int monstersColor = config.triggerBotAttackMonsters ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, monstersText, x + 8, configY + 56, monstersColor);
+                
+                String playersText = Component.translatable("catalyst.gui.target_players").getString() + ": " + (config.triggerBotAttackPlayers ? onText : offText);
+                int playersColor = config.triggerBotAttackPlayers ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, playersText, x + 8, configY + 70, playersColor);
+
+                String armorStandsText = Component.translatable("catalyst.gui.target_armor_stands").getString() + ": " + (config.triggerBotAttackArmorStands ? onText : offText);
+                int armorStandsColor = config.triggerBotAttackArmorStands ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, armorStandsText, x + 8, configY + 84, armorStandsColor);
+
+                String invisibleText = Component.translatable("catalyst.gui.target_invisible").getString() + ": " + (config.triggerBotAttackInvisible ? onText : offText);
+                int invisibleColor = config.triggerBotAttackInvisible ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, invisibleText, x + 8, configY + 98, invisibleColor);
+            }
+            
+            if (isExpanded && featureKey.equals("shield_breaker")) {
+                int configY = y + BUTTON_HEIGHT;
+                graphics.fill(x, configY, x + PANEL_WIDTH, configY + 50, CatalystConfigScreen.COLOR_BG_CONFIG);
+                
+                String onText = Component.translatable("catalyst.gui.on").getString();
+                String offText = Component.translatable("catalyst.gui.off").getString();
+                
+                String onlyOnTargetText = Component.translatable("catalyst.gui.shield_breaker_only_on_target").getString() + ": " + (config.shieldBreakerOnlyOnTarget ? onText : offText);
+                int onlyOnTargetColor = config.shieldBreakerOnlyOnTarget ? 0xFF55FF55 : 0xFF555555;
+                graphics.drawString(panel.getParentScreen().minecraft.font, onlyOnTargetText, x + 8, configY + 6, onlyOnTargetColor);
+                
+                String delayText = Component.translatable("catalyst.gui.shield_breaker_delay", config.shieldBreakerDelay).getString();
+                graphics.drawString(panel.getParentScreen().minecraft.font, delayText, x + 8, configY + 24, 0xFFCCCCCC);
+                
+                int sliderX = x + 8;
+                int sliderWidth = PANEL_WIDTH - 16;
+                int sliderY = configY + 38;
+                
+                graphics.fill(sliderX, sliderY, sliderX + sliderWidth, sliderY + 8, 0xFF333333);
+                
+                int filledWidth = (int)(sliderWidth * (config.shieldBreakerDelay / 20.0));
+                graphics.fill(sliderX, sliderY, sliderX + filledWidth, sliderY + 8, 0xFF44AA44);
+                
+                int handleX = sliderX + filledWidth - 4;
+                graphics.fill(handleX, sliderY - 2, handleX + 8, sliderY + 10, 0xFFFFFFFF);
             }
             
             if (isExpanded && featureKey.equals("auto_tool")) {
@@ -619,6 +703,9 @@ public class CatalystConfigScreen extends Screen {
             if (featureKey.equals("gamma_override")) return config.gammaOverrideEnabled;
             if (featureKey.equals("auto_tool")) return config.autoToolEnabled;
             if (featureKey.equals("auto_weapon")) return config.autoWeaponEnabled;
+            if (featureKey.equals("trigger_bot")) return config.triggerBotEnabled;
+            if (featureKey.equals("shield_breaker")) return config.shieldBreakerEnabled;
+            if (featureKey.equals("fast_shield")) return config.fastShieldEnabled;
             if (featureKey.equals("auto_door")) return config.autoDoorEnabled;
             if (featureKey.equals("auto_water_bucket")) return config.autoWaterBucketEnabled;
             if (featureKey.equals("entity_xray")) return config.entityXrayEnabled;
@@ -695,6 +782,71 @@ public class CatalystConfigScreen extends Screen {
                                 return true;
                             }
                         }
+                    }
+                }
+
+                if (featureKey.equals("trigger_bot") && panel.getExpandedButton() >= 0) {
+                    int configY = buttonY + BUTTON_HEIGHT;
+                    
+                    int modeBtnX = panel.getX() + 8;
+                    int modeBtnY = configY + 20;
+                    int modeBtnWidth = (PANEL_WIDTH - 20) / 2;
+                    
+                    if (mouseY >= modeBtnY - 1 && mouseY <= modeBtnY + 18) {
+                        for (int i = 0; i < 2; i++) {
+                            int btnX = modeBtnX + i * (modeBtnWidth + 4);
+                            if (mouseX >= btnX - 1 && mouseX <= btnX + modeBtnWidth + 1) {
+                                CatalystConfig.getInstance().triggerBotMode = i;
+                                CatalystConfig.getInstance().save();
+                                return true;
+                            }
+                        }
+                    }
+                    
+                    if (mouseY >= configY + 42 && mouseY <= configY + 54) {
+                        CatalystConfig.getInstance().triggerBotAttackAnimals = !CatalystConfig.getInstance().triggerBotAttackAnimals;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    if (mouseY >= configY + 56 && mouseY <= configY + 68) {
+                        CatalystConfig.getInstance().triggerBotAttackMonsters = !CatalystConfig.getInstance().triggerBotAttackMonsters;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    if (mouseY >= configY + 70 && mouseY <= configY + 82) {
+                        CatalystConfig.getInstance().triggerBotAttackPlayers = !CatalystConfig.getInstance().triggerBotAttackPlayers;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    if (mouseY >= configY + 84 && mouseY <= configY + 96) {
+                        CatalystConfig.getInstance().triggerBotAttackArmorStands = !CatalystConfig.getInstance().triggerBotAttackArmorStands;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    if (mouseY >= configY + 98 && mouseY <= configY + 110) {
+                        CatalystConfig.getInstance().triggerBotAttackInvisible = !CatalystConfig.getInstance().triggerBotAttackInvisible;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                }
+                
+                if (featureKey.equals("shield_breaker") && panel.getExpandedButton() >= 0) {
+                    int configY = buttonY + BUTTON_HEIGHT;
+                    
+                    if (mouseY >= configY + 4 && mouseY <= configY + 16) {
+                        CatalystConfig.getInstance().shieldBreakerOnlyOnTarget = !CatalystConfig.getInstance().shieldBreakerOnlyOnTarget;
+                        CatalystConfig.getInstance().save();
+                        return true;
+                    }
+                    
+                    if (mouseY >= configY + 36 && mouseY <= configY + 48) {
+                        int sliderX = panel.getX() + 8;
+                        int sliderWidth = PANEL_WIDTH - 16;
+                        double newValue = ((mouseX - sliderX) / (double)sliderWidth) * 20;
+                        newValue = Math.max(0, Math.min(20, newValue));
+                        CatalystConfig.getInstance().shieldBreakerDelay = (int)newValue;
+                        CatalystConfig.getInstance().save();
+                        return true;
                     }
                 }
                 
@@ -868,6 +1020,9 @@ public class CatalystConfigScreen extends Screen {
             else if (featureKey.equals("gamma_override")) config.gammaOverrideEnabled = !config.gammaOverrideEnabled;
             else if (featureKey.equals("auto_tool")) config.autoToolEnabled = !config.autoToolEnabled;
             else if (featureKey.equals("auto_weapon")) config.autoWeaponEnabled = !config.autoWeaponEnabled;
+            else if (featureKey.equals("trigger_bot")) config.triggerBotEnabled = !config.triggerBotEnabled;
+            else if (featureKey.equals("shield_breaker")) config.shieldBreakerEnabled = !config.shieldBreakerEnabled;
+            else if (featureKey.equals("fast_shield")) config.fastShieldEnabled = !config.fastShieldEnabled;
             else if (featureKey.equals("auto_door")) config.autoDoorEnabled = !config.autoDoorEnabled;
             else if (featureKey.equals("auto_water_bucket")) config.autoWaterBucketEnabled = !config.autoWaterBucketEnabled;
             else if (featureKey.equals("entity_xray")) config.entityXrayEnabled = !config.entityXrayEnabled;

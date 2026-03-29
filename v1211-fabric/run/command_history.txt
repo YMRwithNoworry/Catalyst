@@ -1,1 +1,5 @@
 /gamemode survival
+/gamemode creative
+/gamemode survival
+/time set midnight
+/gamemode creative

@@ -31,6 +31,7 @@ public class ClientEventHandler {
         }
         
         if (button == 0 && action == 1) {
+            ShieldBreaker.onAttack(mc);
             AutoWeapon.checkAndSwitch(mc);
             AutoTool.checkAndSwitch(mc);
         }
@@ -59,6 +60,8 @@ public class ClientEventHandler {
         AutoSprint.tick(mc);
         AutoSwim.tick(mc);
         GammaOverride.tick(mc);
+        TriggerBot.tick(mc);
+        ShieldBreaker.tick(mc);
         AutoTool.tick(mc);
         AutoWeapon.tick(mc);
         AutoDoor.tick(mc);
@@ -105,6 +108,18 @@ public class ClientEventHandler {
             config.autoWeaponEnabled = !config.autoWeaponEnabled;
             config.save();
             sendFeedback(mc, "auto_weapon", config.autoWeaponEnabled);
+        }
+
+        if (CatalystKeys.TOGGLE_TRIGGER_BOT.consumeClick()) {
+            config.triggerBotEnabled = !config.triggerBotEnabled;
+            config.save();
+            sendFeedback(mc, "trigger_bot", config.triggerBotEnabled);
+        }
+
+        if (CatalystKeys.TOGGLE_FAST_SHIELD.consumeClick()) {
+            config.fastShieldEnabled = !config.fastShieldEnabled;
+            config.save();
+            sendFeedback(mc, "fast_shield", config.fastShieldEnabled);
         }
         
         if (CatalystKeys.SORT_INVENTORY.consumeClick()) {

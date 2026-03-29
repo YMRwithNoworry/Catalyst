@@ -40,7 +40,7 @@ directionalAudio:false
 touchscreen:false
 bobView:true
 toggleCrouch:false
-toggleSprint:false
+toggleSprint:true
 darkMojangStudiosBackground:false
 hideLightningFlashes:false
 hideSplashTexts:false
@@ -126,8 +126,14 @@ key_key.catalyst.toggle_auto_swim:key.keyboard.unknown
 key_key.catalyst.toggle_gamma_override:key.keyboard.unknown
 key_key.catalyst.toggle_auto_tool:key.keyboard.unknown
 key_key.catalyst.toggle_auto_weapon:key.keyboard.unknown
+key_key.catalyst.toggle_trigger_bot:key.keyboard.unknown
+key_key.catalyst.toggle_fast_shield:key.keyboard.unknown
+key_key.catalyst.toggle_entity_xray:key.keyboard.unknown
+key_key.catalyst.toggle_mini_hud:key.keyboard.unknown
 key_key.catalyst.open_config:key.keyboard.o
 key_key.catalyst.sort_inventory:key.keyboard.r
+key_key.catalyst.open_waypoints:key.keyboard.b
+key_key.catalyst.add_waypoint:key.keyboard.n
 soundCategory_master:0.1672185430463576
 soundCategory_music:0.0
 soundCategory_record:1.0

@@ -17,6 +17,10 @@ public class AutoSprint {
             return;
         }
         
+        if (TriggerBot.isPreparingCrit()) {
+            return;
+        }
+        
         if (shouldSprint(player, mc)) {
             if (!player.isSprinting()) {
                 player.setSprinting(true);

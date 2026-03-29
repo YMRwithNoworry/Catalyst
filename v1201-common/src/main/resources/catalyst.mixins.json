@@ -11,6 +11,8 @@
     "ContainerScreenMixin"
   ],
   "mixins": [
+    "FastShieldMixin",
+    "FastShieldAnimationMixin"
   ],
   "injectors": {
     "defaultRequire": 1
