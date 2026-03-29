@@ -3,6 +3,7 @@ package org.alku.catalyst.client.gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import org.alku.catalyst.client.CatalystKeys;
 import org.alku.catalyst.client.feature.GammaOverride;
 import org.alku.catalyst.config.CatalystConfig;
 
@@ -34,6 +35,9 @@ public class CatalystConfigScreen extends Screen {
     
     private boolean isDraggingSlider = false;
     private int sliderButtonIndex = -1;
+    
+    private String waitingForKeybind = null;
+    private int waitingKeyButtonY = -1;
     
     public CatalystConfigScreen(Screen parent) {
         super(Component.translatable("catalyst.gui.title"));
@@ -108,6 +112,25 @@ public class CatalystConfigScreen extends Screen {
         
         for (ModulePanel panel : panels) {
             panel.render(graphics, scaledMouseX, scaledMouseY, partialTick);
+        }
+        
+        if (waitingForKeybind != null) {
+            graphics.fill(0, 0, this.width, this.height, 0x80000000);
+            
+            Component prompt = Component.translatable("catalyst.gui.press_key");
+            int textWidth = this.font.width(prompt);
+            int boxWidth = textWidth + 20;
+            int boxHeight = 30;
+            int boxX = (this.width - boxWidth) / 2;
+            int boxY = (this.height - boxHeight) / 2;
+            
+            graphics.fill(boxX, boxY, boxX + boxWidth, boxY + boxHeight, 0xF0202020);
+            graphics.fill(boxX, boxY, boxX + boxWidth, boxY + 1, 0xFF44AA44);
+            graphics.fill(boxX, boxY + boxHeight - 1, boxX + boxWidth, boxY + boxHeight, 0xFF44AA44);
+            graphics.fill(boxX, boxY, boxX + 1, boxY + boxHeight, 0xFF44AA44);
+            graphics.fill(boxX + boxWidth - 1, boxY, boxX + boxWidth, boxY + boxHeight, 0xFF44AA44);
+            
+            graphics.drawCenteredString(this.font, prompt, this.width / 2, boxY + 10, 0xFFFFFFFF);
         }
         
         graphics.pose().popPose();
@@ -248,6 +271,25 @@ public class CatalystConfigScreen extends Screen {
         return false;
     }
     
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if (waitingForKeybind != null) {
+            if (keyCode == org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE) {
+                KeybindManager.setKey(waitingForKeybind, org.lwjgl.glfw.GLFW.GLFW_KEY_UNKNOWN);
+                CatalystKeys.updateKeyMapping(waitingForKeybind, org.lwjgl.glfw.GLFW.GLFW_KEY_UNKNOWN);
+                waitingForKeybind = null;
+                waitingKeyButtonY = -1;
+                return true;
+            }
+            KeybindManager.setKey(waitingForKeybind, keyCode);
+            CatalystKeys.updateKeyMapping(waitingForKeybind, keyCode);
+            waitingForKeybind = null;
+            waitingKeyButtonY = -1;
+            return true;
+        }
+        return super.keyPressed(keyCode, scanCode, modifiers);
+    }
+    
     public float getScale() {
         return CatalystConfig.getInstance().guiScale;
     }
@@ -341,6 +383,14 @@ public class CatalystConfigScreen extends Screen {
         public CatalystConfigScreen getParentScreen() { return parent; }
     }
     
+    public String getWaitingForKeybind() {
+        return waitingForKeybind;
+    }
+    
+    public int getWaitingKeyButtonY() {
+        return waitingKeyButtonY;
+    }
+    
     public static class ModuleButton {
         private final String featureKey;
         private final String keybindKey;
@@ -352,6 +402,10 @@ public class CatalystConfigScreen extends Screen {
             this.keybindKey = keybindKey;
             this.panel = panel;
             this.hasConfig = hasConfig;
+        }
+        
+        public String getKeybindKey() {
+            return keybindKey;
         }
         
         public int getConfigHeight() {
@@ -716,7 +770,20 @@ public class CatalystConfigScreen extends Screen {
         }
         
         public boolean mouseClicked(double mouseX, double mouseY, int button, int buttonY) {
+            if (button == 1) {
+                if (mouseY >= buttonY && mouseY <= buttonY + BUTTON_HEIGHT) {
+                    panel.getParentScreen().waitingForKeybind = keybindKey;
+                    panel.getParentScreen().waitingKeyButtonY = buttonY;
+                    return true;
+                }
+            }
+            
             if (button == 0) {
+                if (panel.getParentScreen().waitingForKeybind != null) {
+                    panel.getParentScreen().waitingForKeybind = null;
+                    panel.getParentScreen().waitingKeyButtonY = -1;
+                }
+                
                 if (mouseY >= buttonY && mouseY <= buttonY + BUTTON_HEIGHT) {
                     toggleFeature();
                     return true;

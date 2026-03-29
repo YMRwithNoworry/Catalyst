@@ -7,16 +7,27 @@ import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
-import org.alku.catalyst.config.CatalystConfig;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import org.alku.catalyst.config.CatalystConfig;
 
 public class TriggerBot {
     
     private static boolean preparingCrit = false;
+    private static long lastHurtTime = 0;
     
     public static boolean isPreparingCrit() {
         return preparingCrit;
+    }
+    
+    public static boolean wasAttackedRecently() {
+        return System.currentTimeMillis() - lastHurtTime < 1000;
+    }
+    
+    public static void onPlayerHurt(Player player) {
+        if (player.isHurt() && player.hurtTime > 0) {
+            lastHurtTime = System.currentTimeMillis();
+        }
     }
     
     public static void tick(Minecraft mc) {
@@ -30,9 +41,7 @@ public class TriggerBot {
             return;
         }
 
-        if (mc.player.getAttackStrengthScale(0.0F) < 1.0F) {
-            return;
-        }
+        onPlayerHurt(mc.player);
 
         HitResult hitResult = mc.hitResult;
         if (hitResult == null || hitResult.getType() != HitResult.Type.ENTITY) {
@@ -50,6 +59,19 @@ public class TriggerBot {
         }
 
         CatalystConfig config = CatalystConfig.getInstance();
+        
+        boolean onCooldown = mc.player.getAttackStrengthScale(0.0F) < 1.0F;
+        boolean wasHurt = wasAttackedRecently();
+        
+        if (onCooldown && config.triggerBotMode == 1 && wasHurt) {
+            preparingCrit = false;
+            performAttack(mc, target);
+            return;
+        }
+        
+        if (onCooldown) {
+            return;
+        }
         
         if (config.triggerBotMode == 1) {
             if (mc.player.onGround()) {

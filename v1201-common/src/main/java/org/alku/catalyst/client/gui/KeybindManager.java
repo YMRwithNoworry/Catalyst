@@ -29,6 +29,12 @@ public class KeybindManager {
         DEFAULT_KEYS.put("toggle_auto_door", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_auto_water_bucket", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_chams", GLFW.GLFW_KEY_UNKNOWN);
+        DEFAULT_KEYS.put("toggle_trigger_bot", GLFW.GLFW_KEY_UNKNOWN);
+        DEFAULT_KEYS.put("toggle_shield_breaker", GLFW.GLFW_KEY_UNKNOWN);
+        DEFAULT_KEYS.put("toggle_fast_shield", GLFW.GLFW_KEY_UNKNOWN);
+        DEFAULT_KEYS.put("toggle_entity_xray", GLFW.GLFW_KEY_UNKNOWN);
+        DEFAULT_KEYS.put("toggle_mini_hud", GLFW.GLFW_KEY_UNKNOWN);
+        DEFAULT_KEYS.put("toggle_inventory_sorter", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("open_config", GLFW.GLFW_KEY_J);
         DEFAULT_KEYS.put("sort_inventory", GLFW.GLFW_KEY_R);
         DEFAULT_KEYS.put("open_waypoints", GLFW.GLFW_KEY_UNKNOWN);
@@ -73,8 +79,16 @@ public class KeybindManager {
         }
     }
     
-    public static int getKey(String name) {
+    public static int getKeyCode(String name) {
         return keyBindings.getOrDefault(name, GLFW.GLFW_KEY_UNKNOWN);
+    }
+    
+    public static InputConstants.Key getKey(String name) {
+        int keyCode = getKeyCode(name);
+        if (keyCode == GLFW.GLFW_KEY_UNKNOWN) {
+            return InputConstants.UNKNOWN;
+        }
+        return InputConstants.Type.KEYSYM.getOrCreate(keyCode);
     }
     
     public static void setKey(String name, int keyCode) {
@@ -83,15 +97,15 @@ public class KeybindManager {
     }
     
     public static String getBoundKey(String name) {
-        int keyCode = getKey(name);
-        if (keyCode == GLFW.GLFW_KEY_UNKNOWN) {
+        InputConstants.Key key = getKey(name);
+        if (key == InputConstants.UNKNOWN) {
             return "None";
         }
-        return InputConstants.getKey(keyCode, 0).getDisplayName().getString();
+        return key.getDisplayName().getString();
     }
     
     public static boolean isKeyDown(String name) {
-        int keyCode = getKey(name);
+        int keyCode = keyBindings.getOrDefault(name, GLFW.GLFW_KEY_UNKNOWN);
         if (keyCode == GLFW.GLFW_KEY_UNKNOWN) {
             return false;
         }

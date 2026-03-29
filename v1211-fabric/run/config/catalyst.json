@@ -23,7 +23,7 @@
   "autoDoorEnabled": true,
   "autoWaterBucketEnabled": true,
   "fastShieldEnabled": true,
-  "entityXrayEnabled": true,
+  "entityXrayEnabled": false,
   "miniHudEnabled": true,
   "miniHudShowCoords": true,
   "miniHudShowBiome": true,

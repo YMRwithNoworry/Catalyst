@@ -127,9 +127,11 @@ key_key.catalyst.toggle_gamma_override:key.keyboard.unknown
 key_key.catalyst.toggle_auto_tool:key.keyboard.unknown
 key_key.catalyst.toggle_auto_weapon:key.keyboard.unknown
 key_key.catalyst.toggle_trigger_bot:key.keyboard.unknown
+key_key.catalyst.toggle_shield_breaker:key.keyboard.unknown
 key_key.catalyst.toggle_fast_shield:key.keyboard.unknown
 key_key.catalyst.toggle_entity_xray:key.keyboard.unknown
 key_key.catalyst.toggle_mini_hud:key.keyboard.unknown
+key_key.catalyst.toggle_inventory_sorter:key.keyboard.unknown
 key_key.catalyst.open_config:key.keyboard.o
 key_key.catalyst.sort_inventory:key.keyboard.r
 key_key.catalyst.open_waypoints:key.keyboard.b

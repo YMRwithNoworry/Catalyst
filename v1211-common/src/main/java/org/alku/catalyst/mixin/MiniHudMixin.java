@@ -3,6 +3,7 @@ package org.alku.catalyst.mixin;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
+import org.alku.catalyst.client.gui.FeatureHUD;
 import org.alku.catalyst.client.hud.MiniHudRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -18,5 +19,6 @@ public class MiniHudMixin {
     )
     private void onRender(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo ci) {
         MiniHudRenderer.render(guiGraphics, deltaTracker);
+        FeatureHUD.render(guiGraphics, deltaTracker.getGameTimeDeltaPartialTick(false));
     }
 }

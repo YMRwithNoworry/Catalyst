@@ -116,6 +116,12 @@ public class ClientEventHandler {
             sendFeedback(mc, "trigger_bot", config.triggerBotEnabled);
         }
 
+        if (CatalystKeys.TOGGLE_SHIELD_BREAKER.consumeClick()) {
+            config.shieldBreakerEnabled = !config.shieldBreakerEnabled;
+            config.save();
+            sendFeedback(mc, "shield_breaker", config.shieldBreakerEnabled);
+        }
+
         if (CatalystKeys.TOGGLE_FAST_SHIELD.consumeClick()) {
             config.fastShieldEnabled = !config.fastShieldEnabled;
             config.save();
@@ -136,6 +142,12 @@ public class ClientEventHandler {
             config.miniHudEnabled = !config.miniHudEnabled;
             config.save();
             sendFeedback(mc, "mini_hud", config.miniHudEnabled);
+        }
+
+        if (CatalystKeys.TOGGLE_INVENTORY_SORTER.consumeClick()) {
+            config.inventorySorterEnabled = !config.inventorySorterEnabled;
+            config.save();
+            sendFeedback(mc, "inventory_sorter", config.inventorySorterEnabled);
         }
 
         if (CatalystKeys.OPEN_WAYPOINTS.consumeClick()) {
