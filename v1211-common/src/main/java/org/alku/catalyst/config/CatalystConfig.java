@@ -56,7 +56,7 @@ public class CatalystConfig {
     public boolean sortPlayerInventoryInContainer = true;
     public int sortMode = 0;
     
-    public boolean rmbTweak = true;
+    public boolean mouseGesturesEnabled = true;
     public boolean lmbTweakWithItem = true;
     public boolean lmbTweakWithoutItem = true;
     public boolean wheelTweak = true;
@@ -188,8 +188,10 @@ public class CatalystConfig {
                 if (obj.has("sortMode")) {
                     sortMode = Math.max(0, Math.min(2, obj.get("sortMode").getAsInt()));
                 }
-                if (obj.has("rmbTweak")) {
-                    rmbTweak = obj.get("rmbTweak").getAsBoolean();
+                if (obj.has("mouseGesturesEnabled")) {
+                    mouseGesturesEnabled = obj.get("mouseGesturesEnabled").getAsBoolean();
+                } else if (obj.has("rmbTweak")) {
+                    mouseGesturesEnabled = obj.get("rmbTweak").getAsBoolean();
                 }
                 if (obj.has("lmbTweakWithItem")) {
                     lmbTweakWithItem = obj.get("lmbTweakWithItem").getAsBoolean();
@@ -258,7 +260,7 @@ public class CatalystConfig {
         obj.addProperty("sortHotbar", sortHotbar);
         obj.addProperty("sortPlayerInventoryInContainer", sortPlayerInventoryInContainer);
         obj.addProperty("sortMode", sortMode);
-        obj.addProperty("rmbTweak", rmbTweak);
+        obj.addProperty("mouseGesturesEnabled", mouseGesturesEnabled);
         obj.addProperty("lmbTweakWithItem", lmbTweakWithItem);
         obj.addProperty("lmbTweakWithoutItem", lmbTweakWithoutItem);
         obj.addProperty("wheelTweak", wheelTweak);

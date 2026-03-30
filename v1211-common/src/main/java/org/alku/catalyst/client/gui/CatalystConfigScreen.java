@@ -710,8 +710,8 @@ public class CatalystConfigScreen extends Screen {
                 String onText = Component.translatable("catalyst.gui.on").getString();
                 String offText = Component.translatable("catalyst.gui.off").getString();
                 
-                String rmbText = Component.translatable("catalyst.gui.rmb_tweak").getString() + ": " + (config.rmbTweak ? onText : offText);
-                int rmbColor = config.rmbTweak ? 0xFF55FF55 : 0xFF555555;
+                String rmbText = Component.translatable("catalyst.gui.rmb_tweak").getString() + ": " + (config.mouseGesturesEnabled ? onText : offText);
+                int rmbColor = config.mouseGesturesEnabled ? 0xFF55FF55 : 0xFF555555;
                 graphics.drawString(panel.getParentScreen().minecraft.font, rmbText, x + 8, configY + 6, rmbColor);
                 
                 String lmbWithItemText = Component.translatable("catalyst.gui.lmb_tweak_with_item").getString() + ": " + (config.lmbTweakWithItem ? onText : offText);
@@ -765,7 +765,7 @@ public class CatalystConfigScreen extends Screen {
             if (featureKey.equals("entity_xray")) return config.entityXrayEnabled;
             if (featureKey.equals("mini_hud")) return config.miniHudEnabled;
             if (featureKey.equals("inventory_sorter")) return config.inventorySorterEnabled;
-            if (featureKey.equals("mouse_gestures")) return config.rmbTweak;
+            if (featureKey.equals("mouse_gestures")) return config.mouseGesturesEnabled;
             return false;
         }
         
@@ -1023,7 +1023,7 @@ public class CatalystConfigScreen extends Screen {
                     int configY = buttonY + BUTTON_HEIGHT;
                     
                     if (mouseY >= configY + 4 && mouseY <= configY + 16) {
-                        CatalystConfig.getInstance().rmbTweak = !CatalystConfig.getInstance().rmbTweak;
+                        CatalystConfig.getInstance().mouseGesturesEnabled = !CatalystConfig.getInstance().mouseGesturesEnabled;
                         CatalystConfig.getInstance().save();
                         return true;
                     }
@@ -1095,7 +1095,7 @@ public class CatalystConfigScreen extends Screen {
             else if (featureKey.equals("entity_xray")) config.entityXrayEnabled = !config.entityXrayEnabled;
             else if (featureKey.equals("mini_hud")) config.miniHudEnabled = !config.miniHudEnabled;
             else if (featureKey.equals("inventory_sorter")) config.inventorySorterEnabled = !config.inventorySorterEnabled;
-            else if (featureKey.equals("mouse_gestures")) config.rmbTweak = !config.rmbTweak;
+            else if (featureKey.equals("mouse_gestures")) config.mouseGesturesEnabled = !config.mouseGesturesEnabled;
             
             config.save();
         }

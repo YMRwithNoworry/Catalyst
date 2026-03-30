@@ -99,7 +99,7 @@ public class MouseTweaks {
     public static EventResult onMouseClicked(Minecraft mc, int button, int action, int mods) {
         CatalystConfig config = CatalystConfig.getInstance();
         
-        if (!(mc.screen instanceof AbstractContainerScreen) || !config.rmbTweak) {
+        if (!(mc.screen instanceof AbstractContainerScreen) || !config.mouseGesturesEnabled) {
             return EventResult.pass();
         }
         
@@ -157,7 +157,7 @@ public class MouseTweaks {
     public static EventResult onMouseScrolled(Minecraft mc, double scrollDelta) {
         CatalystConfig config = CatalystConfig.getInstance();
         
-        if (!config.rmbTweak || !config.wheelTweak || !(mc.screen instanceof AbstractContainerScreen)) {
+        if (!config.mouseGesturesEnabled || !config.wheelTweak || !(mc.screen instanceof AbstractContainerScreen)) {
             return EventResult.pass();
         }
         
@@ -321,7 +321,7 @@ public class MouseTweaks {
         rmbShiftDragMode = false;
         rmbDragItem = ItemStack.EMPTY;
         
-        if (shiftDown && config.rmbTweak) {
+        if (shiftDown && config.mouseGesturesEnabled) {
             rmbShiftDragMode = true;
             if (hoveredSlot != null && !hoveredSlot.getItem().isEmpty()) {
                 performThrow(mc, hoveredSlot);

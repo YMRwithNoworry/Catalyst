@@ -163,9 +163,9 @@ public class ClientEventHandler {
         }
 
         if (CatalystKeys.TOGGLE_MOUSE_GESTURES.consumeClick()) {
-            config.rmbTweak = !config.rmbTweak;
+            config.mouseGesturesEnabled = !config.mouseGesturesEnabled;
             config.save();
-            sendFeedback(mc, "mouse_gestures", config.rmbTweak);
+            sendFeedback(mc, "mouse_gestures", config.mouseGesturesEnabled);
         }
 
         if (CatalystKeys.OPEN_WAYPOINTS.consumeClick()) {
