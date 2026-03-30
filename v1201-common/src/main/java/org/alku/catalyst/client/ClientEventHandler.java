@@ -127,6 +127,18 @@ public class ClientEventHandler {
             config.save();
             sendFeedback(mc, "fast_shield", config.fastShieldEnabled);
         }
+
+        if (CatalystKeys.TOGGLE_AUTO_DOOR.consumeClick()) {
+            config.autoDoorEnabled = !config.autoDoorEnabled;
+            config.save();
+            sendFeedback(mc, "auto_door", config.autoDoorEnabled);
+        }
+
+        if (CatalystKeys.TOGGLE_AUTO_WATER_BUCKET.consumeClick()) {
+            config.autoWaterBucketEnabled = !config.autoWaterBucketEnabled;
+            config.save();
+            sendFeedback(mc, "auto_water_bucket", config.autoWaterBucketEnabled);
+        }
         
         if (CatalystKeys.SORT_INVENTORY.consumeClick()) {
             InventorySorter.sortCurrentContainer(mc);
@@ -148,6 +160,12 @@ public class ClientEventHandler {
             config.inventorySorterEnabled = !config.inventorySorterEnabled;
             config.save();
             sendFeedback(mc, "inventory_sorter", config.inventorySorterEnabled);
+        }
+
+        if (CatalystKeys.TOGGLE_MOUSE_GESTURES.consumeClick()) {
+            config.rmbTweak = !config.rmbTweak;
+            config.save();
+            sendFeedback(mc, "mouse_gestures", config.rmbTweak);
         }
 
         if (CatalystKeys.OPEN_WAYPOINTS.consumeClick()) {

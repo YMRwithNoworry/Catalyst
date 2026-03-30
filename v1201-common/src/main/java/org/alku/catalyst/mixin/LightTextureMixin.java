@@ -11,9 +11,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class LightTextureMixin {
     
     @Inject(
-        method = "updateLightTexture(F)V",
+        method = "updateLightTexture",
         at = @At("HEAD"),
-        cancellable = true
+        cancellable = true,
+        require = 0
     )
     private void onUpdateLightTexture(float partialTicks, CallbackInfo ci) {
         if (CatalystConfig.getInstance().gammaOverrideEnabled) {

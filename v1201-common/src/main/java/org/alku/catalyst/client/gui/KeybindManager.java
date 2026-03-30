@@ -28,13 +28,13 @@ public class KeybindManager {
         DEFAULT_KEYS.put("toggle_auto_weapon", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_auto_door", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_auto_water_bucket", GLFW.GLFW_KEY_UNKNOWN);
-        DEFAULT_KEYS.put("toggle_chams", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_trigger_bot", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_shield_breaker", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_fast_shield", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_entity_xray", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_mini_hud", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("toggle_inventory_sorter", GLFW.GLFW_KEY_UNKNOWN);
+        DEFAULT_KEYS.put("toggle_mouse_gestures", GLFW.GLFW_KEY_UNKNOWN);
         DEFAULT_KEYS.put("open_config", GLFW.GLFW_KEY_J);
         DEFAULT_KEYS.put("sort_inventory", GLFW.GLFW_KEY_R);
         DEFAULT_KEYS.put("open_waypoints", GLFW.GLFW_KEY_UNKNOWN);

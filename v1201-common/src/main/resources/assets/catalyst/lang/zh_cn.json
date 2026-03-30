@@ -13,6 +13,8 @@
   "key.catalyst.toggle_chams": "切换透视",
   "key.catalyst.toggle_entity_xray": "切换实体透视",
   "key.catalyst.toggle_mini_hud": "切换迷你HUD",
+  "key.catalyst.toggle_inventory_sorter": "切换背包整理",
+  "key.catalyst.toggle_mouse_gestures": "切换鼠标手势",
   "key.catalyst.open_config": "打开配置界面",
   "key.catalyst.open_waypoints": "打开路径点界面",
   "key.catalyst.add_waypoint": "添加路径点",

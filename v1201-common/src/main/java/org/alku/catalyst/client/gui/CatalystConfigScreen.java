@@ -725,6 +725,7 @@ public class CatalystConfigScreen extends Screen {
             if (featureKey.equals("auto_tool")) return config.autoToolEnabled;
             if (featureKey.equals("auto_weapon")) return config.autoWeaponEnabled;
             if (featureKey.equals("trigger_bot")) return config.triggerBotEnabled;
+            if (featureKey.equals("shield_breaker")) return config.shieldBreakerEnabled;
             if (featureKey.equals("fast_shield")) return config.fastShieldEnabled;
             if (featureKey.equals("auto_door")) return config.autoDoorEnabled;
             if (featureKey.equals("auto_water_bucket")) return config.autoWaterBucketEnabled;
@@ -1034,6 +1035,7 @@ public class CatalystConfigScreen extends Screen {
             else if (featureKey.equals("auto_tool")) config.autoToolEnabled = !config.autoToolEnabled;
             else if (featureKey.equals("auto_weapon")) config.autoWeaponEnabled = !config.autoWeaponEnabled;
             else if (featureKey.equals("trigger_bot")) config.triggerBotEnabled = !config.triggerBotEnabled;
+            else if (featureKey.equals("shield_breaker")) config.shieldBreakerEnabled = !config.shieldBreakerEnabled;
             else if (featureKey.equals("fast_shield")) config.fastShieldEnabled = !config.fastShieldEnabled;
             else if (featureKey.equals("auto_door")) config.autoDoorEnabled = !config.autoDoorEnabled;
             else if (featureKey.equals("auto_water_bucket")) config.autoWaterBucketEnabled = !config.autoWaterBucketEnabled;

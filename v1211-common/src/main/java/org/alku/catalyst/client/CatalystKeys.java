@@ -17,9 +17,12 @@ public class CatalystKeys {
     public static KeyMapping TOGGLE_TRIGGER_BOT;
     public static KeyMapping TOGGLE_SHIELD_BREAKER;
     public static KeyMapping TOGGLE_FAST_SHIELD;
+    public static KeyMapping TOGGLE_AUTO_DOOR;
+    public static KeyMapping TOGGLE_AUTO_WATER_BUCKET;
     public static KeyMapping TOGGLE_ENTITY_XRAY;
     public static KeyMapping TOGGLE_MINI_HUD;
     public static KeyMapping TOGGLE_INVENTORY_SORTER;
+    public static KeyMapping TOGGLE_MOUSE_GESTURES;
     public static KeyMapping OPEN_CONFIG;
     public static KeyMapping SORT_INVENTORY;
     public static KeyMapping OPEN_WAYPOINTS;
@@ -82,6 +85,20 @@ public class CatalystKeys {
             KEY_CATEGORY
         );
 
+        TOGGLE_AUTO_DOOR = new KeyMapping(
+            "key.catalyst.toggle_auto_door",
+            InputConstants.Type.KEYSYM,
+            KeybindManager.getKeyCode("toggle_auto_door"),
+            KEY_CATEGORY
+        );
+
+        TOGGLE_AUTO_WATER_BUCKET = new KeyMapping(
+            "key.catalyst.toggle_auto_water_bucket",
+            InputConstants.Type.KEYSYM,
+            KeybindManager.getKeyCode("toggle_auto_water_bucket"),
+            KEY_CATEGORY
+        );
+
         TOGGLE_ENTITY_XRAY = new KeyMapping(
             "key.catalyst.toggle_entity_xray",
             InputConstants.Type.KEYSYM,
@@ -100,6 +117,13 @@ public class CatalystKeys {
             "key.catalyst.toggle_inventory_sorter",
             InputConstants.Type.KEYSYM,
             KeybindManager.getKeyCode("toggle_inventory_sorter"),
+            KEY_CATEGORY
+        );
+
+        TOGGLE_MOUSE_GESTURES = new KeyMapping(
+            "key.catalyst.toggle_mouse_gestures",
+            InputConstants.Type.KEYSYM,
+            KeybindManager.getKeyCode("toggle_mouse_gestures"),
             KEY_CATEGORY
         );
 
@@ -139,9 +163,12 @@ public class CatalystKeys {
         KeyMappingRegistry.register(TOGGLE_TRIGGER_BOT);
         KeyMappingRegistry.register(TOGGLE_SHIELD_BREAKER);
         KeyMappingRegistry.register(TOGGLE_FAST_SHIELD);
+        KeyMappingRegistry.register(TOGGLE_AUTO_DOOR);
+        KeyMappingRegistry.register(TOGGLE_AUTO_WATER_BUCKET);
         KeyMappingRegistry.register(TOGGLE_ENTITY_XRAY);
         KeyMappingRegistry.register(TOGGLE_MINI_HUD);
         KeyMappingRegistry.register(TOGGLE_INVENTORY_SORTER);
+        KeyMappingRegistry.register(TOGGLE_MOUSE_GESTURES);
         KeyMappingRegistry.register(OPEN_CONFIG);
         KeyMappingRegistry.register(SORT_INVENTORY);
         KeyMappingRegistry.register(OPEN_WAYPOINTS);
@@ -155,6 +182,7 @@ public class CatalystKeys {
                 ? InputConstants.UNKNOWN 
                 : InputConstants.Type.KEYSYM.getOrCreate(keyCode);
             mapping.setKey(key);
+            KeyMapping.resetMapping();
         }
     }
     
@@ -168,9 +196,12 @@ public class CatalystKeys {
             case "toggle_trigger_bot" -> TOGGLE_TRIGGER_BOT;
             case "toggle_shield_breaker" -> TOGGLE_SHIELD_BREAKER;
             case "toggle_fast_shield" -> TOGGLE_FAST_SHIELD;
+            case "toggle_auto_door" -> TOGGLE_AUTO_DOOR;
+            case "toggle_auto_water_bucket" -> TOGGLE_AUTO_WATER_BUCKET;
             case "toggle_entity_xray" -> TOGGLE_ENTITY_XRAY;
             case "toggle_mini_hud" -> TOGGLE_MINI_HUD;
             case "toggle_inventory_sorter" -> TOGGLE_INVENTORY_SORTER;
+            case "toggle_mouse_gestures" -> TOGGLE_MOUSE_GESTURES;
             case "open_config" -> OPEN_CONFIG;
             case "sort_inventory" -> SORT_INVENTORY;
             case "open_waypoints" -> OPEN_WAYPOINTS;
